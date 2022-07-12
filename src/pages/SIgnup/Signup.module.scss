@@ -1,0 +1,135 @@
+.container {
+  width: 400px;
+  margin: 0 auto;
+  padding: 60px 0 160px;
+  .logo {
+    padding: 0 0 50px;
+    font-size: 30px;
+    line-height: 30px;
+    font-weight: 800;
+    text-align: center;
+  }
+  .signup {
+    display: flex;
+    flex-direction: column;
+    .label {
+      color: #222222;
+      font-size: 13px;
+      line-height: 18px;
+      font-weight: bold;
+    }
+    .input {
+      font-family: -apple-system, BlinkMacSystemFont, Roboto,
+        AppleSDGothicNeo-Regular, NanumBarunGothic, NanumGothic, 나눔고딕,
+        Segoe UI, Helveica, Arial, Malgun Gothic, Dotum, sans-serif;
+      outline: 0;
+      border: 0;
+      border-bottom: 1px solid lightgray;
+      padding: 10px 0;
+      margin: 0 0 20px 0;
+      &:focus {
+        border-bottom: 2px solid black;
+      }
+      &::placeholder {
+        color: lightgray;
+      }
+    }
+    .size {
+      cursor: pointer;
+      &:focus {
+        border-bottom: 1px solid lightgray;
+      }
+    }
+    .open {
+      position: relative;
+      left: 30px;
+      input[type='checkbox'] {
+        width: 24px;
+        height: 24px;
+        margin-right: 20px;
+        border-radius: 2px;
+        border: 1px solid rgb(216, 216, 216);
+      }
+      input[type='checkbox']:checked {
+        width: 24px;
+        height: 24px;
+        margin-right: 20px;
+        border-radius: 2px;
+      }
+      .label {
+        font-weight: 400;
+        cursor: pointer;
+      }
+      input {
+        position: relative;
+        top: 7px;
+        cursor: pointer;
+      }
+    }
+    .close {
+      display: none;
+    }
+    .agree {
+      display: flex;
+      justify-content: space-between;
+      input[type='checkbox'] {
+        width: 24px;
+        height: 24px;
+        margin-right: 20px;
+        border-radius: 2px;
+        border: 1px solid rgb(216, 216, 216);
+      }
+      input[type='checkbox']:checked {
+        width: 24px;
+        height: 24px;
+        margin-right: 20px;
+        border-radius: 2px;
+      }
+      .label {
+        font-weight: 400;
+        cursor: pointer;
+      }
+      input {
+        position: relative;
+        top: 7px;
+        cursor: pointer;
+      }
+      .btn {
+        cursor: pointer;
+        background-color: transparent;
+        border: 0;
+        font-size: 16px;
+        position: relative;
+        top: 5.5px;
+      }
+    }
+    .signup_btn {
+      width: 100%;
+      border-radius: 12px;
+      color: white;
+      background-color: #ebebeb;
+      border: 0;
+      margin: 30px 0;
+      height: 52px;
+      font-size: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    width: 90%;
+    min-width: 330px;
+    .logo {
+      text-align: left;
+      font-size: 24px;
+      font-weight: 600;
+    }
+  }
+}
+
+@media screen and (max-width: 365px) {
+  .container {
+    margin: 0 10px;
+  }
+}
