@@ -1,22 +1,19 @@
 .shop_top_banner {
   padding: 0 40px;
-  border: 1px solid yellow;
   .search_trend_container {
-    border: 1px solid red;
     // max-width: 1280px;
     max-width: 95vw;
-    display: flex;
-    justify-content: space-evenly;
+    // display: flex;
+    // justify-content: space-evenly;
 
     .search_trend_brand_list {
-      border: 1px solid blue;
       display: flex;
+      justify-content: space-between;
       padding: 0 0 16px;
 
       .brand_item {
         float: left;
         // width: 33.3%;
-        border: 1px solid green;
         cursor: pointer;
 
         img {
@@ -32,7 +29,6 @@
     }
   }
   .banner_box {
-    border: 1px solid red;
     height: 100px;
     background-color: #030423;
     text-align: center;
