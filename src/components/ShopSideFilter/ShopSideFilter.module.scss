@@ -1,0 +1,43 @@
+.search_filter {
+  border: 1px solid red;
+  width: 210px;
+  margin-right: 10px;
+  padding-right: 10px;
+  .filter_status {
+    border: 1px solid blue;
+
+    .status_box {
+      border: 1px solid green;
+      padding: 23px 0 15px 0;
+      span {
+        font-size: 14px;
+        font-weight: 700;
+      }
+    }
+    .filter_list {
+      border: 1px solid green;
+      border-bottom: 1px solid #ebebeb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      .filter_title {
+        border: 1px solid pink;
+        padding: 16px 0;
+        .title_box {
+          .main_title {
+            font-size: 13px;
+            font-weight: 600;
+          }
+          .all_category {
+          }
+        }
+        .icon_box {
+        }
+      }
+      .filter_menu {
+        border: 1px solid pink;
+      }
+    }
+  }
+}
