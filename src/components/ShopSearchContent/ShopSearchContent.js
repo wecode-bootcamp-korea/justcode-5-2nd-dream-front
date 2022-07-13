@@ -58,14 +58,10 @@ function ShopSearchContent() {
     <div className={css.search_content}>
       <div className={css.search_option}>
         <div className={css.filter_sorting}>
-          <button>
-            <p className={css.sorting_title}>인기순</p>
-            <img
-              src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzIyMiIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNi40NyAxOS41M2wuNTMuNTMuNTMtLjUzIDQtNC0xLjA2LTEuMDYtMi43MiAyLjcyVjVoLTEuNXYxMi4xOWwtMi43Mi0yLjcyLTEuMDYgMS4wNiA0IDR6TTE3LjUzIDQuNDdMMTcgMy45NGwtLjUzLjUzLTQgNCAxLjA2IDEuMDYgMi43Mi0yLjcyVjE5aDEuNVY2LjgxbDIuNzIgMi43MiAxLjA2LTEuMDYtNC00eiIgY2xpcC1ydWxlPSJldmVub2RkIi8+PC9zdmc+"
-              alt="화살표"
-            />
-          </button>
-          {/* <ul></ul> */}
+          <select>
+            <option>인기순</option>
+            <option>발매일순</option>
+          </select>
         </div>
       </div>
 
@@ -90,7 +86,6 @@ function ShopSearchContent() {
               <div className={css.interest_figure}>
                 <span className={css.wish_figure}>
                   <img
-                    //   "https://img.icons8.com/external-bearicons-glyph-bearicons/344/external-Save-social-media-bearicons-glyph-bearicons.png"
                     src="https://img.icons8.com/external-bearicons-detailed-outline-bearicons/344/external-Save-social-media-bearicons-detailed-outline-bearicons.png"
                     alt="관심상품"
                   />

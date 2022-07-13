@@ -10,8 +10,6 @@ function ShopTitle() {
       <div className={css.quick_filter}>
         <div className={css.filter_icon}>
           <img
-            //   https://img.icons8.com/fluency-systems-filled/344/sorting-options.png
-            //   https://img.icons8.com/fluency-systems-regular/344/sorting-options.png
             src="https://img.icons8.com/fluency-systems-regular/344/sorting-options.png"
             alt="필터아이콘"
           />

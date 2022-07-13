@@ -39,6 +39,7 @@
       position: relative;
       float: left;
       width: 22%;
+      cursor: pointer;
       .product {
         background-color: #ebf0f5;
         border-radius: 12px;
@@ -85,7 +86,6 @@
           display: inline-flex;
           align-items: center;
           vertical-align: top;
-          //   padding: 0 8px;
           height: 20px;
           img {
             width: 15px;
