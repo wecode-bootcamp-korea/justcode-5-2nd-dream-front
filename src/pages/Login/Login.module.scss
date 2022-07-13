@@ -18,6 +18,8 @@
   .login {
     display: flex;
     flex-direction: column;
+    position: relative;
+
     .label {
       color: #222222;
       font-size: 13px;
@@ -37,13 +39,33 @@
         border-bottom: 2px solid black;
       }
     }
-    button {
+    .alert {
+      &:focus {
+        border-bottom: 1px solid #f15746;
+      }
+    }
+    .email_alert,
+    .pw_alert {
+      position: absolute;
+      top: 60px;
+      color: #f15746;
+      font-size: 11px;
+    }
+    .pw_alert {
+      top: 135px;
+    }
+    .login_btn {
       height: 52px;
       border: 0;
       color: white;
-      background-color: #ebebeb;
+      background-color: black;
       border-radius: 12px;
       font-size: 16px;
+      cursor: pointer;
+    }
+    .disabled {
+      background-color: #ebebeb;
+      cursor: auto;
     }
   }
   .links {
