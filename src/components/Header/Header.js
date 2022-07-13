@@ -23,7 +23,7 @@ function Header() {
         <div className={css.kream_log}>
           DREAM
         </div>
-        <div className={css.sTyle}>
+        <div className={css.style}>
           STYLE
         </div>
         <div className={css.shop}>
