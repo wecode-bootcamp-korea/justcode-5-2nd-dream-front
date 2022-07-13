@@ -1,12 +1,52 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import css from './Signup.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import SizeModal from '../../components/SizeModal/SizeModal';
+import { useNavigate } from 'react-router-dom';
 
 function Signup() {
+  const navigate = useNavigate();
+
+  const [size, setSize] = useState(undefined);
+
+  const [email, setEmail] = useState('');
+  const [isValidEmail, setIsValidEmail] = useState(false);
+  const [password, setPassword] = useState('');
+  const [isValidPw, setIsValidPw] = useState(false);
+  const handleEmailInput = e => {
+    setEmail(e.target.value);
+  };
+  const handlePwInput = e => {
+    setPassword(e.target.value);
+  };
+  const regEmail = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+  const regPw =
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%#?&])[A-Za-z\d@$!%*#?&]{8,16}$/;
+  const emailValidation = () => {
+    if (email.length === 0) setIsValidEmail(true);
+    else {
+      setIsValidEmail(regEmail.test(email));
+    }
+  };
+  const pwValidation = () => {
+    if (password.length === 0) setIsValidPw(true);
+    else {
+      setIsValidPw(regPw.test(password));
+    }
+  };
+
   const [isEssentialOpen, setIsEssentialOpen] = useState(false);
   const [isOptionalOpen, setIsOptionalOpen] = useState(false);
+  const essentialBtn = e => {
+    e.preventDefault();
+    setIsEssentialOpen(!isEssentialOpen);
+  };
+  const optionalBtn = e => {
+    e.preventDefault();
+    setIsOptionalOpen(!isOptionalOpen);
+  };
+
   const [isEssentialCheck, setIsEssentialCheck] = useState(false);
   const [isOptionalCheck, setIsOptionalCheck] = useState(false);
   const [isTermsCheck, setIsTermsCheck] = useState(false);
@@ -14,19 +54,6 @@ function Signup() {
   const [isAppCheck, setIsAppCheck] = useState(false);
   const [isSmsCheck, setIsSmsCheck] = useState(false);
   const [isEmailCheck, setIsEmailCheck] = useState(false);
-
-  const [size, setSize] = useState(undefined);
-
-  const essentialBtn = e => {
-    e.preventDefault();
-    setIsEssentialOpen(!isEssentialOpen);
-  };
-
-  const optionalBtn = e => {
-    e.preventDefault();
-    setIsOptionalOpen(!isOptionalOpen);
-  };
-
   const essentialCheckBtn = e => {
     setIsEssentialCheck(!isEssentialCheck);
     if (!isEssentialCheck) {
@@ -37,7 +64,6 @@ function Signup() {
       setIsInfoCheck(false);
     }
   };
-
   const optionalCheckBtn = () => {
     setIsOptionalCheck(!isOptionalCheck);
     if (!isOptionalCheck) {
@@ -50,7 +76,6 @@ function Signup() {
       setIsEmailCheck(false);
     }
   };
-
   const termsCheckBtn = () => {
     setIsTermsCheck(!isTermsCheck);
     if (isTermsCheck) {
@@ -60,7 +85,6 @@ function Signup() {
       setIsEssentialCheck(true);
     }
   };
-
   const infoCheckBtn = () => {
     setIsInfoCheck(!isInfoCheck);
     if (isInfoCheck) {
@@ -70,7 +94,6 @@ function Signup() {
       setIsEssentialCheck(true);
     }
   };
-
   const appCheckBtn = () => {
     setIsAppCheck(!isAppCheck);
     if (isAppCheck) {
@@ -80,7 +103,6 @@ function Signup() {
       setIsOptionalCheck(true);
     }
   };
-
   const smsCheckBtn = () => {
     setIsSmsCheck(!isSmsCheck);
     if (isSmsCheck) {
@@ -90,7 +112,6 @@ function Signup() {
       setIsOptionalCheck(true);
     }
   };
-
   const emailCheckBtn = () => {
     setIsEmailCheck(!isEmailCheck);
     if (isEmailCheck) {
@@ -101,8 +122,18 @@ function Signup() {
     }
   };
 
+  const [signupValid, setSignupValid] = useState(false);
+  const signupValidaion = () => {
+    if (isValidEmail && isValidPw && isEssentialCheck) {
+      setSignupValid(true);
+    } else {
+      setSignupValid(false);
+    }
+  };
   const signup = e => {
     e.preventDefault();
+    alert('회원가입 완료!');
+    navigate('/login');
   };
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -112,6 +143,12 @@ function Signup() {
   const closeModal = () => {
     setModalOpen(false);
   };
+
+  useEffect(() => {
+    emailValidation();
+    pwValidation();
+    signupValidaion();
+  });
 
   return (
     <div className={css.container}>
@@ -123,25 +160,45 @@ function Signup() {
       />
       <h1 className={css.logo}>회원가입</h1>
       <form className={css.signup}>
-        <label className={css.label} htmlFor="email">
+        <label
+          className={isValidEmail ? css.label : `${css.label} ${css.red}`}
+          htmlFor="email"
+        >
           이메일 주소*
         </label>
         <input
+          value={email}
+          onChange={handleEmailInput}
           autoComplete="off"
-          className={css.input}
+          className={isValidEmail ? css.input : `${css.input} ${css.alert}`}
           name="email"
           placeholder="예) dream@dream.co.kr"
         />
-        <label className={css.label} htmlFor="password">
+        {!isValidEmail && (
+          <span className={css.email_alert}>
+            이메일 주소를 정확히 입력해주세요.
+          </span>
+        )}
+        <label
+          className={isValidPw ? css.label : `${css.label} ${css.red}`}
+          htmlFor="password"
+        >
           비밀번호*
         </label>
         <input
+          value={password}
+          onChange={handlePwInput}
           autoComplete="off"
-          className={css.input}
+          className={isValidPw ? css.input : `${css.input} ${css.alert}`}
           name="password"
           type="password"
           placeholder="영문, 숫자, 특수문자 조합 8 - 16자"
         />
+        {!isValidPw && (
+          <span className={css.pw_alert}>
+            영문, 숫자, 특수문자를 조합하여 입력해주세요. (8-16자)
+          </span>
+        )}
         <label className={css.label} htmlFor="size">
           신발 사이즈
         </label>
@@ -151,7 +208,7 @@ function Signup() {
           name="size"
           type="text"
           placeholder="선택하세요"
-          value={size}
+          value={size || ''}
           readOnly
           onClick={openModal}
         />
@@ -176,7 +233,6 @@ function Signup() {
             <FontAwesomeIcon icon={isEssentialOpen ? faMinus : faPlus} />
           </button>
         </div>
-
         <div className={isEssentialOpen ? css.open : css.close}>
           <div className={css.agree_essential}>
             <input
@@ -211,7 +267,6 @@ function Signup() {
             </label>
           </div>
         </div>
-
         <div className={css.agree}>
           <div className={css.agree_optional}>
             <input
@@ -233,7 +288,6 @@ function Signup() {
             <FontAwesomeIcon icon={isOptionalOpen ? faMinus : faPlus} />
           </button>
         </div>
-
         <div className={isOptionalOpen ? css.open : css.close}>
           <div className={css.agree_optional}>
             <input
@@ -284,7 +338,13 @@ function Signup() {
             </label>
           </div>
         </div>
-        <button className={css.signup_btn} onClick={signup}>
+        <button
+          disabled={!signupValid}
+          className={
+            signupValid ? css.signup_btn : `${css.signup_btn} ${css.disabled}`
+          }
+          onClick={signup}
+        >
           가입하기
         </button>
       </form>

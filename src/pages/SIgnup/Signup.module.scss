@@ -10,6 +10,7 @@
     text-align: center;
   }
   .signup {
+    position: relative;
     display: flex;
     flex-direction: column;
     .label {
@@ -17,6 +18,9 @@
       font-size: 13px;
       line-height: 18px;
       font-weight: bold;
+    }
+    .red {
+      color: #f15746;
     }
     .input {
       font-family: -apple-system, BlinkMacSystemFont, Roboto,
@@ -33,6 +37,21 @@
       &::placeholder {
         color: lightgray;
       }
+    }
+    .alert {
+      &:focus {
+        border-bottom: 1px solid #f15746;
+      }
+    }
+    .email_alert,
+    .pw_alert {
+      position: absolute;
+      top: 60px;
+      color: #f15746;
+      font-size: 11px;
+    }
+    .pw_alert {
+      top: 135px;
     }
     .size {
       cursor: pointer;
@@ -105,13 +124,18 @@
     }
     .signup_btn {
       width: 100%;
+      cursor: pointer;
       border-radius: 12px;
       color: white;
-      background-color: #ebebeb;
+      background-color: black;
       border: 0;
       margin: 30px 0;
       height: 52px;
       font-size: 16px;
+    }
+    .disabled {
+      background-color: #ebebeb;
+      cursor: auto;
     }
   }
 }
