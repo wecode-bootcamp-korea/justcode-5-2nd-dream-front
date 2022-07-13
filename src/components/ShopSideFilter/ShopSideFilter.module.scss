@@ -1,0 +1,37 @@
+.search_filter {
+  width: 210px;
+  margin-right: 10px;
+  padding-right: 10px;
+  .filter_status {
+    .status_box {
+      padding: 23px 0 15px 0;
+      span {
+        font-size: 14px;
+        font-weight: 700;
+      }
+    }
+    .filter_list {
+      border-bottom: 1px solid #ebebeb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      .filter_title {
+        padding: 16px 0;
+        .main_title {
+          font-size: 13px;
+          font-weight: 600;
+        }
+        .all_category {
+          margin-top: 4px;
+          font-size: 15px;
+          color: rgba(34, 34, 34, 0.5);
+        }
+      }
+      .icon_box {
+        color: rgba(34, 34, 34, 0.5);
+        font-size: 20px;
+      }
+    }
+  }
+}
