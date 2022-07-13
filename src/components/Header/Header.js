@@ -21,19 +21,19 @@ function Header() {
       </div>
       <div className={css.second_border}>
         <div className={css.kream_log}>
-            KREAM
+          DREAM
         </div>
-        <div className={css.sTyle}>
+        <div className={css.style}>
           STYLE
         </div>
         <div className={css.shop}>
           SHOP
         </div>
         <div className={css.about}>
-         ABOUT
+          ABOUT
         </div>
         <div className={css.glass}>
-             <FiSearch size="35"/>
+          <FiSearch size="35" />
         </div>
       </div>
     </>
