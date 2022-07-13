@@ -24,7 +24,7 @@ function ShopSideFilter() {
       text_2: '모든 사이즈',
     },
     {
-      id: 4,
+      id: 5,
       text_1: '가격',
       text_2: '모든 가격',
     },
@@ -35,13 +35,17 @@ function ShopSideFilter() {
         <div className={css.status_box}>
           <span>필터</span>
         </div>
-        <div className={css.filter_list}>
-          <div className={css.filter_title}>
-            <div className={css.main_title}>{filterData[0].text_1}</div>
-            <div className={css.all_category}>{filterData[0].text_2}</div>
-          </div>
-          <div className={css.icon_box}> + </div>
-        </div>
+        {filterData.map(filterData => {
+          return (
+            <div className={css.filter_list} key={filterData.id}>
+              <div className={css.filter_title}>
+                <div className={css.main_title}>{filterData.text_1}</div>
+                <div className={css.all_category}>{filterData.text_2}</div>
+              </div>
+              <div className={css.icon_box}> + </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
