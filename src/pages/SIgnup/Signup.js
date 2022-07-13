@@ -124,7 +124,13 @@ function Signup() {
 
   const [signupValid, setSignupValid] = useState(false);
   const signupValidaion = () => {
-    if (isValidEmail && isValidPw && isEssentialCheck) {
+    if (
+      isValidEmail &&
+      isValidPw &&
+      isEssentialCheck &&
+      email.length !== 0 &&
+      password.length !== 0
+    ) {
       setSignupValid(true);
     } else {
       setSignupValid(false);
