@@ -1,0 +1,35 @@
+.container {
+  .style_img {
+    cursor: pointer;
+    width: 194px;
+    height: 194px;
+    border-radius: 12px;
+    margin: 10px;
+  }
+  .product {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 4px 10px;
+  }
+  a {
+    color: #222222;
+  }
+  .content {
+    cursor: pointer;
+    width: 200px;
+    word-break: break-all;
+    color: #222222;
+    padding: 4px 50px 0 10px;
+  }
+  .price {
+    cursor: pointer;
+    padding: 8px 10px 0;
+  }
+  .immediately {
+    cursor: pointer;
+    padding: 0 10px;
+    font-size: 11px;
+    color: #22222280;
+  }
+}
