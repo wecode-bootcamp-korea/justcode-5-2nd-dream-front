@@ -36,16 +36,6 @@ function ProfileInfo() {
       phone: '010-0000-3333',
       size: '245',
     },
-    {
-      id: 4,
-      image:
-        'https://media.istockphoto.com/photos/blank-shirt-isolated-on-white-background-picture-id898906594?s=612x612',
-      email: 'ssh3051004@naver.com',
-      password: '1234567',
-      name: '최드림',
-      phone: '010-0000-4444',
-      size: '260',
-    },
   ];
   const [size, setSize] = useState(undefined);
   const [modalOpen, setModalOpen] = useState(false);
@@ -111,14 +101,14 @@ function ProfileInfo() {
             <div className={css.email_box}>
               <div className={css.email_info}>
                 <h5>이름</h5>
-                <p>{userData[id].name}</p>
+                <input placeholder={userData[id].name} />
               </div>
               <button>변경</button>
             </div>
             <div className={css.email_box}>
               <div className={css.email_info}>
                 <h5>휴대폰 번호</h5>
-                <p>{userData[id].phone}</p>
+                <input placeholder={userData[id].phone} />
               </div>
               <button>변경</button>
             </div>
@@ -130,6 +120,7 @@ function ProfileInfo() {
               <button onClick={openModal}>변경</button>
             </div>
           </div>
+          <span>회원탈퇴</span>
         </div>
 
         <div className={css.address_group}>
@@ -143,8 +134,8 @@ function ProfileInfo() {
           </div>
           <div className={css.divider} />
           <div className={css.add_address}>
-            <p>손소희</p>
-            <p>010-3371-3863</p>
+            <p>{userData[id].name}</p>
+            <p>{userData[id].phone}</p>
             <p>가나다라마바사아자차카타파하</p>
             <div className={css.address_button}>
               <button>수정</button>

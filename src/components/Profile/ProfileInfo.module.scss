@@ -1,5 +1,5 @@
 .content_box {
-  width: 100vw;
+  width: 80vw;
   .my_profile {
     .content_title_border {
       padding: 5px 0 16px;
@@ -33,6 +33,7 @@
       max-width: 480px;
       .profile_group {
         padding-top: 38px;
+        padding-bottom: 38px;
         h4 {
           font-size: 18px;
           font-weight: bold;
@@ -52,6 +53,14 @@
               padding-top: 6px;
               font-size: 16px;
               letter-spacing: 0.6px;
+              color: rgba(34, 34, 34, 0.5);
+            }
+            input {
+              margin-top: 6px;
+              font-size: 16px;
+              letter-spacing: 0.6px;
+              width: 300px;
+              border: none;
             }
           }
           button {
@@ -70,11 +79,17 @@
           }
         }
       }
+      span {
+        font-size: 14px;
+        color: rgba(34, 34, 34, 0.5);
+        cursor: pointer;
+        text-decoration: underline;
+      }
     }
     .address_group {
       margin-top: 40px;
       padding-top: 38px;
-      border-top: 1px solid #ebebeb;
+      border-top: 2px solid #ebebeb;
       h2 {
         font-size: 24px;
         font-weight: 600;
