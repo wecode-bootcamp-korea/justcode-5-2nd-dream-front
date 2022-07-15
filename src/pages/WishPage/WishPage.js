@@ -1,8 +1,8 @@
 import React from 'react';
-import css from './Wish.module.scss';
+import css from './WishPage.module.scss';
 import ProfileSNB from '../../components/Profile/ProfileSNB';
 
-function Wish() {
+function WishPage() {
   return (
     <div className={css.container}>
       <ProfileSNB />
@@ -39,4 +39,4 @@ function Wish() {
   );
 }
 
-export default Wish;
+export default WishPage;
