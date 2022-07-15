@@ -1,14 +1,14 @@
 import React from 'react';
-import css from './Wish.module.scss';
+import css from './BuyingPage.module.scss';
 import ProfileSNB from '../../components/Profile/ProfileSNB';
 
-function Wish() {
+function BuyingPage() {
   return (
     <div className={css.container}>
       <ProfileSNB />
       <div className={css.content_box}>
         <div className={css.content_title_border}>
-          <h3>관심상품</h3>
+          <h3>구매 내역</h3>
         </div>
 
         <ul className={css.wish_list}>
@@ -26,10 +26,15 @@ function Wish() {
                 </div>
               </div>
               <div className={css.wish_buy}>
-                <div className={css.wish_button}>
-                  <p>구매</p>
-                </div>
-                <span>삭제</span>
+                <button className={css.buy_btn}>
+                  <div className={css.text}>
+                    <div className={css.buy_text}>구매 완료</div>
+                    <div className={css.buy_price}>
+                      <div>60000원</div>
+                      <div className={css.immediately}>즉시 구매가</div>
+                    </div>
+                  </div>
+                </button>
               </div>
             </div>
           </li>
@@ -39,4 +44,4 @@ function Wish() {
   );
 }
 
-export default Wish;
+export default BuyingPage;
