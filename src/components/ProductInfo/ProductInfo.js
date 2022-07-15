@@ -21,7 +21,7 @@ function ProductInfo() {
   };
 
   const moveToDealCheck = deal => {
-    navigate(`/${deal}/${id}`);
+    navigate(`/${deal}/select/${id}`);
   };
 
   return (

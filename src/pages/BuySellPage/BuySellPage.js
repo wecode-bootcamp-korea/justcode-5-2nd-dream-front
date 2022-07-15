@@ -6,7 +6,7 @@ function BuySellPage() {
   const location = useLocation();
   const isBuyPage = location.pathname.includes('buy');
 
-  const id = location.pathname.split('/')[2];
+  const id = location.pathname.split('/')[3];
 
   const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ function BuySellPage() {
     setPrice(e.target.value.split(',')[1]);
   };
 
-  const moveToDealCheck = deal => {
+  const moveToDealCheck = () => {
     if (isBuyPage) {
       navigate(`/buy/check/${id}`);
     } else {

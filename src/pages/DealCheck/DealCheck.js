@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import css from './DealCheck.module.scss';
 
 function DealCheck() {
   const location = useLocation();
   const isBuyPage = location.pathname.includes('buy');
+
+  const id = location.pathname.split('/')[3];
+
+  const navigate = useNavigate();
+  const moveToDeal = () => {
+    if (isBuyPage) {
+      navigate(`/buy/${id}`);
+    } else {
+      navigate(`/sell/${id}`);
+    }
+  };
 
   const [isCheckedProduct, setIsCheckedProduct] = useState(false);
   const [isCheckedNew, setIsCheckedNew] = useState(false);
@@ -55,12 +66,6 @@ function DealCheck() {
   return (
     <div className={css.container}>
       <div className={css.content}>
-        <h1>
-          <span className={!isBuyPage ? css.sell : undefined}>
-            {isBuyPage ? '구매' : '판매'}
-          </span>
-          하시기 전에 꼭 확인하세요.
-        </h1>
         <div className={css.content_top}>
           <div className={css.image}>
             <img
@@ -208,6 +213,7 @@ function DealCheck() {
         <button
           disabled={!allChecked}
           className={!allChecked ? css.disabled : undefined}
+          onClick={moveToDeal}
         >
           {isBuyPage ? '구매 계속' : '판매 계속'}
         </button>

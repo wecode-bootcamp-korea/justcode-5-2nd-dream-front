@@ -13,6 +13,7 @@ import BuySellPage from './BuySellPage/BuySellPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import DealCheck from './DealCheck/DealCheck';
+import BeforePayment from './BeforePayment/BeforePayment';
 
 function App() {
   return (
@@ -28,10 +29,12 @@ function App() {
         <Route path="/mypage/buying/:id" element={<BuyingPage />} />
         <Route path="/mypage/selling/:id" element={<SellingPage />} />
         <Route path="/products/:id" element={<ProductDetail />} />
-        <Route path="/buy/:id" element={<BuySellPage />} />
-        <Route path="/sell/:id" element={<BuySellPage />} />
+        <Route path="/buy/select/:id" element={<BuySellPage />} />
+        <Route path="/sell/select/:id" element={<BuySellPage />} />
         <Route path="/buy/check/:id" element={<DealCheck />} />
         <Route path="/sell/check/:id" element={<DealCheck />} />
+        <Route path="/buy/:id" element={<BeforePayment />} />
+        <Route path="/sell/:id" element={<BeforePayment />} />
       </Routes>
       <Footer />
     </BrowserRouter>
