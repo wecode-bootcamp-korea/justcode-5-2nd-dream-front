@@ -7,8 +7,7 @@ import Shop from './Shop/Shop';
 import MyPage from './MyPage/MyPage';
 import Wish from './Wish/Wish';
 import ProductDetail from './ProductDetail/ProductDetail';
-import BuyPage from './BuyPage/BuyPage';
-import SellPage from './SellPage/SellPage';
+import BuySellPage from './BuySellPage/BuySellPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 
@@ -24,8 +23,8 @@ function App() {
         <Route path="/mypage/:id" element={<MyPage />} />
         <Route path="/mypage/wish/:id" element={<Wish />} />
         <Route path="/products/:id" element={<ProductDetail />} />
-        <Route path="/buy/:id" element={<BuyPage />} />
-        <Route path="/sell/:id" element={<SellPage />} />
+        <Route path="/buy/:id" element={<BuySellPage />} />
+        <Route path="/sell/:id" element={<BuySellPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
