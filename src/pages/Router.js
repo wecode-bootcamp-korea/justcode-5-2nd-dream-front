@@ -14,6 +14,7 @@ import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import DealCheck from './DealCheck/DealCheck';
 import BeforePayment from './BeforePayment/BeforePayment';
+import Payment from './Payment/Payment';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/sell/check/:id" element={<DealCheck />} />
         <Route path="/buy/:id" element={<BeforePayment />} />
         <Route path="/sell/:id" element={<BeforePayment />} />
+        <Route path="/payment/:id" element={<Payment />} />
       </Routes>
       <Footer />
     </BrowserRouter>
