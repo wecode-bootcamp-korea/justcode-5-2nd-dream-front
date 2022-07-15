@@ -16,7 +16,6 @@ function Header() {
         <div className={css.style}>STYLE</div>
         <div className={css.shop}>SHOP</div>
         <div className={css.about}>ABOUT</div>
-
         <div className={css.glass}>
           <FiSearch size="35" />
         </div>
