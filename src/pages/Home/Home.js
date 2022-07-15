@@ -10,6 +10,7 @@ function Home() {
     <ProductAll />
     <Slide />
   </div>;
+
 }
 
 export default Home;

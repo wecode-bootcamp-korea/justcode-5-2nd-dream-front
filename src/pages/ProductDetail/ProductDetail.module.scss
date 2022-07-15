@@ -1,0 +1,28 @@
+@mixin flex_container {
+  display: flex;
+  margin: 0 auto;
+  width: 1300px;
+  border-bottom: 1px solid #ebebeb;
+  padding: 0 0 80px 0;
+}
+
+.container {
+  .info_container,
+  h2 {
+    @include flex_container;
+  }
+  h2 {
+    padding: 50px 0;
+    position: relative;
+    left: 10px;
+    font-size: 20px;
+    color: #222222;
+    font-weight: 600;
+    border: 0;
+  }
+  .style_container,
+  .other_container {
+    @include flex_container;
+    flex-wrap: wrap;
+  }
+}
