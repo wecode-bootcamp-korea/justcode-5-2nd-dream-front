@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import css from './ProductInfo.module.scss';
 import ProductOtherInfo from '../ProductOtherInfo/ProductOtherInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,6 +7,9 @@ import { faCircleDown } from '@fortawesome/free-regular-svg-icons';
 import ProductModal from '../ProductModal/ProductModal';
 
 function ProductInfo() {
+  const navigate = useNavigate();
+  const id = useLocation().pathname.split('/')[2];
+
   const [size, setSize] = useState('모든 사이즈');
   const [price, setPrice] = useState(60000);
   const [modalOpen, setModalOpen] = useState(false);
@@ -15,6 +18,10 @@ function ProductInfo() {
   };
   const closeModal = () => {
     setModalOpen(false);
+  };
+
+  const moveToDealCheck = deal => {
+    navigate(`/${deal}/${id}`);
   };
 
   return (
@@ -42,7 +49,7 @@ function ProductInfo() {
         <span className={css.price}>455,000원</span>
       </div>
       <div className={css.buttons}>
-        <button className={css.buy_btn}>
+        <button className={css.buy_btn} onClick={() => moveToDealCheck('buy')}>
           <div className={css.text}>
             <div className={css.buy_text}>구매</div>
             <div className={css.buy_price}>
@@ -51,7 +58,10 @@ function ProductInfo() {
             </div>
           </div>
         </button>
-        <button className={css.sell_btn}>
+        <button
+          className={css.sell_btn}
+          onClick={() => moveToDealCheck('sell')}
+        >
           <div className={css.text}>
             <div className={css.sell_text}>판매</div>
             <div className={css.sell_price}>

@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import css from './BuySellPage.module.scss';
 
 function BuySellPage() {
   const location = useLocation();
   const isBuyPage = location.pathname.includes('buy');
+
+  const id = location.pathname.split('/')[2];
+
+  const navigate = useNavigate();
 
   const [size, setSize] = useState(undefined);
   const [price, setPrice] = useState(undefined);
@@ -14,6 +18,14 @@ function BuySellPage() {
   const handleSize = e => {
     setSize(e.target.value.split(',')[0]);
     setPrice(e.target.value.split(',')[1]);
+  };
+
+  const moveToDealCheck = deal => {
+    if (isBuyPage) {
+      navigate(`/buy/check/${id}`);
+    } else {
+      navigate(`/sell/check/${id}`);
+    }
   };
 
   return (
@@ -50,7 +62,7 @@ function BuySellPage() {
           })}
         </div>
         {size !== undefined && isBuyPage && (
-          <button className={css.price_btn}>
+          <button className={css.price_btn} onClick={moveToDealCheck}>
             {price}
             <br />
             일반배송(5-7일소요)
@@ -58,12 +70,18 @@ function BuySellPage() {
         )}
         {size !== undefined && !isBuyPage && (
           <div className={css.buttons}>
-            <button className={css.btn}>
+            <button
+              className={css.btn}
+              onClick={() => alert('지원하지 않는 기능입니다.')}
+            >
               보관 신청
               <br />
               선불발송
             </button>
-            <button className={`${css.btn} ${css.green}`}>
+            <button
+              className={`${css.btn} ${css.green}`}
+              onClick={moveToDealCheck}
+            >
               {price}
               <br />
               선불발송

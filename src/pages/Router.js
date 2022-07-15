@@ -12,6 +12,7 @@ import ProductDetail from './ProductDetail/ProductDetail';
 import BuySellPage from './BuySellPage/BuySellPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+import DealCheck from './DealCheck/DealCheck';
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/buy/:id" element={<BuySellPage />} />
         <Route path="/sell/:id" element={<BuySellPage />} />
+        <Route path="/buy/check/:id" element={<DealCheck />} />
+        <Route path="/sell/check/:id" element={<DealCheck />} />
       </Routes>
       <Footer />
     </BrowserRouter>
