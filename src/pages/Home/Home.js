@@ -7,8 +7,8 @@ function Home() {
   return <div>
     <Banner />
     <Post />
-    {/* <Slide /> */}
     <ProductAll />
+    <Slide />
   </div>;
 }
 

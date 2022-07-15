@@ -2,6 +2,18 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import ProductCard from "./ProductCard";
 import ProductAll from './ProductAll';
+import { Container, Row, Col } from 'react-bootstrap';
+import css from './Slide.module.scss';
+import s1 from './images/s1.png';
+import s2 from './images/s2.png';
+import s3 from './images/s3.png';
+import s4 from './images/s4.png';
+import s5 from './images/s5.png';
+import s6 from './images/s6.png';
+import s7 from './images/s7.png';
+import s8 from './images/s8.png';
+import s9 from './images/s9.png';
+import s10 from './images/s10.png';
 
 export default class SwipeToSlide extends Component {
     render() {
@@ -19,38 +31,43 @@ export default class SwipeToSlide extends Component {
         };
         return (
             <div>
-                <h2>Swipe To Slide</h2>
-                <Slider {...settings}>
-                    <div>
-                        <ProductAll />
-
-                        {/* <h3>1</h3> */}
+                <Container>
+                    <div class={css.container}>
+                        <span className={css.font}>Style Picks!</span>
+                        <Slider {...settings}>
+                            <div class={css.gap}>
+                                <img class={css.baner} src={s1} />
+                            </div>
+                            <div class={css.gap}>
+                                <img class={css.baner} src={s2} />
+                            </div>
+                            <div class={css.gap}>
+                                <img class={css.baner} src={s3} />
+                            </div>
+                            <div class={css.gap}>
+                                <img class={css.baner} src={s4} />
+                            </div>
+                            <div class={css.gap}>
+                                <img class={css.baner} src={s5} />
+                            </div>
+                            <div class={css.gap}>
+                                <img class={css.baner} src={s6} />
+                            </div>
+                            <div class={css.gap}>
+                                <img class={css.baner} src={s7} />
+                            </div>
+                            <div class={css.gap}>
+                                <img class={css.baner} src={s8} />
+                            </div>
+                            <div class={css.gap}>
+                                <img class={css.baner} src={s9} />
+                            </div>
+                            <div class={css.gap}>
+                                <img class={css.baner} src={s10} />
+                            </div>
+                        </Slider>
                     </div>
-                    {/* <div>
-                        <h3>2</h3>
-                    </div>
-                    <div>
-                        <h3>3</h3>
-                    </div>
-                    <div>
-                        <h3>4</h3>
-                    </div>
-                    <div>
-                        <h3>5</h3>
-                    </div>
-                    <div>
-                        <h3>6</h3>
-                    </div>
-                    <div>
-                        <h3>7</h3>
-                    </div>
-                    <div>
-                        <h3>8</h3>
-                    </div>
-                    <div>
-                        <h3>9</h3>
-                    </div> */}
-                </Slider>
+                </Container>
             </div>
         );
     }
