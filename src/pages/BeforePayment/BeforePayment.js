@@ -1,10 +1,21 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import css from './BeforePayment.module.scss';
 
 function BeforePayment() {
   const location = useLocation();
   const isBuyPage = location.pathname.includes('buy');
+
+  const navigate = useNavigate();
+  const id = location.pathname.split('/')[2];
+
+  const moveToLastStep = () => {
+    if (isBuyPage) {
+      navigate(`/payment/${id}`);
+    } else {
+      navigate(`/settlement/${id}`);
+    }
+  };
 
   return (
     <div className={css.container}>
@@ -85,7 +96,7 @@ function BeforePayment() {
             {isBuyPage ? '다음 화면에서 확인' : '3,800,000원'}
           </div>
         </div>
-        <button className={css.continue}>
+        <button className={css.continue} onClick={moveToLastStep}>
           {isBuyPage ? '즉시 구매 계속' : '즉시 판매 계속'}
         </button>
       </div>

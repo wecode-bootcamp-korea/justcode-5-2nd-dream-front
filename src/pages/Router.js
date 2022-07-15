@@ -15,6 +15,7 @@ import Footer from '../components/Footer/Footer';
 import DealCheck from './DealCheck/DealCheck';
 import BeforePayment from './BeforePayment/BeforePayment';
 import Payment from './Payment/Payment';
+import OrderSettlement from './OrderSettlement/OrderSettlement';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/buy/:id" element={<BeforePayment />} />
         <Route path="/sell/:id" element={<BeforePayment />} />
         <Route path="/payment/:id" element={<Payment />} />
+        <Route path="/settlement/:id" element={<OrderSettlement />} />
       </Routes>
       <Footer />
     </BrowserRouter>

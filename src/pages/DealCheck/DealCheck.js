@@ -192,7 +192,7 @@ function DealCheck() {
               htmlFor="check_all"
               onClick={allCheckBtn}
             >
-              KREAM의 최신 이용정책을 모두 확인하였으며,{' '}
+              DREAM의 최신 이용정책을 모두 확인하였으며,
               {isBuyPage ? '구매' : '판매'}를 계속합니다.
               <div>
                 건전하고 안전한 거래를 위해 반드시 숙지해야 할 미입고, 페널티,
