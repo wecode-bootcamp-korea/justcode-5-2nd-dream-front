@@ -23,7 +23,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/mypage/:id" element={<MyPage />} />
-        <Route path="/mypage/wishpage/:id" element={<WishPage />} />
+        <Route path="/mypage/wish/:id" element={<WishPage />} />
         <Route path="/mypage/buying/:id" element={<BuyingPage />} />
         <Route path="/mypage/selling/:id" element={<SellingPage />} />
         <Route path="/products/:id" element={<ProductDetail />} />
