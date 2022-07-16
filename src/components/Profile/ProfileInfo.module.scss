@@ -102,30 +102,31 @@
       .address_box {
         padding-top: 25px;
         max-width: 480px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .address_info {
+
+        form {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
           input {
             font-size: 15px;
             letter-spacing: 1px;
             width: 400px;
             border: none;
           }
-        }
-        button {
-          border: 1px solid #d3d3d3;
-          color: rgba(34, 34, 34, 0.8);
-          font-size: 12px;
-          padding: 0 14px;
-          height: 34px;
-          line-height: 32px;
-          border-radius: 10px;
-          display: inline-block;
-          cursor: pointer;
-          vertical-align: middle;
-          text-align: center;
-          background-color: #fff;
+          button {
+            border: 1px solid #d3d3d3;
+            color: rgba(34, 34, 34, 0.8);
+            font-size: 12px;
+            padding: 0 14px;
+            height: 34px;
+            line-height: 32px;
+            border-radius: 10px;
+            display: inline-block;
+            cursor: pointer;
+            vertical-align: middle;
+            text-align: center;
+            background-color: #fff;
+          }
         }
       }
       .divider {
@@ -133,14 +134,40 @@
         max-width: 480px;
         border-bottom: 1px solid #ebebeb;
       }
-      .add_address {
-        padding: 40px 0 20px 0;
-        border-bottom: 2px solid #222;
 
-        p {
-          font-size: 15px;
-          padding-top: 10px;
+      .add_address {
+        padding: 20px 0 20px 0;
+
+        .add_lists {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 40px 0 20px 0;
+          border-bottom: 2px solid #222;
+
+          p {
+            font-size: 15px;
+            padding-top: 10px;
+            letter-spacing: 1px;
+          }
+
+          button {
+            border: 1px solid #d3d3d3;
+            color: rgba(34, 34, 34, 0.8);
+            font-size: 12px;
+            padding: 0 14px;
+            height: 34px;
+            line-height: 32px;
+            border-radius: 10px;
+            display: inline-block;
+            cursor: pointer;
+            vertical-align: middle;
+            text-align: center;
+            background-color: #fff;
+            margin-right: 5px;
+          }
         }
+
         .address_button {
           padding-top: 15px;
           button {
