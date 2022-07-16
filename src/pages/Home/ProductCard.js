@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
 import css from './ProductCard.module.scss';
 const ProductCard = ({ item }) => {
+
     return (
         <div>
             <img className={css.pic} src={item?.productImg} alt="img"/>
@@ -11,4 +12,5 @@ const ProductCard = ({ item }) => {
     )
 }
 
-export default ProductCard
+
+export default ProductCard;

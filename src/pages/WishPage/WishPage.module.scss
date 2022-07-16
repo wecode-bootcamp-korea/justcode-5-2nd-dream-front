@@ -1,0 +1,81 @@
+.container {
+  padding: 40px 70px 160px;
+  max-width: 1200px;
+  display: flex;
+  .content_box {
+    width: 80vw;
+    .content_title_border {
+      padding: 5px 0 16px;
+      border-bottom: 3px solid #222;
+      h3 {
+        font-size: 24px;
+        font-weight: 600;
+      }
+    }
+    .wish_list {
+      li {
+        .wish_product_box {
+          display: flex;
+          justify-content: space-between;
+          padding: 20px 0 19px;
+          border-bottom: 1px solid #ebebeb;
+          .wish_product {
+            display: flex;
+            img {
+              border-radius: 8px;
+              width: 80px;
+              height: 80px;
+            }
+            .product_detail {
+              margin-left: 13px;
+              .brand {
+                padding-bottom: 2px;
+                font-size: 15px;
+                font-weight: 700;
+                height: 17px;
+                text-decoration: underline;
+              }
+              .product_name {
+                margin-top: 2px;
+                max-height: 36px;
+                font-size: 13px;
+                line-height: 18px;
+                letter-spacing: -0.03px;
+              }
+              .size {
+                margin-top: 25px;
+                font-size: 13px;
+                font-weight: 700;
+                line-height: 16px;
+              }
+            }
+          }
+          .wish_buy {
+            text-align: right;
+            .wish_button {
+              width: 164px;
+              height: 60px;
+              background-color: #ef6253;
+              border-radius: 10px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin-bottom: 8px;
+              cursor: pointer;
+              p {
+                color: #fff;
+                font-size: 18px;
+              }
+            }
+            span {
+              font-size: 13px;
+              margin-right: 10px;
+              text-decoration: underline;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
