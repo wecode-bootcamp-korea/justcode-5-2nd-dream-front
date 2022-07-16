@@ -53,6 +53,33 @@
         border-right: 1px solid lightgray;
       }
     }
+    .sell_tab {
+      width: 636px;
+      height: 52px;
+      display: flex;
+      margin: 30px auto;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 24px;
+      background-color: #f4f4f4;
+      font-size: 16px;
+      color: white;
+      .sell_btn {
+        color: #222222cc;
+        width: 314px;
+        margin: 4px;
+        height: 44px;
+        border-radius: 24px;
+        border: 0;
+        cursor: pointer;
+        background-color: #f4f4f4;
+      }
+      .active {
+        background-color: #41b979;
+        color: white;
+      }
+    }
     .btn {
       width: 636px;
       height: 52px;
@@ -78,8 +105,31 @@
       &_title {
         font-size: 14px;
       }
+      .red {
+        color: red;
+      }
       &_price {
         font-size: 20px;
+        position: relative;
+        input[type='number']::-webkit-outer-spin-button,
+        input[type='number']::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+        }
+        p {
+          position: absolute;
+          right: 0;
+          font-size: 13px;
+          color: #ef6253;
+        }
+        input {
+          position: relative;
+          font-size: 20px;
+          text-align: right;
+          background-color: transparent;
+          border: 0;
+          height: 100%;
+          outline: 0;
+        }
       }
     }
     .price_addition {

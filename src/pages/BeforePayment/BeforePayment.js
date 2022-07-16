@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import css from './BeforePayment.module.scss';
 
@@ -16,6 +16,39 @@ function BeforePayment() {
       navigate(`/settlement/${id}`);
     }
   };
+
+  const [isBid, setIsBid] = useState(false);
+
+  const bidBtn = check => {
+    setIsBid(check);
+  };
+
+  const [price, setPrice] = useState(0);
+  const immediatelyPrice = 3800000;
+
+  const handleInput = e => {
+    if (price?.length > 9) {
+      setPrice(e.target.value.slice(0, 10));
+    } else {
+      setPrice(e.target.value);
+    }
+  };
+
+  const [isValid, setIsValid] = useState(false);
+
+  const valid = () => {
+    if (isBid && price >= 30000) {
+      setIsValid(true);
+    } else if (!isBid && immediatelyPrice !== undefined) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+  };
+
+  useEffect(() => {
+    valid();
+  });
 
   return (
     <div className={css.container}>
@@ -50,14 +83,52 @@ function BeforePayment() {
             <div>3,800,000원</div>
           </div>
         </div>
-        <button className={isBuyPage ? `${css.btn} ${css.buy_btn}` : css.btn}>
-          {isBuyPage ? '즉시 구매' : '즉시 판매'}
-        </button>
-        <div className={css.price_now}>
-          <div className={css.price_now_title}>
-            즉시 {isBuyPage ? '구매' : '판매'}가
+        {!isBuyPage && (
+          <div className={css.sell_tab}>
+            <button
+              className={isBid ? `${css.sell_btn} ${css.active}` : css.sell_btn}
+              onClick={() => bidBtn(true)}
+            >
+              판매 입찰
+            </button>
+            <button
+              className={
+                !isBid ? `${css.sell_btn} ${css.active}` : css.sell_btn
+              }
+              onClick={() => bidBtn(false)}
+            >
+              즉시 판매
+            </button>
           </div>
-          <div className={css.price_now_price}>3,800,000원</div>
+        )}
+
+        {isBuyPage && (
+          <button className={`${css.btn} ${css.buy_btn}`}>즉시 구매</button>
+        )}
+        <div className={css.price_now}>
+          <div
+            className={
+              !isValid && price !== 0
+                ? `${css.price_now_title} ${css.red}`
+                : css.price_now_title
+            }
+          >
+            {isBid ? '판매 희망가' : isBuyPage ? '즉시 구매가' : '즉시 판매가'}
+          </div>
+          <div className={css.price_now_price}>
+            {!isValid && price !== 0 && <p>3만원 부터 천원단위로 입력하세요</p>}
+            {isBid ? (
+              <input
+                placeholder="희망가 입력"
+                type="number"
+                value={price || ''}
+                onChange={handleInput}
+              />
+            ) : (
+              immediatelyPrice?.toLocaleString()
+            )}
+            원
+          </div>
         </div>
         {!isBuyPage ? (
           <>
@@ -93,11 +164,23 @@ function BeforePayment() {
                 : css.price_box_price
             }
           >
-            {isBuyPage ? '다음 화면에서 확인' : '3,800,000원'}
+            {isBuyPage
+              ? '다음 화면에서 확인'
+              : isBid
+              ? price
+              : immediatelyPrice?.toLocaleString() + '원'}
           </div>
         </div>
-        <button className={css.continue} onClick={moveToLastStep}>
-          {isBuyPage ? '즉시 구매 계속' : '즉시 판매 계속'}
+        <button
+          className={isValid ? css.continue : `${css.continue} ${css.disabled}`}
+          onClick={moveToLastStep}
+          disabled={!isValid}
+        >
+          {isBuyPage
+            ? '즉시 구매 계속'
+            : isBid
+            ? '판매 입찰 계속'
+            : '즉시 판매 계속'}
         </button>
       </div>
     </div>
