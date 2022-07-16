@@ -11,6 +11,7 @@ function Footer() {
     <>
       <div className={css.banner}>
         <img className={css.left_banner} alt="left_banner" src={left} />
+        {/* <img className={css.right_banner} alt="right_banner" src={right} /> */}
       </div>
       <div className={css.banner}>
         <img className={css.right_banner} alt="right_banner" src={right} />
@@ -39,7 +40,7 @@ function Footer() {
           <div className={css.service}>
             서비스소개
       </div>
-          <div className={css.show_room}>
+          <div div className={css.show_room}>
             쇼룸 안내
       </div>
           <div className={css.seller}>
