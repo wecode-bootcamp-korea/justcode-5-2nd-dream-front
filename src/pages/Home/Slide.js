@@ -36,34 +36,34 @@ export default class SwipeToSlide extends Component {
                         <span className={css.font}>Style Picks!</span>
                         <Slider {...settings}>
                             <div class={css.gap}>
-                                <img class={css.baner} src={s1} />
+                                <img class={css.baner} src={s1} alt="s1"/>
                             </div>
                             <div class={css.gap}>
-                                <img class={css.baner} src={s2} />
+                                <img class={css.baner} src={s2} alt="s2"/>
                             </div>
                             <div class={css.gap}>
-                                <img class={css.baner} src={s3} />
+                                <img class={css.baner} src={s3} alt="s3"/>
                             </div>
                             <div class={css.gap}>
-                                <img class={css.baner} src={s4} />
+                                <img class={css.baner} src={s4} alt="s4"/>
                             </div>
                             <div class={css.gap}>
-                                <img class={css.baner} src={s5} />
+                                <img class={css.baner} src={s5} alt="s5"/>
                             </div>
                             <div class={css.gap}>
-                                <img class={css.baner} src={s6} />
+                                <img class={css.baner} src={s6} alt="s6"/>
                             </div>
                             <div class={css.gap}>
-                                <img class={css.baner} src={s7} />
+                                <img class={css.baner} src={s7} alt="s7"/>
                             </div>
                             <div class={css.gap}>
-                                <img class={css.baner} src={s8} />
+                                <img class={css.baner} src={s8} alt="s8"/>
                             </div>
                             <div class={css.gap}>
-                                <img class={css.baner} src={s9} />
+                                <img class={css.baner} src={s9} alt="s9"/>
                             </div>
                             <div class={css.gap}>
-                                <img class={css.baner} src={s10} />
+                                <img class={css.baner} src={s10} alt="s10"/>
                             </div>
                         </Slider>
                     </div>

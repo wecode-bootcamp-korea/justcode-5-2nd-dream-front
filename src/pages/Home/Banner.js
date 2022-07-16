@@ -26,22 +26,22 @@ export default class SimpleSlider extends Component {
 
                 <Slider {...settings}>
                     <div>
-                        <img className={css.banner} src={b1} />
+                        <img className={css.banner} src={b1} alt="b1"/>
                     </div>
                     <div>
-                        <img className={css.banner} src={b2} />
+                        <img className={css.banner} src={b2} alt="b2"/>
                     </div>
                     <div>
-                        <img className={css.banner} src={b3} />
+                        <img className={css.banner} src={b3} alt="b3"/>
                     </div>
                     <div>
-                        <img className={css.banner} src={b4} />
+                        <img className={css.banner} src={b4} alt="b4"/>
                     </div>
                     <div>
-                        <img className={css.banner} src={b5} />
+                        <img className={css.banner} src={b5} alt="b5"/>
                     </div>
                     <div>
-                        <img className={css.banner} src={b6} />
+                        <img className={css.banner} src={b6} alt="b6"/>
                     </div>
                 </Slider>
             </div>
