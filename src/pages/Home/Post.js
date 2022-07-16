@@ -11,7 +11,6 @@ import t8 from './images/t8.png';
 import t9 from './images/t9.png';
 import t10 from './images/t10.png';
 
-
 function Post() {
   return (
     <div>
@@ -30,7 +29,7 @@ function Post() {
         <img className={css.banner} src={t10} />
       </div>
     </div>
-  )
+  );
 }
 
 export default Post;
