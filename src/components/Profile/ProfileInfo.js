@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import css from './ProfileInfo.module.scss';
 import SizeModal from '../../components/SizeModal/SizeModal';
@@ -39,12 +39,61 @@ function ProfileInfo() {
   ];
   const [size, setSize] = useState(undefined);
   const [modalOpen, setModalOpen] = useState(false);
+
   const openModal = () => {
     setModalOpen(true);
   };
   const closeModal = () => {
     setModalOpen(false);
   };
+
+  //============ 이름 변경 부분
+
+  const [nameOpened, setNameOpened] = useState(false);
+
+  function openName() {
+    setNameOpened(true);
+  }
+  function closeName() {
+    setNameOpened(false);
+  }
+
+  //============ 주소 추가 부분
+
+  const [addressinput, setAddressInput] = useState('');
+  const [lists, setLists] = useState([]);
+  const [nextId, setNextId] = useState(0);
+  const inputAddress = useRef(null);
+
+  const changeAddress = e => {
+    setAddressInput(e.target.value);
+  };
+
+  const submit = e => {
+    e.preventDefault();
+    const about_lists = lists.concat({
+      id: nextId,
+      text: addressinput,
+    });
+    setNextId(nextId + 1);
+    setLists(about_lists);
+    setAddressInput('');
+  };
+
+  const removeList = id => {
+    const about_lists = lists.filter(list => list.id !== id);
+    setLists(about_lists);
+  };
+
+  const [addressOpened, setAddressOpened] = useState(false);
+
+  function openAddress() {
+    setAddressOpened(true);
+  }
+
+  function closeAddress() {
+    setAddressOpened(false);
+  }
 
   return (
     <div className={css.content_box}>
@@ -54,6 +103,7 @@ function ProfileInfo() {
         size={size}
         setSize={setSize}
       />
+
       <div className={css.my_profile}>
         <div className={css.content_title_border}>
           <h3>프로필 정보</h3>
@@ -98,13 +148,30 @@ function ProfileInfo() {
           </div>
           <div className={css.profile_group}>
             <h4>개인 정보</h4>
-            <div className={css.email_box}>
-              <div className={css.email_info}>
-                <h5>이름</h5>
-                <input placeholder={userData[id].name} />
+
+            {!nameOpened && (
+              <div className={css.email_box}>
+                <div className={css.email_info}>
+                  <h5>이름</h5>
+                  <p>{userData[id].name} </p>
+                </div>
+                <button onClick={openName}>변경</button>
               </div>
-              <button>변경</button>
-            </div>
+            )}
+            {nameOpened && (
+              <div className={css.email_box}>
+                <div className={css.email_info}>
+                  <h5>새로운 이름</h5>
+                  <input
+                    name="name"
+                    type="text"
+                    placeholder="고객님의 이름을 작성해주세요."
+                  />
+                </div>
+                <button onClick={closeName}>저장</button>
+              </div>
+            )}
+
             <div className={css.email_box}>
               <div className={css.email_info}>
                 <h5>휴대폰 번호</h5>
@@ -126,21 +193,43 @@ function ProfileInfo() {
         <div className={css.address_group}>
           <h2>주소록</h2>
           <h4>새 주소 추가</h4>
+
           <div className={css.address_box}>
-            <div className={css.address_info}>
-              <input placeholder="주소를 입력해주세요." />
-            </div>
-            <button>추가</button>
+            <form onSubmit={submit}>
+              <input
+                name="list"
+                type="text"
+                placeholder="주소를 입력해주세요."
+                value={addressinput}
+                onChange={changeAddress}
+                ref={inputAddress}
+              />
+              <button type="submit">확인</button>
+            </form>
           </div>
           <div className={css.divider} />
           <div className={css.add_address}>
-            <p>{userData[id].name}</p>
-            <p>{userData[id].phone}</p>
-            <p>가나다라마바사아자차카타파하</p>
-            <div className={css.address_button}>
-              <button>수정</button>
-              <button>삭제</button>
-            </div>
+            {lists.map(list => {
+              return (
+                <div key={list.id} className={css.add_lists}>
+                  <div>
+                    <p>{userData[id].name}</p>
+                    <p>{userData[id].phone}</p>
+                    <p>{list.text}</p>
+                    {addressOpened && (
+                      <div>
+                        <input placeholder="변경할 주소" />
+                        <button onClick={closeAddress}>확인</button>
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    <button onClick={openAddress}>수정</button>
+                    <button onClick={() => removeList(list.id)}>삭제</button>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
