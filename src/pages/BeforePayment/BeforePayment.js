@@ -5,15 +5,26 @@ import css from './BeforePayment.module.scss';
 function BeforePayment() {
   const location = useLocation();
   const isBuyPage = location.pathname.includes('buy');
+  const { size, sellPrice, buyPrice } = location.state;
 
   const navigate = useNavigate();
   const id = location.pathname.split('/')[2];
 
+  const [price, setPrice] = useState(0);
+  const immediatelySellPrice = sellPrice;
+  const immediatelyBuyPrice = buyPrice;
+
   const moveToLastStep = () => {
     if (isBuyPage) {
-      navigate(`/payment/${id}`);
+      navigate(`/payment/${id}`, {
+        state: { price: immediatelyBuyPrice, size },
+      });
+    } else if (isBid) {
+      navigate(`/settlement/${id}`, { state: { price, size } });
     } else {
-      navigate(`/settlement/${id}`);
+      navigate(`/settlement/${id}`, {
+        state: { price: immediatelySellPrice, size },
+      });
     }
   };
 
@@ -22,9 +33,6 @@ function BeforePayment() {
   const bidBtn = check => {
     setIsBid(check);
   };
-
-  const [price, setPrice] = useState(0);
-  const immediatelyPrice = 3800000;
 
   const handleInput = e => {
     if (price?.length > 9) {
@@ -39,7 +47,7 @@ function BeforePayment() {
   const valid = () => {
     if (isBid && price >= 30000) {
       setIsValid(true);
-    } else if (!isBid && immediatelyPrice !== undefined) {
+    } else if (!isBid && immediatelySellPrice !== undefined) {
       setIsValid(true);
     } else {
       setIsValid(false);
@@ -70,17 +78,17 @@ function BeforePayment() {
             <div>B6047317</div>
             <div>Aurolee Small Logo T-Shirt Black</div>
             <div className={css.kr_name}>오로리 스몰 로고 티셔츠 블랙</div>
-            <div className={css.size}>M</div>
+            <div className={css.size}>{size}</div>
           </div>
         </div>
         <div className={css.price_list}>
           <div className={css.buy}>
             <div className={css.title}>즉시 구매가</div>
-            <div>3,800,000원</div>
+            <div>{immediatelyBuyPrice?.toLocaleString()}원</div>
           </div>
           <div className={css.sell}>
             <div className={css.title}>즉시 판매가</div>
-            <div>3,800,000원</div>
+            <div>{immediatelySellPrice?.toLocaleString()}원</div>
           </div>
         </div>
         {!isBuyPage && (
@@ -105,7 +113,13 @@ function BeforePayment() {
         {isBuyPage && (
           <button className={`${css.btn} ${css.buy_btn}`}>즉시 구매</button>
         )}
-        <div className={css.price_now}>
+        <div
+          className={
+            !isValid && price !== 0
+              ? `${css.price_now} ${css.price_red}`
+              : css.price_now
+          }
+        >
           <div
             className={
               !isValid && price !== 0
@@ -124,8 +138,10 @@ function BeforePayment() {
                 value={price || ''}
                 onChange={handleInput}
               />
+            ) : isBuyPage ? (
+              immediatelyBuyPrice?.toLocaleString()
             ) : (
-              immediatelyPrice?.toLocaleString()
+              immediatelySellPrice?.toLocaleString()
             )}
             원
           </div>
@@ -167,8 +183,8 @@ function BeforePayment() {
             {isBuyPage
               ? '다음 화면에서 확인'
               : isBid
-              ? price
-              : immediatelyPrice?.toLocaleString() + '원'}
+              ? Number(price)?.toLocaleString() + '원'
+              : immediatelySellPrice?.toLocaleString() + '원'}
           </div>
         </div>
         <button

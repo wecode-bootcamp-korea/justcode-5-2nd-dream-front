@@ -5,15 +5,16 @@ import css from './DealCheck.module.scss';
 function DealCheck() {
   const location = useLocation();
   const isBuyPage = location.pathname.includes('buy');
+  const { size, sellPrice, buyPrice } = location.state;
 
   const id = location.pathname.split('/')[3];
 
   const navigate = useNavigate();
   const moveToDeal = () => {
     if (isBuyPage) {
-      navigate(`/buy/${id}`);
+      navigate(`/buy/${id}`, { state: { size, sellPrice, buyPrice } });
     } else {
-      navigate(`/sell/${id}`);
+      navigate(`/sell/${id}`, { state: { size, sellPrice, buyPrice } });
     }
   };
 
@@ -77,7 +78,7 @@ function DealCheck() {
             <div>B6047317</div>
             <div>Aurolee Small Logo T-Shirt Black</div>
             <div className={css.kr_name}>오로리 스몰 로고 티셔츠 블랙</div>
-            <div className={css.size}>M</div>
+            <div className={css.size}>{size}</div>
           </div>
         </div>
         <div className={css.check_product}>

@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import css from './OrderSettlement.module.scss';
 
 function OrderSettlement() {
+  const location = useLocation();
+  const price = Number(location.state)?.toLocaleString();
+
   const [isCheckedExact, setIsCheckedExact] = useState(false);
   const exactCheckBtn = () => {
     setIsCheckedExact(!isCheckedExact);
@@ -96,11 +100,11 @@ function OrderSettlement() {
         <h1>최종 주문 정보</h1>
         <div className={css.price}>
           <div>정산금액</div>
-          <div className={css.price_num}>3,800,000</div>
+          <div className={css.price_num}>{price}원</div>
         </div>
         <div className={css.price_addition}>
           <div className={css.price_addition_price}>즉시 구매가</div>
-          <div>3,800,000원</div>
+          <div>{price}원</div>
         </div>
         <div className={css.price_addition}>
           <div className={css.price_addition_title}>검수비</div>
@@ -220,7 +224,7 @@ function OrderSettlement() {
         </div>
         <div className={css.last_price}>
           <h1>정산금액</h1>
-          <div className={css.price}>3,879,000원</div>
+          <div className={css.price}>{price}원</div>
         </div>
         <button className={valid ? css.deal : `${css.deal} ${css.disabled}`}>
           바로 판매하기
