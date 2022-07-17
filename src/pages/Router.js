@@ -9,6 +9,9 @@ import BuyPage from './BuyPage/BuyPage';
 import SellPage from './SellPage/SellPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+import ProductAll from '../styles/ProductAll';
+import Style from '../styles/Button';
+
 
 function App() {
   return (
@@ -16,14 +19,17 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        {/* <Route path="/login" element={<Login />} /> */}
+        <Route path="/style" element={<Style />} />
+        {/* <Route path="/signup" element={<Signup />} />
         <Route path="/mypage/:id" element={<MyPage />} />
         <Route path="/productdetail/:id" element={<ProductDetail />} />
         <Route path="/buy/:id" element={<BuyPage />} />
-        <Route path="/sell/:id" element={<SellPage />} />
+        <Route path="/sell/:id" element={<SellPage />} /> */}
       </Routes>
       <Footer />
+      {/* <ProductAll /> */}
+      {/* <Style /> */}
     </BrowserRouter>
   );
 }

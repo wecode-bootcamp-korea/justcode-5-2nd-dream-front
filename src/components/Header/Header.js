@@ -1,6 +1,8 @@
 import React from 'react';
 import css from './Header.module.scss';
 import { FiSearch } from "react-icons/fi";
+import style from "../../styles/Button";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -24,7 +26,7 @@ function Header() {
           DREAM
         </div>
         <div className={css.style}>
-          STYLE
+          <Link to="/style">STYLE</Link>
         </div>
         <div className={css.shop}>
           SHOP
