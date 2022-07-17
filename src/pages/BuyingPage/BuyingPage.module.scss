@@ -1,0 +1,96 @@
+.container {
+  padding: 40px 70px 160px;
+  max-width: 1200px;
+  display: flex;
+  .content_box {
+    width: 80vw;
+    .content_title_border {
+      padding: 5px 0 16px;
+      border-bottom: 3px solid #222;
+      h3 {
+        font-size: 24px;
+        font-weight: 600;
+      }
+    }
+    .wish_list {
+      li {
+        .wish_product_box {
+          display: flex;
+          justify-content: space-between;
+          padding: 20px 0 19px;
+          border-bottom: 1px solid #ebebeb;
+          .wish_product {
+            display: flex;
+            img {
+              border-radius: 8px;
+              width: 80px;
+              height: 80px;
+            }
+            .product_detail {
+              margin-left: 13px;
+              .brand {
+                padding-bottom: 2px;
+                font-size: 15px;
+                font-weight: 700;
+                height: 17px;
+                text-decoration: underline;
+              }
+              .product_name {
+                margin-top: 2px;
+                max-height: 36px;
+                font-size: 13px;
+                line-height: 18px;
+                letter-spacing: -0.03px;
+              }
+              .size {
+                margin-top: 25px;
+                font-size: 13px;
+                font-weight: 700;
+                line-height: 16px;
+              }
+            }
+          }
+          .buy_btn {
+            background-color: #ef6253;
+            cursor: pointer;
+            border: 0;
+            border-radius: 12px;
+            margin: 10px 4px;
+            min-width: 190px;
+            width: 15vw;
+            height: 60px;
+            .text {
+              font-size: 15px;
+              font-weight: 600;
+              color: white;
+              display: flex;
+              height: 58px;
+              .buy_text {
+                width: 55px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-right: 0.1px solid gray;
+                letter-spacing: 2px;
+                padding-left: 10px;
+                padding-right: 10px;
+              }
+              .buy_price {
+                display: flex;
+                width: 100%;
+                flex-direction: column;
+                justify-content: center;
+                text-align: left;
+                padding: 0 10px;
+                .immediately {
+                  font-size: 11px;
+                  font-weight: 200;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

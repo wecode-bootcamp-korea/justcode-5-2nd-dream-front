@@ -1,0 +1,115 @@
+.container {
+  width: 400px;
+  margin: 0 auto;
+  padding: 60px 0 160px;
+  .logo {
+    padding: 0 0 50px;
+    font-size: 30px;
+    line-height: 30px;
+    font-weight: 800;
+    font-style: italic;
+    text-align: center;
+    &_desc {
+      font-style: normal;
+      font-size: 12px;
+      font-weight: 800;
+    }
+  }
+  .login {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .label {
+      color: #222222;
+      font-size: 13px;
+      line-height: 18px;
+      font-weight: bold;
+    }
+    .input {
+      font-family: -apple-system, BlinkMacSystemFont, Roboto,
+        AppleSDGothicNeo-Regular, NanumBarunGothic, NanumGothic, 나눔고딕,
+        Segoe UI, Helveica, Arial, Malgun Gothic, Dotum, sans-serif;
+      outline: 0;
+      border: 0;
+      border-bottom: 1px solid lightgray;
+      padding: 10px 0;
+      margin: 0 0 20px 0;
+      &:focus {
+        border-bottom: 2px solid black;
+      }
+    }
+    .alert {
+      &:focus {
+        border-bottom: 1px solid #f15746;
+      }
+    }
+    .email_alert,
+    .pw_alert {
+      position: absolute;
+      top: 60px;
+      color: #f15746;
+      font-size: 11px;
+    }
+    .pw_alert {
+      top: 135px;
+    }
+    .login_btn {
+      height: 52px;
+      border: 0;
+      color: white;
+      background-color: black;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .disabled {
+      background-color: #ebebeb;
+      cursor: auto;
+    }
+  }
+  .links {
+    display: flex;
+    justify-content: space-evenly;
+    a {
+      text-decoration: none;
+      color: #222222;
+      padding: 0 20px;
+      margin: 30px 0;
+      font-size: 13px;
+      &:nth-child(2) {
+        border-left: 1px solid gray;
+        border-right: 1px solid gray;
+      }
+    }
+  }
+  .kakao_btn {
+    width: 100%;
+    border-radius: 12px;
+    background-color: transparent;
+    border: 0;
+    height: 59.4px;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    img {
+      position: relative;
+      bottom: 2px;
+      width: 100%;
+      margin: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    width: 90%;
+    min-width: 330px;
+  }
+}
+
+@media screen and (max-width: 365px) {
+  .container {
+    margin: 0 10px;
+  }
+}
