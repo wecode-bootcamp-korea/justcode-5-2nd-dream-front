@@ -11,7 +11,7 @@ function Footer() {
     <>
       <div className={css.banner}>
         <img className={css.left_banner} alt="left_banner" src={left} />
-        {/* <img className={css.right_banner} alt="right_banner" src={right} /> */}
+        
       </div>
       <div className={css.banner}>
         <img className={css.right_banner} alt="right_banner" src={right} />
