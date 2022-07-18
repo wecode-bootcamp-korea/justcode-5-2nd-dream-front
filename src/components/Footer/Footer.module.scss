@@ -1,17 +1,16 @@
 .banner {
-  border: 1px solid white;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
   width: 100%;
-  height: 40px;
-  margin-top: 50px;
+  height: 100%;
 }
 .left_banner {
-  width: 51%;
+  width: 50%;
 }
 
 .right_banner {
-  width: 51%;
-  margin-left: 720px;
-  margin-top: -90px;
+  width: 50%;
 }
 
 use_info {
