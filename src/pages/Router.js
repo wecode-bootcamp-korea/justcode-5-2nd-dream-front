@@ -9,6 +9,8 @@ import BuyPage from './BuyPage/BuyPage';
 import SellPage from './SellPage/SellPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+import Styles from '../styles/Button';
+
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/styles" element={<Styles />} />
         <Route path="/mypage/:id" element={<MyPage />} />
         <Route path="/productdetail/:id" element={<ProductDetail />} />
         <Route path="/buy/:id" element={<BuyPage />} />

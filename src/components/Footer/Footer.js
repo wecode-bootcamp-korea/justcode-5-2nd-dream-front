@@ -11,10 +11,9 @@ function Footer() {
     <>
       <div className={css.banner}>
         <img className={css.left_banner} alt="left_banner" src={left} />
-      </div>
-      <div className={css.banner}>
         <img className={css.right_banner} alt="right_banner" src={right} />
       </div>
+      
       <div className={css.second_position}>
         <div className={css.use_info}>
           <span className={css.fontUse}> 이용안내 </span>

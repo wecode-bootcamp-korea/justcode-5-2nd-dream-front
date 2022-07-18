@@ -1,16 +1,20 @@
 import React from 'react';
 import css from './Header.module.scss';
 import { FiSearch } from "react-icons/fi";
+import styles from '../../styles/Button';
+import login from '../../pages/Login/Login';
+import mypage from '../../pages/MyPage/MyPage';
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
     <>
       <div className={css.top}>
         <div className={css.login}>
-          로그인
+          <Link to="/login">로그인</Link>
         </div>
         <div className={css.mypage}>
-          마이페이지
+          <Link to="/mypage">마이페이지</Link>
         </div>
         <div className={css.interest}>
           관심상품
@@ -24,7 +28,7 @@ function Header() {
           DREAM
         </div>
         <div className={css.style}>
-          STYLE
+          <Link to="/styles">STYLE</Link>
         </div>
         <div className={css.shop}>
           SHOP
