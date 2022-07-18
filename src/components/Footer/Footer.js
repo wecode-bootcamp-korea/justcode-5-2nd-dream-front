@@ -16,7 +16,7 @@ function Footer() {
       
       <div className={css.second_position}>
         <div className={css.use_info}>
-          <span className={css.fontUse}> 이용안내 </span>
+          <span className={css.font_use}> 이용안내 </span>
           <div className={css.cumsu}>
             검수기준
       </div>
@@ -31,7 +31,7 @@ function Footer() {
       </div>
         </div>
         <div className={css.support}>
-          <span className={css.fontUse}>고객지원</span>
+          <span className={css.font_use}>고객지원</span>
           <div className={css.kongji}>
             공지사항
       </div>
@@ -46,7 +46,7 @@ function Footer() {
       </div>
         </div>
         <div className={css.center}>
-          <span className={css.fontUse}> 고객센터 1588 - 7813 </span>
+          <span className={css.font_use}> 고객센터 1588 - 7813 </span>
           <div className={css.run_time}>
             운영시간 평일 11:00 ~ 18:00 (토,일 공휴일 휴무)
       </div>
@@ -75,7 +75,7 @@ function Footer() {
           이용약관
     </div>
         <div className={css.priver}>
-          <span className={css.fontUse}>개인정보처리방침</span>
+          <span className={css.font_use}>개인정보처리방침</span>
           <span className={css.insta}>
             <FaInstagram size="30" />
           </span>
