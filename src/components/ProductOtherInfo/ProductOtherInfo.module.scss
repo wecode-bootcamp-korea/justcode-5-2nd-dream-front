@@ -1,0 +1,40 @@
+.container {
+  .ship {
+    font-size: 14px;
+    color: #222222cc;
+    border: 0;
+  }
+  .normal_ship {
+    font-size: 14px;
+    padding: 2px 0;
+  }
+  .date {
+    color: #22222280;
+  }
+  .check {
+    color: #222222;
+    display: flex;
+    height: 60px;
+    align-items: center;
+    border-bottom: 1px solid #ebebeb;
+  }
+  .inspection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60px;
+    &_title {
+      font-weight: 600;
+      padding: 4px 0;
+    }
+    &_desc {
+      font-size: 13px;
+      color: #22222280;
+    }
+  }
+  .responsibility {
+    font-size: 12px;
+    color: #22222280;
+    line-height: 16px;
+  }
+}
