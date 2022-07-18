@@ -103,7 +103,7 @@ function OrderSettlement() {
           <div className={css.price_num}>{price}원</div>
         </div>
         <div className={css.price_addition}>
-          <div className={css.price_addition_price}>즉시 구매가</div>
+          <div className={css.price_addition_price}>즉시 판매가</div>
           <div>{price}원</div>
         </div>
         <div className={css.price_addition}>
