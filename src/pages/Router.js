@@ -12,15 +12,11 @@ import ProductDetail from './ProductDetail/ProductDetail';
 import BuySellPage from './BuySellPage/BuySellPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
-
-import ProductAll from '../styles/ProductAll';
-import Style from '../styles/Button';
-
 import DealCheck from './DealCheck/DealCheck';
 import BeforePayment from './BeforePayment/BeforePayment';
 import Payment from './Payment/Payment';
 import OrderSettlement from './OrderSettlement/OrderSettlement';
-
+import Styles from '../styles/Button';
 
 function App() {
   return (
@@ -30,6 +26,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/styles" element={<Styles />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/mypage/:id" element={<MyPage />} />
         <Route path="/mypage/wish/:id" element={<WishPage />} />
@@ -44,10 +41,8 @@ function App() {
         <Route path="/sell/:id" element={<BeforePayment />} />
         <Route path="/payment/:id" element={<Payment />} />
         <Route path="/settlement/:id" element={<OrderSettlement />} />
-
       </Routes>
       <Footer />
-   
     </BrowserRouter>
   );
 }

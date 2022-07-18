@@ -3,8 +3,9 @@ import css from './Header.module.scss';
 import { FiSearch } from "react-icons/fi";
 import styles from '../../styles/Button';
 import login from '../../pages/Login/Login';
-import mypage from '../../pages/MyPage/MyPage';
 import { Link } from 'react-router-dom';
+import shop from '../../pages/Shop/Shop';
+import mypage from '../../pages/MyPage/MyPage';
 
 function Header() {
   return (
@@ -27,18 +28,22 @@ function Header() {
         <div className={css.kream_log}>
           DREAM
         </div>
+      <div className={css.right}>
         <div className={css.style}>
           <Link to="/styles">STYLE</Link>
         </div>
         <div className={css.shop}>
-          SHOP
+          <Link to="/shop">SHOP</Link>
+          
+          
         </div>
         <div className={css.about}>
           ABOUT
         </div>
         <div className={css.glass}>
-          <FiSearch size="35" />
+          <FiSearch size="30" />
         </div>
+      </div>
       </div>
     </>
   );
