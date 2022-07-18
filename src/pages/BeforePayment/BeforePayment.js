@@ -61,12 +61,6 @@ function BeforePayment() {
   return (
     <div className={css.container}>
       <div className={css.content}>
-        <h1>
-          <span className={!isBuyPage ? css.sell : undefined}>
-            {isBuyPage ? '구매' : '판매'}
-          </span>
-          하시기 전에 꼭 확인하세요.
-        </h1>
         <div className={css.content_top}>
           <div className={css.image}>
             <img
