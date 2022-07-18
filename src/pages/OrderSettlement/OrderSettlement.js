@@ -4,7 +4,7 @@ import css from './OrderSettlement.module.scss';
 
 function OrderSettlement() {
   const location = useLocation();
-  const price = Number(location.state)?.toLocaleString();
+  const price = Number(location.state.price)?.toLocaleString();
 
   const [isCheckedExact, setIsCheckedExact] = useState(false);
   const exactCheckBtn = () => {
