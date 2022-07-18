@@ -11,20 +11,25 @@ function BuySellPage() {
   const navigate = useNavigate();
 
   const [size, setSize] = useState(undefined);
-  const [price, setPrice] = useState(undefined);
+  const [sellPrice, setSellPrice] = useState(undefined);
+  const [buyPrice, setBuyPrice] = useState(undefined);
   const sizeList = ['모든 사이즈', 'S', 'M', 'L', 'XL', 'XXL'];
-  const priceList = ['-', '-', 90000, 45000, 100000, 50000, 40000];
+  const sellPriceList = ['-', '-', 90000, 45000, 100000, 50000, 40000];
+  const buyPriceList = [
+    80000, 40000, 50000, 60000, 60000, 110000, 60000, 70000,
+  ];
 
   const handleSize = e => {
     setSize(e.target.value.split(',')[0]);
-    setPrice(e.target.value.split(',')[1]);
+    setBuyPrice(e.target.value.split(',')[1]);
+    setSellPrice(e.target.value.split(',')[2]);
   };
 
   const moveToDealCheck = () => {
     if (isBuyPage) {
-      navigate(`/buy/check/${id}`);
+      navigate(`/buy/check/${id}`, { state: { size, sellPrice, buyPrice } });
     } else {
-      navigate(`/sell/check/${id}`);
+      navigate(`/sell/check/${id}`, { state: { size, sellPrice, buyPrice } });
     }
   };
 
@@ -51,19 +56,19 @@ function BuySellPage() {
               <button
                 className={isSelected ? css.selected : undefined}
                 onClick={handleSize}
-                value={[s, priceList[idx]]}
+                value={[s, buyPriceList[idx], sellPriceList[idx]]}
                 key={s}
               >
                 {s}
                 <br />
-                {priceList[idx]}
+                {isBuyPage ? buyPriceList[idx] : sellPriceList[idx]}
               </button>
             );
           })}
         </div>
         {size !== undefined && isBuyPage && (
           <button className={css.price_btn} onClick={moveToDealCheck}>
-            {price}
+            {isBuyPage ? buyPrice : sellPrice}
             <br />
             일반배송(5-7일소요)
           </button>
@@ -82,7 +87,7 @@ function BuySellPage() {
               className={`${css.btn} ${css.green}`}
               onClick={moveToDealCheck}
             >
-              {price}
+              {isBuyPage ? buyPrice : sellPrice}
               <br />
               선불발송
             </button>

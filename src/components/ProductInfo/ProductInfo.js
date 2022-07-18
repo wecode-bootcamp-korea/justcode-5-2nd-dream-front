@@ -12,6 +12,7 @@ function ProductInfo() {
 
   const [size, setSize] = useState('모든 사이즈');
   const [price, setPrice] = useState(60000);
+  const [sellPrice, setSellPrice] = useState(50000);
   const [modalOpen, setModalOpen] = useState(false);
   const openModal = () => {
     setModalOpen(true);
@@ -33,6 +34,8 @@ function ProductInfo() {
         setSize={setSize}
         price={price}
         setPrice={setPrice}
+        sellPrice={sellPrice}
+        setSellPrice={setSellPrice}
       />
       <Link to>Aurolee</Link>
       <p className={css.name}>Aurolee Small Logo T-Shirt Black</p>
@@ -65,7 +68,7 @@ function ProductInfo() {
           <div className={css.text}>
             <div className={css.sell_text}>판매</div>
             <div className={css.sell_price}>
-              <div>430,000원</div>
+              <div>{sellPrice?.toLocaleString()}원</div>
               <div className={css.immediately}>즉시 판매가</div>
             </div>
           </div>

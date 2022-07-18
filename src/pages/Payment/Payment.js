@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import css from './Payment.module.scss';
 
 function Payment() {
+  const location = useLocation();
+  const { size, price } = location.state;
+
   const [isCheckedCancel, setIsCheckedCancel] = useState(false);
   const cancelCheckBtn = () => {
     setIsCheckedCancel(!isCheckedCancel);
@@ -45,7 +49,7 @@ function Payment() {
             <div>B6047317</div>
             <div>Aurolee Small Logo T-Shirt Black</div>
             <div className={css.kr_name}>오로리 스몰 로고 티셔츠 블랙</div>
-            <div className={css.size}>M</div>
+            <div className={css.size}>{size}</div>
           </div>
         </div>
       </div>
@@ -90,11 +94,13 @@ function Payment() {
         <h1>최종 주문 정보</h1>
         <div className={css.price}>
           <div>총 결제금액</div>
-          <div className={css.price_num}>3,879,000</div>
+          <div className={css.price_num}>
+            {(price * 1.02 + 3000)?.toLocaleString()}원
+          </div>
         </div>
         <div className={css.price_addition}>
           <div className={css.price_addition_price}>즉시 구매가</div>
-          <div>3,800,000원</div>
+          <div>{price?.toLocaleString()}원</div>
         </div>
         <div className={css.price_addition}>
           <div className={css.price_addition_title}>포인트</div>
@@ -106,7 +112,7 @@ function Payment() {
         </div>
         <div className={css.price_addition}>
           <div className={css.price_addition_title}>수수료</div>
-          <div>76,000원</div>
+          <div>{price * 0.02}원</div>
         </div>
         <div className={css.price_addition}>
           <div className={css.price_addition_title}>배송비</div>
@@ -187,7 +193,10 @@ function Payment() {
         </div>
         <div className={css.last_price}>
           <h1>총 결제금액</h1>
-          <div className={css.price}>3,879,000원</div>
+          <div className={css.price}>
+            {' '}
+            {(price * 1.02 + 3000)?.toLocaleString()}원
+          </div>
         </div>
         <button className={valid ? css.deal : `${css.deal} ${css.disabled}`}>
           결제하기

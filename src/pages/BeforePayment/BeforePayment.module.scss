@@ -102,6 +102,7 @@
       margin: 0 40px 10px;
       height: 53px;
       border-bottom: 1px solid lightgray;
+
       &_title {
         font-size: 14px;
       }
@@ -131,6 +132,9 @@
           outline: 0;
         }
       }
+    }
+    .price_red {
+      border-bottom: 2px solid red;
     }
     .price_addition {
       display: flex;
