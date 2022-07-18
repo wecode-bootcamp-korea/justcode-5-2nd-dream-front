@@ -9,10 +9,10 @@ function ProductOtherInfo() {
       <p className={`${css.normal_ship} ${css.date}`}>
         검수 후 배송 ・ 5-7일 내 도착 예정
       </p>
-      <h3>구매 전 꼭 확인해주세요</h3>
+      <h3 className={css.before_buy}>구매 전 꼭 확인해주세요!</h3>
       <div className={css.check}>배송 기간 안내</div>
       <div className={css.check}>검수 안내</div>
-      <div className={css.check}>구매 환불/취소/교환 안내</div>
+      <div className={`${css.check} ${css.last}`}>구매 환불/취소/교환 안내</div>
       <div className={css.inspection}>
         <p className={css.inspection_title}>100% 정품 보증</p>
         <p className={css.inspection_desc}>
@@ -26,7 +26,7 @@ function ProductOtherInfo() {
           시스템을 거쳐 검수를 진행합니다.
         </p>
       </div>
-      <div className={css.inspection}>
+      <div className={`${css.inspection} ${css.last_inspection}`}>
         <p className={css.inspection_title}>정품 인증 패키지</p>
         <p className={css.inspection_desc}>
           검수에 합격한 경우에 한하여 DREAM의 정품 인증 패키지가 포함된 상품이
