@@ -5,6 +5,7 @@ import ProductOtherInfo from '../ProductOtherInfo/ProductOtherInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleDown } from '@fortawesome/free-regular-svg-icons';
 import ProductModal from '../ProductModal/ProductModal';
+import BASE_URL from '../../config';
 
 function ProductInfo() {
   const sizeStrList = [
@@ -46,7 +47,7 @@ function ProductInfo() {
   const [price, setPrice] = useState(60000);
 
   useEffect(() => {
-    fetch(`http://localhost:10010/purchase/${id}`)
+    fetch(`${BASE_URL}/information/${id}`)
       .then(res => res.json())
       .then(data => {
         const sizeList = data.data[0].size_list;
