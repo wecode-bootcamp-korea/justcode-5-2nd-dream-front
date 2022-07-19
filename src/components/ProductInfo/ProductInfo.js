@@ -113,7 +113,7 @@ function ProductInfo() {
           <div className={css.text}>
             <div className={css.buy_text}>구매</div>
             <div className={css.buy_price}>
-              <div>{price.toLocaleString()}원</div>
+              <div>{price?.toLocaleString()}원</div>
               <div className={css.immediately}>즉시 구매가</div>
             </div>
           </div>
