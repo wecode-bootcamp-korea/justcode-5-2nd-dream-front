@@ -1,19 +1,71 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import css from './ProductInfo.module.scss';
 import ProductOtherInfo from '../ProductOtherInfo/ProductOtherInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleDown } from '@fortawesome/free-regular-svg-icons';
 import ProductModal from '../ProductModal/ProductModal';
+import BASE_URL from '../../config';
 
 function ProductInfo() {
-  const navigate = useNavigate();
+  const sizeStrList = [
+    'XXS',
+    'XS',
+    'S',
+    'M',
+    'L',
+    'XL',
+    'XXL',
+    'XXXL',
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    'ONE SIZE',
+    235,
+    240,
+    245,
+    250,
+    255,
+    260,
+    265,
+    270,
+    275,
+    280,
+  ];
+
   const id = useLocation().pathname.split('/')[2];
   const token = localStorage.getItem('token');
 
-  const [size, setSize] = useState('모든 사이즈');
+  const [priceList, setPriceList] = useState(undefined);
+  const [sizeList, setSizeList] = useState(undefined);
+  const [size, setSize] = useState(undefined);
   const [price, setPrice] = useState(60000);
-  const [sellPrice, setSellPrice] = useState(50000);
+
+  useEffect(() => {
+    fetch(`${BASE_URL}/information/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        const sizeList = data.data[0].size_list;
+        const filteredSizeList = sizeList.map(
+          (size, idx) => (size.product_size_id = sizeStrList[idx])
+        );
+        setSizeList(filteredSizeList);
+        setPriceList(
+          data.data[0].size_list?.map(price => (price = price.product_price))
+        );
+        setSize(filteredSizeList[0]);
+        setPrice(data.data[0].size_list[0].product_price);
+      });
+  }, []);
+
+  const navigate = useNavigate();
+
   const [modalOpen, setModalOpen] = useState(false);
   const openModal = () => {
     setModalOpen(true);
@@ -26,7 +78,7 @@ function ProductInfo() {
     if (token === null) {
       navigate('/login');
     } else {
-      navigate(`/${deal}/select/${id}`);
+      navigate(`/${deal}/select/${id}`, { state: { sizeList, priceList } });
     }
   };
 
@@ -39,8 +91,8 @@ function ProductInfo() {
         setSize={setSize}
         price={price}
         setPrice={setPrice}
-        sellPrice={sellPrice}
-        setSellPrice={setSellPrice}
+        priceList={priceList}
+        sizeList={sizeList}
       />
       <Link to>Aurolee</Link>
       <p className={css.name}>Aurolee Small Logo T-Shirt Black</p>
@@ -73,7 +125,7 @@ function ProductInfo() {
           <div className={css.text}>
             <div className={css.sell_text}>판매</div>
             <div className={css.sell_price}>
-              <div>{sellPrice?.toLocaleString()}원</div>
+              <div>{price?.toLocaleString()}원</div>
               <div className={css.immediately}>즉시 판매가</div>
             </div>
           </div>
