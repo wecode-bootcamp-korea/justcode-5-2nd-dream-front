@@ -13,8 +13,6 @@ function ProductInfo() {
 
   const userId = localStorage.getItem('userId');
   const [address, setAddress] = useState(undefined);
-  const [phone, setPhone] = useState(undefined);
-  const [name, setName] = useState(undefined);
   const [sizeList, setSizeList] = useState(undefined);
   const [size, setSize] = useState(undefined);
   const [price, setPrice] = useState(undefined);
@@ -26,8 +24,6 @@ function ProductInfo() {
     })
       .then(res => res.json())
       .then(data => {
-        setPhone(data.data[0].phone);
-        setName(data.data[0].name);
         setAddress(data.data[0].address[0].address);
       });
   }, []);
