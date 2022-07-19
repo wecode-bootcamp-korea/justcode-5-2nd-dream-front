@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import SizeModal from '../../components/SizeModal/SizeModal';
 import { useNavigate } from 'react-router-dom';
+import BASE_URL from '../../config';
 
 function Signup() {
   const navigate = useNavigate();
@@ -25,10 +26,13 @@ function Signup() {
     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%#?&])[A-Za-z\d@$!%*#?&]{8,16}$/;
   const emailValidation = () => {
     if (email.length === 0) setIsValidEmail(true);
-    else {
-      setIsValidEmail(regEmail.test(email));
+    else if (regEmail.test(email) && !/[0-9]/g.test(email.split('.')[1])) {
+      setIsValidEmail(true);
+    } else {
+      setIsValidEmail(false);
     }
   };
+
   const pwValidation = () => {
     if (password.length === 0) setIsValidPw(true);
     else {
@@ -138,8 +142,23 @@ function Signup() {
   };
   const signup = e => {
     e.preventDefault();
-    alert('회원가입 완료!');
-    navigate('/login');
+    fetch(`${BASE_URL}/join`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.message === 'EXISTING_USER') {
+          alert('이미 사용 중인 이메일입니다.');
+        } else {
+          alert('회원가입을 축하드립니다.');
+          navigate('/login');
+        }
+      });
   };
 
   const [modalOpen, setModalOpen] = useState(false);
