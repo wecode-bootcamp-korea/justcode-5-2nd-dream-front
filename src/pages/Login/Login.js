@@ -2,14 +2,32 @@ import React, { useState, useEffect } from 'react';
 import css from './Login.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import kakao_login from '../../styles/images/kakao_login.png';
+import BASE_URL from '../../config';
 
 function Login() {
   const navigate = useNavigate();
 
   const login = e => {
     e.preventDefault();
-    alert('로그인 완료!');
-    navigate('/');
+    fetch(`${BASE_URL}/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.token) {
+          localStorage.setItem('token', res.token);
+          localStorage.setItem('email', email);
+          alert('로그인이 완료되었습니다.');
+          navigate('/');
+        } else {
+          alert('잘못된 이메일이거나 비밀번호입니다.');
+        }
+      });
   };
 
   const [email, setEmail] = useState('');
@@ -28,8 +46,10 @@ function Login() {
     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%#?&])[A-Za-z\d@$!%*#?&]{8,16}$/;
   const emailValidation = () => {
     if (email.length === 0) setIsValidEmail(true);
-    else {
-      setIsValidEmail(regEmail.test(email));
+    else if (regEmail.test(email) && !/[0-9]/g.test(email.split('.')[1])) {
+      setIsValidEmail(true);
+    } else {
+      setIsValidEmail(false);
     }
   };
   const pwValidation = () => {

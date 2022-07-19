@@ -16,6 +16,7 @@ import s9 from './images/s9.png';
 import s10 from './images/s10.png';
 
 export default class SwipeToSlide extends Component {
+
     render() {
         const settings = {
             className: "center",

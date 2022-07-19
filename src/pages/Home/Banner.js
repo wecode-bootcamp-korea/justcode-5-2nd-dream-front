@@ -11,43 +11,41 @@ import b5 from './images/b5.png';
 import b6 from './images/b6.png';
 
 export default class SimpleSlider extends Component {
-
-    render() {
-        const settings = {
-            dots: true,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 2000
-        };
-        return (
-            <div>
-
-                <Slider {...settings}>
-                    <div>
-                        <img className={css.banner} src={b1} alt="b1"/>
-                    </div>
-                    <div>
-                        <img className={css.banner} src={b2} alt="b2"/>
-                    </div>
-                    <div>
-                        <img className={css.banner} src={b3} alt="b3"/>
-                    </div>
-                    <div>
-                        <img className={css.banner} src={b4} alt="b4"/>
-                    </div>
-                    <div>
-                        <img className={css.banner} src={b5} alt="b5"/>
-                    </div>
-                    <div>
-                        <img className={css.banner} src={b6} alt="b6"/>
-                    </div>
-                </Slider>
-            </div>
-        );
-    }
+  render() {
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+    };
+    return (
+      <div>
+        <Slider {...settings}>
+          <div>
+            <img className={css.banner} src={b1} alt="b1" />
+          </div>
+          <div>
+            <img className={css.banner} src={b2} alt="b2" />
+          </div>
+          <div>
+            <img className={css.banner} src={b3} alt="b3" />
+          </div>
+          <div>
+            <img className={css.banner} src={b4} alt="b4" />
+          </div>
+          <div>
+            <img className={css.banner} src={b5} alt="b5" />
+          </div>
+          <div>
+            <img className={css.banner} src={b6} alt="b6" />
+          </div>
+        </Slider>
+      </div>
+    );
+  }
 
   render() {
     const settings = {
@@ -84,5 +82,4 @@ export default class SimpleSlider extends Component {
       </div>
     );
   }
-
 }
