@@ -5,7 +5,7 @@ import css from './BuySellPage.module.scss';
 function BuySellPage() {
   const location = useLocation();
   const isBuyPage = location.pathname.includes('buy');
-  const { sizeList, priceList } = location.state;
+  const sizeList = location.state;
 
   const id = location.pathname.split('/')[3];
 
@@ -13,23 +13,19 @@ function BuySellPage() {
 
   const [size, setSize] = useState(undefined);
   const [price, setPrice] = useState(undefined);
-  // const [buyPrice, setBuyPrice] = useState(undefined);
-  // const sizeList = ['모든 사이즈', 'S', 'M', 'L', 'XL', 'XXL'];
-  // const sellPriceList = ['-', '-', 90000, 45000, 100000, 50000, 40000];
-  // const buyPriceList = [
-  //   80000, 40000, 50000, 60000, 60000, 110000, 60000, 70000,
-  // ];
+  const [sellId, setSellId] = useState(undefined);
 
   const handleSize = e => {
     setSize(e.target.value.split(',')[0]);
     setPrice(e.target.value.split(',')[1]);
+    setSellId(e.target.value.split(',')[2]);
   };
 
   const moveToDealCheck = () => {
     if (isBuyPage) {
-      navigate(`/buy/check/${id}`, { state: { size, price } });
+      navigate(`/buy/check/${id}`, { state: { size, price, sellId } });
     } else {
-      navigate(`/sell/check/${id}`, { state: { size, price } });
+      navigate(`/sell/check/${id}`, { state: { size, price, sellId } });
     }
   };
 
@@ -50,18 +46,18 @@ function BuySellPage() {
           </div>
         </div>
         <div className={css.sizes}>
-          {sizeList?.map((s, idx) => {
-            const isSelected = s === size;
+          {sizeList?.map(s => {
+            const isSelected = s.size === size;
             return (
               <button
                 className={isSelected ? css.selected : undefined}
                 onClick={handleSize}
-                value={[s, priceList[idx]]}
-                key={s}
+                value={[s.size, s.price, s['sell.id']]}
+                key={s['sell.id']}
               >
-                {s}
+                {s.size}
                 <br />
-                {priceList[idx]}
+                {s.price}
               </button>
             );
           })}

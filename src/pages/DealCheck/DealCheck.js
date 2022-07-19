@@ -5,16 +5,16 @@ import css from './DealCheck.module.scss';
 function DealCheck() {
   const location = useLocation();
   const isBuyPage = location.pathname.includes('buy');
-  const { size, price } = location.state;
+  const { size, price, sellId } = location.state;
 
   const id = location.pathname.split('/')[3];
 
   const navigate = useNavigate();
   const moveToDeal = () => {
     if (isBuyPage) {
-      navigate(`/buy/${id}`, { state: { size, price } });
+      navigate(`/buy/${id}`, { state: { size, price, sellId } });
     } else {
-      navigate(`/sell/${id}`, { state: { size, price } });
+      navigate(`/sell/${id}`, { state: { size, price, sellId } });
     }
   };
 
