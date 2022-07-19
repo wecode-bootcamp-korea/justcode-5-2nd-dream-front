@@ -22,6 +22,7 @@
           width: 100%;
           height: 100%;
           border-radius: 100%;
+          object-fit: cover;
         }
       }
       h3 {
@@ -151,21 +152,50 @@
             letter-spacing: 1px;
           }
 
-          button {
-            border: 1px solid #d3d3d3;
-            color: rgba(34, 34, 34, 0.8);
-            font-size: 12px;
-            padding: 0 14px;
-            height: 34px;
-            line-height: 32px;
-            border-radius: 10px;
-            display: inline-block;
-            cursor: pointer;
-            vertical-align: middle;
-            text-align: center;
-            background-color: #fff;
-            margin-right: 5px;
+          .hidden_address {
+            padding-top: 10px;
+            width: 330px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            input {
+              height: 25px;
+              width: 250px;
+            }
+
+            button {
+              background-color: #ebebeb;
+              border: 1px solid #d3d3d3;
+              color: rgba(34, 34, 34, 0.8);
+              font-size: 12px;
+              padding: 0 14px;
+              height: 34px;
+              line-height: 32px;
+              border-radius: 10px;
+              display: inline-block;
+              cursor: pointer;
+              vertical-align: middle;
+              text-align: center;
+              margin-right: 5px;
+            }
           }
+        }
+
+        button {
+          border: 1px solid #d3d3d3;
+          color: rgba(34, 34, 34, 0.8);
+          font-size: 12px;
+          padding: 0 14px;
+          height: 34px;
+          line-height: 32px;
+          border-radius: 10px;
+          display: inline-block;
+          cursor: pointer;
+          vertical-align: middle;
+          text-align: center;
+          background-color: #fff;
+          margin-right: 5px;
         }
 
         .address_button {

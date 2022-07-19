@@ -16,6 +16,7 @@ import DealCheck from './DealCheck/DealCheck';
 import BeforePayment from './BeforePayment/BeforePayment';
 import Payment from './Payment/Payment';
 import OrderSettlement from './OrderSettlement/OrderSettlement';
+import Styles from '../styles/Button';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/styles" element={<Styles />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/mypage/:id" element={<MyPage />} />
         <Route path="/mypage/wish/:id" element={<WishPage />} />
