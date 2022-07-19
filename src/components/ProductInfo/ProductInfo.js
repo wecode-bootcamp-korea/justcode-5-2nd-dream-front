@@ -40,6 +40,7 @@ function ProductInfo() {
   ];
 
   const id = useLocation().pathname.split('/')[2];
+  const token = localStorage.getItem('token');
 
   const [priceList, setPriceList] = useState(undefined);
   const [sizeList, setSizeList] = useState(undefined);
@@ -74,7 +75,11 @@ function ProductInfo() {
   };
 
   const moveToDealCheck = deal => {
-    navigate(`/${deal}/select/${id}`, { state: { sizeList, priceList } });
+    if (token === null) {
+      navigate('/login');
+    } else {
+      navigate(`/${deal}/select/${id}`, { state: { sizeList, priceList } });
+    }
   };
 
   return (
