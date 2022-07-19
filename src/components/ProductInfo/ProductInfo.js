@@ -9,6 +9,7 @@ import ProductModal from '../ProductModal/ProductModal';
 function ProductInfo() {
   const navigate = useNavigate();
   const id = useLocation().pathname.split('/')[2];
+  const token = localStorage.getItem('token');
 
   const [size, setSize] = useState('모든 사이즈');
   const [price, setPrice] = useState(60000);
@@ -22,7 +23,11 @@ function ProductInfo() {
   };
 
   const moveToDealCheck = deal => {
-    navigate(`/${deal}/select/${id}`);
+    if (token === null) {
+      navigate('/login');
+    } else {
+      navigate(`/${deal}/select/${id}`);
+    }
   };
 
   return (
