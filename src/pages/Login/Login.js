@@ -23,6 +23,7 @@ function Login() {
         if (res.token) {
           localStorage.setItem('token', res.token);
           localStorage.setItem('email', email);
+          localStorage.setItem('userId', res.id);
           alert('로그인이 완료되었습니다.');
           navigate('/');
         } else {
