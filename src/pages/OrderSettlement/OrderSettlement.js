@@ -4,7 +4,7 @@ import css from './OrderSettlement.module.scss';
 
 function OrderSettlement() {
   const location = useLocation();
-  const price = Number(location.state)?.toLocaleString();
+  const price = Number(location.state.price)?.toLocaleString();
 
   const [isCheckedExact, setIsCheckedExact] = useState(false);
   const exactCheckBtn = () => {
@@ -103,7 +103,7 @@ function OrderSettlement() {
           <div className={css.price_num}>{price}원</div>
         </div>
         <div className={css.price_addition}>
-          <div className={css.price_addition_price}>즉시 구매가</div>
+          <div className={css.price_addition_price}>즉시 판매가</div>
           <div>{price}원</div>
         </div>
         <div className={css.price_addition}>
