@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import css from './Login.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
-import kakao_login from '../../styles/images/kakao_login.png';
+import kakao_login from './images/kakao_login.png';
 import BASE_URL from '../../config';
 
 function Login() {
   const navigate = useNavigate();
+  const isLoggedIn = localStorage.getItem('token') !== null;
 
   const login = e => {
     e.preventDefault();
@@ -79,6 +80,10 @@ function Login() {
     loginValidaion();
   });
 
+  useEffect(() => {
+    if (isLoggedIn) navigate('/');
+  }, [isLoggedIn, navigate]);
+
   return (
     <div className={css.container}>
       <h1 className={css.logo}>
@@ -139,9 +144,9 @@ function Login() {
         <Link to>이메일 찾기</Link>
         <Link to>비밀번호 찾기</Link>
       </div>
-      <button className={css.kakao_btn} disabled={!loginValid}>
+      <a className={css.kakao_btn} href="http://localhost:10010/kakao">
         <img src={kakao_login} alt="kakao_btn" />
-      </button>
+      </a>
     </div>
   );
 }
