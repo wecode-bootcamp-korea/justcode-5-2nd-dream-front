@@ -7,6 +7,7 @@ import ProfileSNB from '../../components/Profile/ProfileSNB';
 function MyPage() {
   const id = useLocation().pathname.split('/')[2];
   const [profileInfo, setProfileInfo] = useState([]);
+  const [isUpdated, setIsUpdated] = useState(false);
   return (
     <div className={css.container}>
       <ProfileSNB />
@@ -14,6 +15,8 @@ function MyPage() {
         profileInfo={profileInfo}
         id={id}
         setProfileInfo={setProfileInfo}
+        isUpdated={isUpdated}
+        setIsUpdated={setIsUpdated}
       />
     </div>
   );
