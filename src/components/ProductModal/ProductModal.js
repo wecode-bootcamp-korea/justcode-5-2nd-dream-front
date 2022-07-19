@@ -2,16 +2,7 @@ import React, { useEffect } from 'react';
 import css from './ProductModal.module.scss';
 
 const ProductModal = props => {
-  const {
-    open,
-    close,
-    size,
-    setSize,
-    setPrice,
-    setSellPrice,
-    priceList,
-    sizeList,
-  } = props;
+  const { open, close, size, setSize, setPrice, priceList, sizeList } = props;
 
   useEffect(() => {
     open
@@ -22,7 +13,6 @@ const ProductModal = props => {
   const handleSize = e => {
     setSize(e.target.value?.split(',')[0]);
     setPrice(Number(e.target.value?.split(',')[1]));
-    setSellPrice(Number(e.target.value?.split(',')[2]));
     close();
   };
 
