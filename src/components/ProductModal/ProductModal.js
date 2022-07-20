@@ -2,8 +2,16 @@ import React, { useEffect } from 'react';
 import css from './ProductModal.module.scss';
 
 const ProductModal = props => {
-  const { open, close, size, setSize, setPrice, sizeList, setIsSoldOut } =
-    props;
+  const {
+    open,
+    close,
+    size,
+    setSize,
+    setPrice,
+    sizeList,
+    setIsSoldOut,
+    setProductDetailId,
+  } = props;
 
   useEffect(() => {
     open
@@ -15,6 +23,7 @@ const ProductModal = props => {
     setSize(e.target.value?.split(',')[0]);
     setPrice(Number(e.target.value?.split(',')[1]));
     setIsSoldOut(e.target.value?.split(',')[2]);
+    setProductDetailId(e.target.value?.split(',')[2]);
     close();
   };
 
@@ -35,7 +44,7 @@ const ProductModal = props => {
                 <button
                   className={isSelected ? css.selected : undefined}
                   onClick={handleSize}
-                  value={[s.size, s.price, s.status]}
+                  value={[s.size, s.price, s.status, s.product_detail_id]}
                   key={s['sell.id']}
                 >
                   {s.size}

@@ -17,6 +17,30 @@ function ProductInfo() {
   const [size, setSize] = useState(undefined);
   const [price, setPrice] = useState(undefined);
   const [isSoldOut, setIsSoldOut] = useState(undefined);
+  const [productInfo, setProductInfo] = useState(undefined);
+  const [produtDetailId, setProductDetailId] = useState(undefined);
+  const [isUpdated, setIsUpdated] = useState(false);
+
+  useEffect(() => {
+    setIsUpdated(false);
+    fetch(`${BASE_URL}/products/${id}`, {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        setProductInfo(data[0]);
+      });
+  }, [isUpdated, id]);
+
+  const latestPrice = Number(productInfo?.latest_price)?.toLocaleString();
+  const wishNum = productInfo?.wish_num;
+  const modelNum = productInfo?.model_number;
+  const release = productInfo?.created_at.slice(0, 10);
+  const color = productInfo?.color;
+  const salePrice = Number(productInfo?.sale_price)?.toLocaleString();
+  const brand = productInfo?.brand;
+  const name = productInfo?.name;
+  const subName = productInfo?.comment;
 
   useEffect(() => {
     fetch(`${BASE_URL}/mypage/${userId}`, {
@@ -37,8 +61,10 @@ function ProductInfo() {
         setSize(sizeList[0].size);
         setPrice(sizeList[0].price);
         setIsSoldOut(sizeList[0].status);
+        setProductDetailId(sizeList[0].product_detail_id);
       });
   }, []);
+
   const navigate = useNavigate();
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -66,6 +92,19 @@ function ProductInfo() {
     }
   };
 
+  const wish = () => {
+    fetch(`${BASE_URL}/wish`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        user_id: userId,
+        product_id: id,
+        product_detail_id: produtDetailId,
+      }),
+    })
+      .then(alert('관심 상품으로 등록이 완료되었습니다.'))
+      .then(setIsUpdated(true));
+  };
   return (
     <div className={css.container}>
       <ProductModal
@@ -77,10 +116,11 @@ function ProductInfo() {
         setPrice={setPrice}
         sizeList={sizeList}
         setIsSoldOut={setIsSoldOut}
+        setProductDetailId={setProductDetailId}
       />
-      <Link to>Aurolee</Link>
-      <p className={css.name}>Aurolee Small Logo T-Shirt Black</p>
-      <p className={css.sub_name}>오로리 스몰 로고 티셔츠 블랙</p>
+      <Link to>{brand}</Link>
+      <p className={css.name}>{name}</p>
+      <p className={css.sub_name}>{subName}</p>
       <div className={css.size_container}>
         <span className={css.size}>사이즈</span>
         <span className={css.all_size} onClick={openModal}>
@@ -90,7 +130,7 @@ function ProductInfo() {
       </div>
       <div className={css.sell_container}>
         <span className={css.recent_sell}>최근 거래가</span>
-        <span className={css.price}>455,000원</span>
+        <span className={css.price}>{latestPrice}원</span>
       </div>
       <div className={css.buttons}>
         <button className={css.buy_btn} onClick={() => moveToDealCheck('buy')}>
@@ -114,25 +154,27 @@ function ProductInfo() {
             </div>
           </div>
         </button>
-        <button className={css.interested}>관심상품 80</button>
+        <button className={css.interested} onClick={wish}>
+          관심상품 {wishNum === null ? 0 : wishNum}
+        </button>
       </div>
       <h3>상품 정보</h3>
       <div className={css.info_container}>
         <div className={css.info_div}>
           <div className={css.info_title}>모델번호</div>
-          <div>A2379HH</div>
+          <div>{modelNum}</div>
         </div>
         <div className={css.info_div}>
           <div className={css.info_title}>출시일</div>
-          <div>-</div>
+          <div>{release}</div>
         </div>
         <div className={css.info_div}>
           <div className={css.info_title}>컬러</div>
-          <div>BLACK / RED</div>
+          <div>{color}</div>
         </div>
         <div className={`${css.info_div} ${css.last}`}>
           <div className={css.info_title}>발매가</div>
-          <div>120,000원</div>
+          <div>{salePrice}원</div>
         </div>
       </div>
       <ProductOtherInfo />
