@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap';
 import ProductCard from './ProductCard';
 import css from './ProductAll.module.scss';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 const ProductAll = () => {
     const [productList, setProductList] = useState([]);
     const getProducts = async () => {

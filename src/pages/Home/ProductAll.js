@@ -6,8 +6,9 @@ import css from './ProductAll.module.scss';
 const ProductAll = () => {
   const [productList, setProductList] = useState([]);
   const getProducts = async () => {
-    let url = 'http://localhost:5500/products';
-    let response = await fetch(url);
+    // let url = 'http://localhost:5500/products';
+    let url = 'http://localhost:10010/main';
+    let response = await fetch(url,{ method: 'GET' });
     let data = await response.json();
     setProductList(data);
     
