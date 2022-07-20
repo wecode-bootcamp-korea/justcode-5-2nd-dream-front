@@ -5,26 +5,28 @@ import css from './BeforePayment.module.scss';
 function BeforePayment() {
   const location = useLocation();
   const isBuyPage = location.pathname.includes('buy');
-  const { size, sellPrice, buyPrice } = location.state;
+  const { size, price, sellId } = location.state;
 
   const navigate = useNavigate();
   const id = location.pathname.split('/')[2];
 
-  const [price, setPrice] = useState(0);
-  const immediatelySellPrice = sellPrice;
-  const immediatelyBuyPrice = buyPrice;
+  const [bidPrice, setBidPrice] = useState(0);
 
   const moveToLastStep = () => {
+    if (bidPrice < price && isBid) {
+      setIsBid(false);
+      return;
+    }
     if (isBuyPage) {
       navigate(`/payment/${id}`, {
-        state: { price: immediatelyBuyPrice, size },
+        state: { price, size, sellId },
       });
     } else if (isBid) {
-      navigate(`/settlement/${id}`, { state: { price, size } });
-    } else {
       navigate(`/settlement/${id}`, {
-        state: { price: immediatelySellPrice, size },
+        state: { price: bidPrice, size, sellId },
       });
+    } else {
+      navigate(`/settlement/${id}`, { state: { price, size, sellId } });
     }
   };
 
@@ -35,19 +37,19 @@ function BeforePayment() {
   };
 
   const handleInput = e => {
-    if (price?.length > 9) {
-      setPrice(e.target.value.slice(0, 10));
+    if (bidPrice?.length > 9) {
+      setBidPrice(e.target.value.slice(0, 10));
     } else {
-      setPrice(e.target.value);
+      setBidPrice(e.target.value);
     }
   };
 
   const [isValid, setIsValid] = useState(false);
 
   const valid = () => {
-    if (isBid && price >= 30000) {
+    if (isBid && bidPrice >= 30000) {
       setIsValid(true);
-    } else if (!isBid && immediatelySellPrice !== undefined) {
+    } else if (!isBid && price !== undefined) {
       setIsValid(true);
     } else {
       setIsValid(false);
@@ -78,11 +80,11 @@ function BeforePayment() {
         <div className={css.price_list}>
           <div className={css.buy}>
             <div className={css.title}>즉시 구매가</div>
-            <div>{immediatelyBuyPrice?.toLocaleString()}원</div>
+            <div>{price?.toLocaleString()}원</div>
           </div>
           <div className={css.sell}>
             <div className={css.title}>즉시 판매가</div>
-            <div>{immediatelySellPrice?.toLocaleString()}원</div>
+            <div>{price?.toLocaleString()}원</div>
           </div>
         </div>
         {!isBuyPage && (
@@ -129,13 +131,13 @@ function BeforePayment() {
               <input
                 placeholder="희망가 입력"
                 type="number"
-                value={price || ''}
+                value={bidPrice || ''}
                 onChange={handleInput}
               />
             ) : isBuyPage ? (
-              immediatelyBuyPrice?.toLocaleString()
+              price?.toLocaleString()
             ) : (
-              immediatelySellPrice?.toLocaleString()
+              price?.toLocaleString()
             )}
             원
           </div>
@@ -177,8 +179,8 @@ function BeforePayment() {
             {isBuyPage
               ? '다음 화면에서 확인'
               : isBid
-              ? Number(price)?.toLocaleString() + '원'
-              : immediatelySellPrice?.toLocaleString() + '원'}
+              ? Number(bidPrice)?.toLocaleString() + '원'
+              : price?.toLocaleString() + '원'}
           </div>
         </div>
         <button

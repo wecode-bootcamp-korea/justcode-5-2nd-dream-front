@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import css from './Payment.module.scss';
+import BASE_URL from '../../config';
 
 function Payment() {
+  const navigate = useNavigate();
   const location = useLocation();
-  const { size, price } = location.state;
+  const { size, price, sellId } = location.state;
+  const userId = localStorage.getItem('userId');
+  const productId = location.pathname?.split('/')[2];
 
   const [isCheckedCancel, setIsCheckedCancel] = useState(false);
   const cancelCheckBtn = () => {
@@ -35,6 +39,33 @@ function Payment() {
     dealValid();
   });
 
+  const buyProduct = () => {
+    fetch(`${BASE_URL}/purchase/${userId}/${sellId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        sell_status_id: 2,
+      }),
+    })
+      .then(alert('구매가 완료되었습니다.'))
+      .then(navigate(`/products/${productId}`));
+  };
+
+  const [address, setAddress] = useState(undefined);
+  const [phone, setPhone] = useState(undefined);
+  const [name, setName] = useState(undefined);
+  useEffect(() => {
+    fetch(`${BASE_URL}/mypage/${userId}`, {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        setPhone(data.data[0].phone);
+        setName(data.data[0].name);
+        setAddress(data.data[0].address[0].address);
+      });
+  }, []);
+
   return (
     <div className={css.container}>
       <div className={css.content}>
@@ -59,18 +90,15 @@ function Payment() {
           <h1>배송 주소</h1>
           <div className={css.address_info}>
             <div className={css.address_info_left}>받는 분</div>
-            <div className={css.address_right}>정**</div>
+            <div className={css.address_right}>{name}</div>
           </div>
           <div className={css.address_info}>
             <div className={css.address_info_left}>연락처</div>
-            <div className={css.address_right}>010-6***-*337</div>
+            <div className={css.address_right}>{phone}</div>
           </div>
           <div className={css.address_info}>
             <div className={css.address_info_left}>배송 주소</div>
-            <div className={css.address_info_right}>
-              경기 화성시 동탄순환대로00길 00 (OO동, 그린힐 반도유보라
-              아이비파크 10) 0000동 0000호
-            </div>
+            <div className={css.address_info_right}>{address}</div>
           </div>
         </div>
 
@@ -198,7 +226,10 @@ function Payment() {
             {(price * 1.02 + 3000)?.toLocaleString()}원
           </div>
         </div>
-        <button className={valid ? css.deal : `${css.deal} ${css.disabled}`}>
+        <button
+          className={valid ? css.deal : `${css.deal} ${css.disabled}`}
+          onClick={buyProduct}
+        >
           결제하기
         </button>
       </div>

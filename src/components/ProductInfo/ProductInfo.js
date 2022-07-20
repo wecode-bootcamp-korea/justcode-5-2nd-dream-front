@@ -1,19 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import css from './ProductInfo.module.scss';
 import ProductOtherInfo from '../ProductOtherInfo/ProductOtherInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleDown } from '@fortawesome/free-regular-svg-icons';
 import ProductModal from '../ProductModal/ProductModal';
+import BASE_URL from '../../config';
 
 function ProductInfo() {
-  const navigate = useNavigate();
   const id = useLocation().pathname.split('/')[2];
   const token = localStorage.getItem('token');
 
-  const [size, setSize] = useState('모든 사이즈');
-  const [price, setPrice] = useState(60000);
-  const [sellPrice, setSellPrice] = useState(50000);
+  const userId = localStorage.getItem('userId');
+  const [address, setAddress] = useState(undefined);
+  const [sizeList, setSizeList] = useState(undefined);
+  const [size, setSize] = useState(undefined);
+  const [price, setPrice] = useState(undefined);
+  const [isSoldOut, setIsSoldOut] = useState(undefined);
+
+  useEffect(() => {
+    fetch(`${BASE_URL}/mypage/${userId}`, {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        setAddress(data.data[0].address[0].address);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch(`${BASE_URL}/information/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        const sizeList = data.data[0].size_list;
+        setSizeList(sizeList);
+        setSize(sizeList[0].size);
+        setPrice(sizeList[0].price);
+        setIsSoldOut(sizeList[0].status);
+      });
+  }, []);
+  const navigate = useNavigate();
+
   const [modalOpen, setModalOpen] = useState(false);
   const openModal = () => {
     setModalOpen(true);
@@ -23,10 +50,19 @@ function ProductInfo() {
   };
 
   const moveToDealCheck = deal => {
+    if (deal === 'buy' && isSoldOut === '판매완료') {
+      alert('재고가 없습니다.');
+      return;
+    }
+    if (address === null) {
+      alert('주소를 입력해주세요.');
+      navigate(`/mypage/${userId}`);
+      return;
+    }
     if (token === null) {
       navigate('/login');
     } else {
-      navigate(`/${deal}/select/${id}`);
+      navigate(`/${deal}/select/${id}`, { state: sizeList });
     }
   };
 
@@ -39,8 +75,8 @@ function ProductInfo() {
         setSize={setSize}
         price={price}
         setPrice={setPrice}
-        sellPrice={sellPrice}
-        setSellPrice={setSellPrice}
+        sizeList={sizeList}
+        setIsSoldOut={setIsSoldOut}
       />
       <Link to>Aurolee</Link>
       <p className={css.name}>Aurolee Small Logo T-Shirt Black</p>
@@ -61,7 +97,7 @@ function ProductInfo() {
           <div className={css.text}>
             <div className={css.buy_text}>구매</div>
             <div className={css.buy_price}>
-              <div>{price.toLocaleString()}원</div>
+              <div>{price?.toLocaleString()}원</div>
               <div className={css.immediately}>즉시 구매가</div>
             </div>
           </div>
@@ -73,7 +109,7 @@ function ProductInfo() {
           <div className={css.text}>
             <div className={css.sell_text}>판매</div>
             <div className={css.sell_price}>
-              <div>{sellPrice?.toLocaleString()}원</div>
+              <div>{price?.toLocaleString()}원</div>
               <div className={css.immediately}>즉시 판매가</div>
             </div>
           </div>

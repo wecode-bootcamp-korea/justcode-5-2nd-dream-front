@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import css from './OrderSettlement.module.scss';
+import BASE_URL from '../../config';
 
 function OrderSettlement() {
   const location = useLocation();
-  const price = Number(location.state)?.toLocaleString();
+  const price = Number(location.state.price)?.toLocaleString();
 
   const [isCheckedExact, setIsCheckedExact] = useState(false);
   const exactCheckBtn = () => {
@@ -40,6 +41,22 @@ function OrderSettlement() {
     dealValid();
   });
 
+  const userId = localStorage.getItem('userId');
+  const [address, setAddress] = useState(undefined);
+  const [phone, setPhone] = useState(undefined);
+  const [name, setName] = useState(undefined);
+  useEffect(() => {
+    fetch(`${BASE_URL}/mypage/${userId}`, {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        setPhone(data.data[0].phone);
+        setName(data.data[0].name);
+        setAddress(data.data[0].address[0].address);
+      });
+  }, []);
+
   return (
     <div className={css.container}>
       <div className={css.content}>
@@ -74,18 +91,15 @@ function OrderSettlement() {
           <h1>반송 주소</h1>
           <div className={css.address_info}>
             <div className={css.address_info_left}>받는 분</div>
-            <div className={css.address_right}>정**</div>
+            <div className={css.address_right}>{name}</div>
           </div>
           <div className={css.address_info}>
             <div className={css.address_info_left}>연락처</div>
-            <div className={css.address_right}>010-6***-*337</div>
+            <div className={css.address_right}>{phone}</div>
           </div>
           <div className={css.address_info}>
             <div className={css.address_info_left}>배송 주소</div>
-            <div className={css.address_info_right}>
-              경기 화성시 동탄순환대로00길 00 (OO동, 그린힐 반도유보라
-              아이비파크 10) 0000동 0000호
-            </div>
+            <div className={css.address_info_right}>{address}</div>
           </div>
         </div>
 
@@ -103,7 +117,7 @@ function OrderSettlement() {
           <div className={css.price_num}>{price}원</div>
         </div>
         <div className={css.price_addition}>
-          <div className={css.price_addition_price}>즉시 구매가</div>
+          <div className={css.price_addition_price}>즉시 판매가</div>
           <div>{price}원</div>
         </div>
         <div className={css.price_addition}>
