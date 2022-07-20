@@ -101,9 +101,7 @@ function ProductInfo() {
         product_id: id,
         product_detail_id: produtDetailId,
       }),
-    })
-      .then(alert('관심 상품으로 등록이 완료되었습니다.'))
-      .then(setIsUpdated(true));
+    }).then(setIsUpdated(true));
   };
   return (
     <div className={css.container}>
