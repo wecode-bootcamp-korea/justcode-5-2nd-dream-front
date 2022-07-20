@@ -6,7 +6,6 @@ import ProfileSNB from '../../components/Profile/ProfileSNB';
 function WishPage() {
   const locaction = useLocation().pathname;
   const id = locaction.substring(locaction.lastIndexOf('/') + 1);
-  console.log(id);
   const [wishInfo, setwishInfo] = useState([]);
   const [isUpdated, setIsUpdated] = useState(true);
 
@@ -19,16 +18,11 @@ function WishPage() {
       .then(res => res.json())
       .then(data => {
         setwishInfo(data.data);
-        console.log(data);
       });
   }, [id, isUpdated]);
 
   // ============ 관심상품 삭제
-  // const [delWish, setDelWish] = useState('');
-  console.log(localStorage.getItem('userId'));
   const deleteWish = (productId, productDetailId) => {
-    console.log(productId);
-    console.log(productDetailId);
     fetch(`http://localhost:10010/wish`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
@@ -51,9 +45,7 @@ function WishPage() {
         </div>
 
         <ul className={css.wish_list}>
-          {/* {isUpdated && ( */}
           {wishInfo.map(wishInfo => {
-            // if (wishInfo.id !== null) {
             return (
               <li key={wishInfo.id}>
                 <div className={css.wish_product_box}>
@@ -86,18 +78,12 @@ function WishPage() {
                       >
                         삭제
                       </span>
-                      {/* <span onClick={close}>삭제</span> */}
                     </div>
                   </div>
                 </div>
               </li>
             );
-            // } else {
-            //   return null;
-            // }
           })}
-
-          {/* )} */}
         </ul>
       </div>
     </div>
