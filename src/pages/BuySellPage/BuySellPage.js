@@ -88,10 +88,7 @@ function BuySellPage() {
         )}
         {size !== undefined && !isBuyPage && (
           <div className={css.buttons}>
-            <button
-              className={css.btn}
-              onClick={() => alert('지원하지 않는 기능입니다.')}
-            >
+            <button className={`${css.btn} ${css.keep}`}>
               보관 신청
               <br />
               선불발송
