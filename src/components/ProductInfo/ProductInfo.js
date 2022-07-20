@@ -104,6 +104,8 @@ function ProductInfo() {
         ).length;
         if (wishLength !== 0) {
           setIsWished(true);
+        } else {
+          setIsWished(false);
         }
       });
   }, [isWished, isUpdated, id, userId]);
