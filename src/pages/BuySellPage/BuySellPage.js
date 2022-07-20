@@ -14,18 +14,24 @@ function BuySellPage() {
   const [size, setSize] = useState(undefined);
   const [price, setPrice] = useState(undefined);
   const [sellId, setSellId] = useState(undefined);
+  const [productDetailId, setProductDetailId] = useState(undefined);
 
   const handleSize = e => {
     setSize(e.target.value.split(',')[0]);
     setPrice(e.target.value.split(',')[1]);
     setSellId(e.target.value.split(',')[2]);
+    setProductDetailId(e.target.value.split(',')[3]);
   };
 
   const moveToDealCheck = () => {
     if (isBuyPage) {
-      navigate(`/buy/check/${id}`, { state: { size, price, sellId } });
+      navigate(`/buy/check/${id}`, {
+        state: { size, price, sellId, productDetailId },
+      });
     } else {
-      navigate(`/sell/check/${id}`, { state: { size, price, sellId } });
+      navigate(`/sell/check/${id}`, {
+        state: { size, price, sellId, productDetailId },
+      });
     }
   };
 
@@ -52,7 +58,7 @@ function BuySellPage() {
               <button
                 className={isSelected ? css.selected : undefined}
                 onClick={handleSize}
-                value={[s.size, s.price, s['sell.id']]}
+                value={[s.size, s.price, s['sell.id'], s.product_detail_id]}
                 key={s['sell.id']}
               >
                 {s.size}

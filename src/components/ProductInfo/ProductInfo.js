@@ -88,7 +88,7 @@ function ProductInfo() {
     if (token === null) {
       navigate('/login');
     } else {
-      navigate(`/${deal}/select/${id}`, { state: sizeList });
+      navigate(`/${deal}/select/${id}`, { state: sizeList, produtDetailId });
     }
   };
 

@@ -5,7 +5,7 @@ import css from './BeforePayment.module.scss';
 function BeforePayment() {
   const location = useLocation();
   const isBuyPage = location.pathname.includes('buy');
-  const { size, price, sellId } = location.state;
+  const { size, price, sellId, productDetailId } = location.state;
 
   const navigate = useNavigate();
   const id = location.pathname.split('/')[2];
@@ -23,10 +23,12 @@ function BeforePayment() {
       });
     } else if (isBid) {
       navigate(`/settlement/${id}`, {
-        state: { price: bidPrice, size, sellId },
+        state: { price: bidPrice, size, sellId, productDetailId },
       });
     } else {
-      navigate(`/settlement/${id}`, { state: { price, size, sellId } });
+      navigate(`/settlement/${id}`, {
+        state: { price, size, sellId, productDetailId },
+      });
     }
   };
 

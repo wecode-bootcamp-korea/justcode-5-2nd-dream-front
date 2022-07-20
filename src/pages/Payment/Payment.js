@@ -7,6 +7,7 @@ function Payment() {
   const navigate = useNavigate();
   const location = useLocation();
   const { size, price, sellId } = location.state;
+
   const userId = localStorage.getItem('userId');
   const productId = location.pathname?.split('/')[2];
 
