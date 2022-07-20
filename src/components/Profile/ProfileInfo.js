@@ -23,13 +23,17 @@ function ProfileInfo(props) {
 
   //============ 프로필 주소 등록
   const writeAddressBtn = () => {
-    fetch(`http://localhost:10010/address/${id}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        address: addressinput,
-      }),
-    }).then(setIsUpdated(true));
+    if (profileInfo.name === null || profileInfo.phone === null) {
+      alert('이름과 전화번호를 모두 입력해주세요.');
+    } else {
+      fetch(`http://localhost:10010/address/${id}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          address: addressinput,
+        }),
+      }).then(setIsUpdated(true));
+    }
   };
 
   //============ 회원탈퇴
