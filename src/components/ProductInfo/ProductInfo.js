@@ -16,9 +16,9 @@ function ProductInfo() {
   const [sizeList, setSizeList] = useState(undefined);
   const [size, setSize] = useState(undefined);
   const [price, setPrice] = useState(undefined);
-  const [isSoldOut, setIsSoldOut] = useState(undefined);
   const [productInfo, setProductInfo] = useState(undefined);
   const [produtDetailId, setProductDetailId] = useState(undefined);
+  const [sellId, setSellId] = useState(false);
   const [isUpdated, setIsUpdated] = useState(false);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ function ProductInfo() {
       .then(data => {
         setAddress(data.data[0].address[0].address);
       });
-  }, []);
+  }, [userId]);
 
   useEffect(() => {
     fetch(`${BASE_URL}/information/${id}`)
@@ -60,10 +60,10 @@ function ProductInfo() {
         setSizeList(sizeList);
         setSize(sizeList[0].size);
         setPrice(sizeList[0].price);
-        setIsSoldOut(sizeList[0].status);
         setProductDetailId(sizeList[0].product_detail_id);
+        setSellId(sizeList[0]['sell.id']);
       });
-  }, []);
+  }, [id]);
 
   const navigate = useNavigate();
 
@@ -76,10 +76,6 @@ function ProductInfo() {
   };
 
   const moveToDealCheck = deal => {
-    if (deal === 'buy' && isSoldOut === '판매완료') {
-      alert('재고가 없습니다.');
-      return;
-    }
     if (address === null) {
       alert('주소를 입력해주세요.');
       navigate(`/mypage/${userId}`);
@@ -113,8 +109,8 @@ function ProductInfo() {
         price={price}
         setPrice={setPrice}
         sizeList={sizeList}
-        setIsSoldOut={setIsSoldOut}
-        setProductDetailId={setProductDetailId}
+        sellId={sellId}
+        setSellId={setSellId}
       />
       <Link to>{brand}</Link>
       <p className={css.name}>{name}</p>

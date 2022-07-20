@@ -15,12 +15,14 @@ function BuySellPage() {
   const [price, setPrice] = useState(undefined);
   const [sellId, setSellId] = useState(undefined);
   const [productDetailId, setProductDetailId] = useState(undefined);
+  const [isSoldOut, setIsSoldOut] = useState(false);
 
   const handleSize = e => {
     setSize(e.target.value.split(',')[0]);
     setPrice(e.target.value.split(',')[1]);
-    setSellId(e.target.value.split(',')[2]);
+    setSellId(Number(e.target.value.split(',')[2]));
     setProductDetailId(e.target.value.split(',')[3]);
+    setIsSoldOut(e.target.value.split(',')[4]);
   };
 
   const moveToDealCheck = () => {
@@ -53,22 +55,31 @@ function BuySellPage() {
         </div>
         <div className={css.sizes}>
           {sizeList?.map(s => {
-            const isSelected = s.size === size;
+            const isSelected = s['sell.id'] === sellId;
+            const isSoldOut = s.status === '판매완료';
             return (
               <button
                 className={isSelected ? css.selected : undefined}
                 onClick={handleSize}
-                value={[s.size, s.price, s['sell.id'], s.product_detail_id]}
+                value={[
+                  s.size,
+                  s.price,
+                  s['sell.id'],
+                  s.product_detail_id,
+                  isSoldOut,
+                ]}
                 key={s['sell.id']}
               >
                 {s.size}
                 <br />
                 {s.price}
+                <br />
+                {isBuyPage ? (isSoldOut ? '판매완료' : '판매중') : null}
               </button>
             );
           })}
         </div>
-        {size !== undefined && isBuyPage && (
+        {isBuyPage && isSoldOut === 'false' && (
           <button className={css.price_btn} onClick={moveToDealCheck}>
             {price}
             <br />
