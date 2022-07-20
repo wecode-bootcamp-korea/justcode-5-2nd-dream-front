@@ -1,12 +1,11 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import css from './ProfileSNB.module.scss';
 
 function ProfileSNB() {
-  const navigate = useNavigate();
-  const myProfile = () => {
-    navigate('/');
-  };
+  const locaction = useLocation().pathname;
+  const id = locaction.substring(locaction.lastIndexOf('/') + 1);
 
   return (
     <div className={css.snb_box}>
@@ -14,21 +13,23 @@ function ProfileSNB() {
       <div className={css.snb_list}>
         <h3>쇼핑 정보</h3>
         <ul>
-          <li>구매 내역</li>
-          <li>판매 내역</li>
-          <li>관심 상품</li>
+          <Link to={`/mypage/buying/${id}`}>
+            <li>구매 내역</li>
+          </Link>
+          <Link to={`/mypage/selling/${id}`}>
+            <li>판매 내역</li>
+          </Link>
+          <Link to={`/mypage/wish/${id}`}>
+            <li>관심 내역</li>
+          </Link>
         </ul>
       </div>
       <div className={css.snb_list}>
         <h3>내 정보</h3>
         <ul>
-          <li
-            onClick={() => {
-              navigate(myProfile());
-            }}
-          >
-            프로필 정보
-          </li>
+          <Link to={`/mypage/${id}`}>
+            <li>프로필 정보</li>
+          </Link>
         </ul>
       </div>
     </div>

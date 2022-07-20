@@ -5,6 +5,7 @@ import css from './BuySellPage.module.scss';
 function BuySellPage() {
   const location = useLocation();
   const isBuyPage = location.pathname.includes('buy');
+  const sizeList = location.state;
 
   const id = location.pathname.split('/')[3];
 
@@ -12,19 +13,19 @@ function BuySellPage() {
 
   const [size, setSize] = useState(undefined);
   const [price, setPrice] = useState(undefined);
-  const sizeList = ['모든 사이즈', 'S', 'M', 'L', 'XL', 'XXL'];
-  const priceList = ['-', '-', 90000, 45000, 100000, 50000, 40000];
+  const [sellId, setSellId] = useState(undefined);
 
   const handleSize = e => {
     setSize(e.target.value.split(',')[0]);
     setPrice(e.target.value.split(',')[1]);
+    setSellId(e.target.value.split(',')[2]);
   };
 
   const moveToDealCheck = () => {
     if (isBuyPage) {
-      navigate(`/buy/check/${id}`);
+      navigate(`/buy/check/${id}`, { state: { size, price, sellId } });
     } else {
-      navigate(`/sell/check/${id}`);
+      navigate(`/sell/check/${id}`, { state: { size, price, sellId } });
     }
   };
 
@@ -45,18 +46,18 @@ function BuySellPage() {
           </div>
         </div>
         <div className={css.sizes}>
-          {sizeList?.map((s, idx) => {
-            const isSelected = s === size;
+          {sizeList?.map(s => {
+            const isSelected = s.size === size;
             return (
               <button
                 className={isSelected ? css.selected : undefined}
                 onClick={handleSize}
-                value={[s, priceList[idx]]}
-                key={s}
+                value={[s.size, s.price, s['sell.id']]}
+                key={s['sell.id']}
               >
-                {s}
+                {s.size}
                 <br />
-                {priceList[idx]}
+                {s.price}
               </button>
             );
           })}

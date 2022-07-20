@@ -35,10 +35,18 @@ function WishPage() {
                   </div>
                 </div>
                 <div className={css.wish_buy}>
-                  <div className={css.wish_button}>
-                    <p>구매</p>
+                  <button className={css.wish_btn}>
+                    <div className={css.text}>
+                      <div className={css.buy_text}>구매</div>
+                      <div className={css.buy_price}>
+                        <div>60000원</div>
+                        <div className={css.immediately}>즉시 구매가</div>
+                      </div>
+                    </div>
+                  </button>
+                  <div>
+                    <span onClick={close}>삭제</span>
                   </div>
-                  <span onClick={close}>삭제</span>
                 </div>
               </div>
             </li>

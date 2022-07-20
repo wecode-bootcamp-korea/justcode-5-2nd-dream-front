@@ -1,15 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import css from './Login.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
-import kakao_login from '../../styles/images/kakao_login.png';
+import kakao_login from './images/kakao_login.png';
+import BASE_URL from '../../config';
 
 function Login() {
   const navigate = useNavigate();
+  const isLoggedIn = localStorage.getItem('token') !== null;
 
   const login = e => {
     e.preventDefault();
-    alert('로그인 완료!');
-    navigate('/');
+    fetch(`${BASE_URL}/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.token) {
+          localStorage.setItem('token', res.token);
+          localStorage.setItem('email', email);
+          localStorage.setItem('userId', res.id);
+          alert('로그인이 완료되었습니다.');
+          navigate('/');
+        } else {
+          alert('잘못된 이메일이거나 비밀번호입니다.');
+        }
+      });
   };
 
   const [email, setEmail] = useState('');
@@ -28,8 +48,10 @@ function Login() {
     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%#?&])[A-Za-z\d@$!%*#?&]{8,16}$/;
   const emailValidation = () => {
     if (email.length === 0) setIsValidEmail(true);
-    else {
-      setIsValidEmail(regEmail.test(email));
+    else if (regEmail.test(email) && !/[0-9]/g.test(email.split('.')[1])) {
+      setIsValidEmail(true);
+    } else {
+      setIsValidEmail(false);
     }
   };
   const pwValidation = () => {
@@ -58,6 +80,10 @@ function Login() {
     pwValidation();
     loginValidaion();
   });
+
+  useEffect(() => {
+    if (isLoggedIn) navigate('/');
+  }, [isLoggedIn, navigate]);
 
   return (
     <div className={css.container}>
@@ -119,9 +145,9 @@ function Login() {
         <Link to>이메일 찾기</Link>
         <Link to>비밀번호 찾기</Link>
       </div>
-      <button className={css.kakao_btn} disabled={!loginValid}>
+      <a className={css.kakao_btn} href="http://localhost:10010/kakao">
         <img src={kakao_login} alt="kakao_btn" />
-      </button>
+      </a>
     </div>
   );
 }

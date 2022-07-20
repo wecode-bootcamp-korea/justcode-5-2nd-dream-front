@@ -65,7 +65,8 @@
       border-radius: 12px;
       margin: 10px 4px;
       min-width: 190px;
-      width: 15vw;
+      max-width: 272px;
+      width: 19vw;
       height: 60px;
       .text {
         font-size: 15px;
@@ -79,7 +80,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          border-right: 0.1px solid gray;
+          border-right: 1px solid rgba(34, 34, 34, 0.1);
         }
         .buy_price,
         .sell_price {
@@ -104,7 +105,8 @@
     }
     .interested {
       cursor: pointer;
-      width: 30.5vw;
+      width: 38.5vw;
+      max-width: 552px;
       height: 60px;
       background-color: transparent;
       border: 1px solid lightgray;

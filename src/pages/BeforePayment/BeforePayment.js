@@ -5,15 +5,28 @@ import css from './BeforePayment.module.scss';
 function BeforePayment() {
   const location = useLocation();
   const isBuyPage = location.pathname.includes('buy');
+  const { size, price, sellId } = location.state;
 
   const navigate = useNavigate();
   const id = location.pathname.split('/')[2];
 
+  const [bidPrice, setBidPrice] = useState(0);
+
   const moveToLastStep = () => {
+    if (bidPrice < price && isBid) {
+      setIsBid(false);
+      return;
+    }
     if (isBuyPage) {
-      navigate(`/payment/${id}`);
+      navigate(`/payment/${id}`, {
+        state: { price, size, sellId },
+      });
+    } else if (isBid) {
+      navigate(`/settlement/${id}`, {
+        state: { price: bidPrice, size, sellId },
+      });
     } else {
-      navigate(`/settlement/${id}`);
+      navigate(`/settlement/${id}`, { state: { price, size, sellId } });
     }
   };
 
@@ -23,23 +36,20 @@ function BeforePayment() {
     setIsBid(check);
   };
 
-  const [price, setPrice] = useState(0);
-  const immediatelyPrice = 3800000;
-
   const handleInput = e => {
-    if (price?.length > 9) {
-      setPrice(e.target.value.slice(0, 10));
+    if (bidPrice?.length > 9) {
+      setBidPrice(e.target.value.slice(0, 10));
     } else {
-      setPrice(e.target.value);
+      setBidPrice(e.target.value);
     }
   };
 
   const [isValid, setIsValid] = useState(false);
 
   const valid = () => {
-    if (isBid && price >= 30000) {
+    if (isBid && bidPrice >= 30000) {
       setIsValid(true);
-    } else if (!isBid && immediatelyPrice !== undefined) {
+    } else if (!isBid && price !== undefined) {
       setIsValid(true);
     } else {
       setIsValid(false);
@@ -53,12 +63,6 @@ function BeforePayment() {
   return (
     <div className={css.container}>
       <div className={css.content}>
-        <h1>
-          <span className={!isBuyPage ? css.sell : undefined}>
-            {isBuyPage ? '구매' : '판매'}
-          </span>
-          하시기 전에 꼭 확인하세요.
-        </h1>
         <div className={css.content_top}>
           <div className={css.image}>
             <img
@@ -70,17 +74,17 @@ function BeforePayment() {
             <div>B6047317</div>
             <div>Aurolee Small Logo T-Shirt Black</div>
             <div className={css.kr_name}>오로리 스몰 로고 티셔츠 블랙</div>
-            <div className={css.size}>M</div>
+            <div className={css.size}>{size}</div>
           </div>
         </div>
         <div className={css.price_list}>
           <div className={css.buy}>
             <div className={css.title}>즉시 구매가</div>
-            <div>3,800,000원</div>
+            <div>{price?.toLocaleString()}원</div>
           </div>
           <div className={css.sell}>
             <div className={css.title}>즉시 판매가</div>
-            <div>3,800,000원</div>
+            <div>{price?.toLocaleString()}원</div>
           </div>
         </div>
         {!isBuyPage && (
@@ -105,7 +109,13 @@ function BeforePayment() {
         {isBuyPage && (
           <button className={`${css.btn} ${css.buy_btn}`}>즉시 구매</button>
         )}
-        <div className={css.price_now}>
+        <div
+          className={
+            !isValid && price !== 0
+              ? `${css.price_now} ${css.price_red}`
+              : css.price_now
+          }
+        >
           <div
             className={
               !isValid && price !== 0
@@ -121,11 +131,13 @@ function BeforePayment() {
               <input
                 placeholder="희망가 입력"
                 type="number"
-                value={price || ''}
+                value={bidPrice || ''}
                 onChange={handleInput}
               />
+            ) : isBuyPage ? (
+              price?.toLocaleString()
             ) : (
-              immediatelyPrice?.toLocaleString()
+              price?.toLocaleString()
             )}
             원
           </div>
@@ -167,8 +179,8 @@ function BeforePayment() {
             {isBuyPage
               ? '다음 화면에서 확인'
               : isBid
-              ? price
-              : immediatelyPrice?.toLocaleString() + '원'}
+              ? Number(bidPrice)?.toLocaleString() + '원'
+              : price?.toLocaleString() + '원'}
           </div>
         </div>
         <button

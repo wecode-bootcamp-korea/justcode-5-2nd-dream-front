@@ -5,15 +5,16 @@ import css from './DealCheck.module.scss';
 function DealCheck() {
   const location = useLocation();
   const isBuyPage = location.pathname.includes('buy');
+  const { size, price, sellId } = location.state;
 
   const id = location.pathname.split('/')[3];
 
   const navigate = useNavigate();
   const moveToDeal = () => {
     if (isBuyPage) {
-      navigate(`/buy/${id}`);
+      navigate(`/buy/${id}`, { state: { size, price, sellId } });
     } else {
-      navigate(`/sell/${id}`);
+      navigate(`/sell/${id}`, { state: { size, price, sellId } });
     }
   };
 
@@ -66,6 +67,13 @@ function DealCheck() {
   return (
     <div className={css.container}>
       <div className={css.content}>
+        <h1>
+          <span className={isBuyPage ? undefined : css.sell}>
+            {isBuyPage ? '구매' : '판매'}
+          </span>
+          하시기 전에 꼭 확인하세요.
+        </h1>
+
         <div className={css.content_top}>
           <div className={css.image}>
             <img
@@ -77,7 +85,7 @@ function DealCheck() {
             <div>B6047317</div>
             <div>Aurolee Small Logo T-Shirt Black</div>
             <div className={css.kr_name}>오로리 스몰 로고 티셔츠 블랙</div>
-            <div className={css.size}>M</div>
+            <div className={css.size}>{size}</div>
           </div>
         </div>
         <div className={css.check_product}>
@@ -170,7 +178,7 @@ function DealCheck() {
                 : '이중 포장하여 선불 발송합니다.'}
               <div>
                 {isBuyPage
-                  ? '검수 과정 중 밀봉 및 실링이 모두 개봉되어 KREAM 패키지로 포장되어 발송됩니다. 오리지널 폴리백이 포함되지 않을 수 있습니다.'
+                  ? '검수 과정 중 밀봉 및 실링이 모두 개봉되어 DREAM 패키지로 포장되어 발송됩니다. 오리지널 폴리백이 포함되지 않을 수 있습니다.'
                   : '반드시 이중 포장하여 택배 상자에 담아 선불 발송합니다. 합배송은 권장하지 않으며 이로 인한 박스/패키지 훼손은 판매자의 책임입니다.'}
               </div>
             </label>

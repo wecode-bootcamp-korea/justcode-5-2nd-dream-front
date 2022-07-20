@@ -15,11 +15,14 @@
     }
     ul {
       cursor: pointer;
-      li {
-        margin-top: 12px;
-        line-height: 18px;
-        font-size: 15px;
-        color: rgba(34, 34, 34, 0.5);
+      a {
+        text-decoration: none;
+        li {
+          margin-top: 12px;
+          line-height: 18px;
+          font-size: 15px;
+          color: rgba(34, 34, 34, 0.5);
+        }
       }
     }
   }
