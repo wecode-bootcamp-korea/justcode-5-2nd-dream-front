@@ -4,6 +4,7 @@ import css from './ProductInfo.module.scss';
 import ProductOtherInfo from '../ProductOtherInfo/ProductOtherInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleDown } from '@fortawesome/free-regular-svg-icons';
+import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import ProductModal from '../ProductModal/ProductModal';
 import BASE_URL from '../../config';
 
@@ -20,6 +21,8 @@ function ProductInfo() {
   const [produtDetailId, setProductDetailId] = useState(undefined);
   const [sellId, setSellId] = useState(false);
   const [isUpdated, setIsUpdated] = useState(false);
+  const [isWished, setIsWished] = useState(false);
+  const [wishedProductId, setWishedProductId] = useState(undefined);
 
   useEffect(() => {
     setIsUpdated(false);
@@ -88,17 +91,51 @@ function ProductInfo() {
     }
   };
 
+  useEffect(() => {
+    fetch(`${BASE_URL}/wish/${userId}`)
+      .then(res => res.json())
+      .then(data => {
+        const productDetailId = data.data.filter(
+          d => d.product_id === Number(id)
+        )[0]?.product_detail_id;
+        setWishedProductId(productDetailId);
+        const wishLength = data.data.filter(
+          d => d.product_id === Number(id)
+        ).length;
+        if (wishLength !== 0) {
+          setIsWished(true);
+        }
+      });
+  }, [isWished, isUpdated, id, userId]);
+
   const wish = () => {
-    fetch(`${BASE_URL}/wish`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        user_id: userId,
-        product_id: id,
-        product_detail_id: produtDetailId,
-      }),
-    }).then(setIsUpdated(true));
+    if (!isWished) {
+      fetch(`${BASE_URL}/wish`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          user_id: userId,
+          product_id: id,
+          product_detail_id: produtDetailId,
+        }),
+      })
+        .then(setIsWished(true))
+        .then(setIsUpdated(true));
+    } else if (wishedProductId) {
+      fetch(`${BASE_URL}/wish`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          user_id: userId,
+          product_id: id,
+          product_detail_id: wishedProductId,
+        }),
+      })
+        .then(setIsWished(false))
+        .then(setIsUpdated(true));
+    }
   };
+
   return (
     <div className={css.container}>
       <ProductModal
@@ -149,6 +186,11 @@ function ProductInfo() {
           </div>
         </button>
         <button className={css.interested} onClick={wish}>
+          <FontAwesomeIcon
+            icon={faBookmark}
+            className={css.bookmark}
+            color={isWished ? 'black' : 'lightgray'}
+          />
           관심상품 {wishNum === null ? 0 : wishNum}
         </button>
       </div>
