@@ -16,21 +16,21 @@ function Footer() {
 
       <div className={css.second_position}>
         <div className={css.use_info}>
-          <span className={css.fontUse}> 이용안내 </span>
+          <span className={css.font_use}> 이용안내 </span>
           <div className={css.cumsu}>검수기준</div>
           <div className={css.use_policy}>이용정책</div>
           <div className={css.panalty}>패널티정책</div>
           <div className={css.community}>커뮤니티 가이드 라인</div>
         </div>
         <div className={css.support}>
-          <span className={css.fontUse}>고객지원</span>
+          <span className={css.font_use}>고객지원</span>
           <div className={css.kongji}>공지사항</div>
           <div className={css.service}>서비스소개</div>
           <div className={css.show_room}>쇼룸 안내</div>
           <div className={css.seller}>판매자 방문접수</div>
         </div>
         <div className={css.center}>
-          <span className={css.fontUse}> 고객센터 1588 - 7813 </span>
+          <span className={css.font_use}> 고객센터 1588 - 7813 </span>
           <div className={css.run_time}>
             운영시간 평일 11:00 ~ 18:00 (토,일 공휴일 휴무)
           </div>
@@ -50,7 +50,7 @@ function Footer() {
         <div className={css.susset}>제휴제안</div>
         <div className={css.use_law}>이용약관</div>
         <div className={css.priver}>
-          <span className={css.fontUse}>개인정보처리방침</span>
+          <span className={css.font_use}>개인정보처리방침</span>
           <span className={css.insta}>
             <FaInstagram size="30" />
           </span>
