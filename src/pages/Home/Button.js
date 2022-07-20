@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import css from './Button.module.scss';
 import { Container } from 'react-bootstrap';
 import ProductAll from './ProductAll';
-import ProductCard from './ProductCard';
+import ProductCard from '../../styles/ProductCard';
 
 function OutlineTypesExample() {
   return (
