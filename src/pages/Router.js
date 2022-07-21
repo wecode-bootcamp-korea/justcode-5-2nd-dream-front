@@ -16,17 +16,17 @@ import DealCheck from './DealCheck/DealCheck';
 import BeforePayment from './BeforePayment/BeforePayment';
 import Payment from './Payment/Payment';
 import OrderSettlement from './OrderSettlement/OrderSettlement';
-import Styles from './Style/ProductAll';
+import Style from './Style/Styles';
 
 function App() {
   return (
     <BrowserRouter>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/style" element={<Styles />} />
+        <Route path="/stal" element={<Style />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/mypage/:id" element={<MyPage />} />
         <Route path="/mypage/wish/:id" element={<WishPage />} />
@@ -42,9 +42,8 @@ function App() {
         <Route path="/payment/:id" element={<Payment />} />
         <Route path="/settlement/:id" element={<OrderSettlement />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </BrowserRouter>
   );
 }
-
 export default App;

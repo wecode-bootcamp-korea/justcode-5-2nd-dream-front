@@ -9,10 +9,19 @@ const ProductCard = ({ item }) => {
         <div>
           <img className={css.pic} src={item?.user_image} alt="img" />
         </div>
+        <div>
+          <img className={css.spic} src={item?.user_image} alt="img" />
+        </div>
         <div className={css.nam}>{item?.user_name}</div>
-        <div className={css.com}>{item?.content}</div>
-        <img src={item?.image_list.image_url} alt="img" />
-        {/* <div className={css.pri}>{item?.price} 원</div> */}
+        <div className={css.tag}>{item?.user_name}</div>
+        <div className={css.like}>{item?.user_name}</div>
+        <div className={css.reply}>{item?.user_name}</div>
+        <div>
+          <img className={css.propic} src={item?.user_image} alt="img" />
+        </div>
+        <div className={css.prsname}>{item?.user_name}</div>
+
+        <div className={css.pri}>{item?.price} 원</div>
       </div>
     </div>
   );
