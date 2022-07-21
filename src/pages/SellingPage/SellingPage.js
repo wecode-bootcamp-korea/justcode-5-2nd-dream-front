@@ -1,26 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import css from './SellingPage.module.scss';
 import ProfileSNB from '../../components/Profile/ProfileSNB';
 
 function SellingPage() {
-  const locaction = useLocation().pathname;
-  const id = locaction.substring(locaction.lastIndexOf('/') + 1);
-  console.log(id);
   const [sellInfo, setSellInfo] = useState([]);
   const [isUpdated, setIsUpdated] = useState(true);
+  const userId = localStorage.getItem('userId');
 
   // ============ 판매상품 조회
   useEffect(() => {
     setIsUpdated(false);
-    fetch(`http://localhost:10010/salehistory/${id}`, {
+    fetch(`http://localhost:10010/salehistory/${userId}`, {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
         setSellInfo(data.data);
       });
-  }, [id, isUpdated]);
+  }, [isUpdated, userId]);
 
   return (
     <div className={css.container}>
@@ -33,7 +30,7 @@ function SellingPage() {
         <ul className={css.wish_list}>
           {sellInfo.map(sellInfo => {
             return (
-              <li>
+              <li key={sellInfo.id}>
                 <div className={css.wish_product_box}>
                   <div className={css.wish_product}>
                     <img src={sellInfo.url} alt="사용자이미지" />

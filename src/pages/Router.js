@@ -28,10 +28,10 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/styles" element={<Styles />} />
         <Route path="/shop" element={<Shop />} />
-        <Route path="/mypage/:id" element={<MyPage />} />
-        <Route path="/mypage/wish/:id" element={<WishPage />} />
-        <Route path="/mypage/buying/:id" element={<BuyingPage />} />
-        <Route path="/mypage/selling/:id" element={<SellingPage />} />
+        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/mypage/wish" element={<WishPage />} />
+        <Route path="/mypage/buying" element={<BuyingPage />} />
+        <Route path="/mypage/selling" element={<SellingPage />} />
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/buy/select/:id" element={<BuySellPage />} />
         <Route path="/sell/select/:id" element={<BuySellPage />} />

@@ -1,35 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import css from './WishPage.module.scss';
 import ProfileSNB from '../../components/Profile/ProfileSNB';
 
 function WishPage() {
-  const locaction = useLocation().pathname;
-  const id = locaction.substring(locaction.lastIndexOf('/') + 1);
   const [wishInfo, setwishInfo] = useState([]);
   const [isUpdated, setIsUpdated] = useState(true);
+  const userId = localStorage.getItem('userId');
 
   // ============ 관심상품 조회
   useEffect(() => {
     setIsUpdated(false);
-    fetch(`http://localhost:10010/wish/${id}`, {
+    fetch(`http://localhost:10010/wish/${userId}`, {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
         setwishInfo(data.data);
       });
-  }, [id, isUpdated]);
+  }, [userId, isUpdated]);
 
   // ============ 관심상품 삭제
-  const deleteWish = (productId, productDetailId) => {
+  const deleteWish = productId => {
     fetch(`http://localhost:10010/wish`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         user_id: localStorage.getItem('userId'),
         product_id: productId,
-        product_detail_id: productDetailId,
       }),
     })
       .then(alert('삭제가 완료되었습니다.'))
@@ -68,14 +65,7 @@ function WishPage() {
                       </div>
                     </button>
                     <div>
-                      <span
-                        onClick={() =>
-                          deleteWish(
-                            wishInfo.product_id,
-                            wishInfo.product_detail_id
-                          )
-                        }
-                      >
+                      <span onClick={() => deleteWish(wishInfo.product_id)}>
                         삭제
                       </span>
                     </div>

@@ -1,30 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 import css from './BuyingPage.module.scss';
 import ProfileSNB from '../../components/Profile/ProfileSNB';
 
 function BuyingPage() {
-  const locaction = useLocation().pathname;
-  const id = locaction.substring(locaction.lastIndexOf('/') + 1);
-  console.log(id);
   const [buyInfo, setBuyInfo] = useState([]);
   const [isUpdated, setIsUpdated] = useState(true);
+
+  const userId = localStorage.getItem('userId');
 
   // ============ 구매상품 조회
   useEffect(() => {
     setIsUpdated(false);
-    fetch(`http://localhost:10010/purchasehistory/${id}`, {
+    fetch(`http://localhost:10010/purchasehistory/${userId}`, {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
         setBuyInfo(data.data);
-        console.log(data);
-        console.log(buyInfo);
-        console.log(buyInfo[0].size);
       });
-  }, [id, isUpdated]);
-  // console.log(wishInfo);
+  }, [userId, isUpdated]);
 
   return (
     <div className={css.container}>
@@ -37,7 +32,7 @@ function BuyingPage() {
         <ul className={css.wish_list}>
           {buyInfo.map(buyInfo => {
             return (
-              <li>
+              <li key={buyInfo.id}>
                 <div className={css.wish_product_box}>
                   <div className={css.wish_product}>
                     <img src={buyInfo.url} alt="사용자이미지" />
