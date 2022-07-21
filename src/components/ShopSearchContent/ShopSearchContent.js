@@ -1,21 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import css from './ShopSearchContent.module.scss';
 // import WishModal from '../../components/WishModal/WishModal';
 
 function ShopSearchContent(props) {
-  const { searchInfo } = props;
+  const { searchInfo, setKeyword } = props;
   console.log(searchInfo);
 
-  // /search?sort=created_at
-  const keyword = `${searchInfo.created_at}`;
-  // console.log(keyword);
-
-  const [item, setItem] = useState('sell_num');
-  // const sortedItems = items.sort();
-  const handleSellNum = () => setItem('sell_num');
-
-  const handleCreatedNum = () => setItem(keyword);
+  const handleSellNum = e => {
+    console.log(e);
+    setKeyword(e.target.value);
+  };
 
   return (
     <div className={css.search_content}>
@@ -31,15 +26,15 @@ function ShopSearchContent(props) {
       /> */}
       <div className={css.search_option}>
         <div className={css.filter_sorting}>
-          <select>
-            <option onClick={handleSellNum}>인기순</option>
-            <option onClick={handleCreatedNum}>발매일순</option>
+          <select onChange={handleSellNum}>
+            <option value="sell_num">인기순</option>
+            <option value="created_at">발매일순</option>
           </select>
         </div>
       </div>
 
       <ul className={css.search_list}>
-        {searchInfo.map(searchInfo => {
+        {searchInfo?.map(searchInfo => {
           return (
             <li className={css.search_item} key={searchInfo.id}>
               <Link to={`/products/${searchInfo.id}`}>

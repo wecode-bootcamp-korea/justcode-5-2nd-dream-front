@@ -52,7 +52,7 @@
       font-size: 11px;
     }
     .pw_alert {
-      top: 135px;
+      top: 140px;
     }
     .login_btn {
       height: 52px;
@@ -81,6 +81,9 @@
         border-left: 1px solid gray;
         border-right: 1px solid gray;
       }
+    }
+    .disabled {
+      cursor: not-allowed;
     }
   }
   .kakao_btn {
