@@ -152,8 +152,8 @@ function ProfileInfo(props) {
 
   const [addressOpened, setAddressOpened] = useState(false);
 
-  function openAddress() {
-    setAddressOpened(true);
+  function openAddress(id) {
+    setAddressOpened(id);
   }
 
   function closeAddress() {
@@ -203,7 +203,7 @@ function ProfileInfo(props) {
             <div className={css.email_box}>
               <div className={css.email_info}>
                 <h5>비밀번호</h5>
-                <p>{profileInfo.password}</p>
+                <p>●●●●●●●●●●</p>
               </div>
               <button
                 onClick={() =>
@@ -306,13 +306,14 @@ function ProfileInfo(props) {
             {profileInfo &&
               profileInfo.address?.map(data => {
                 if (data.address !== null) {
+                  const isOpenAddressInput = addressOpened === data.id;
                   return (
                     <div className={css.add_lists} key={data.id}>
                       <div>
                         <p>{profileInfo.name}</p>
                         <p>{profileInfo.phone}</p>
                         {data.address && <p>{data.address}</p>}
-                        {addressOpened && (
+                        {isOpenAddressInput && (
                           <div className={css.hidden_address}>
                             <input
                               placeholder="변경할 주소를 입력해주세요."
