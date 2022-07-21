@@ -15,7 +15,7 @@ function ProductStyle(props) {
   const styleImage = style.image_list[0].image_url;
 
   return (
-    <div className={css.container} onClick={() => navigate('/styles')}>
+    <div className={css.container} onClick={() => navigate('/style')}>
       <img className={css.style_img} src={styleImage} alt="style" />
       <div className={css.user}>
         <img
