@@ -4,10 +4,12 @@ import ProductCard from './ProductCard';
 import css from './ProductAll.module.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const ProductAll = () => {
+const ProductAll = ({ queryString }) => {
+  console.log(queryString);
   const [productList, setProductList] = useState([]);
   const getProducts = async () => {
-    let url = 'http://localhost:10010/style';
+    let url = `http://localhost:10010/style?sort=${queryString}`;
+    console.log('url', url);
     // let response = await fetch(url);
     let response = await fetch(url, { method: 'GET' });
     let data = await response.json();
@@ -18,14 +20,14 @@ const ProductAll = () => {
   };
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [queryString]);
   return (
     <div>
       <div className={css.wrap}>
         <Container>
           <Row>
             {productList.map(menu => (
-              <Col lg={5}>
+              <Col lg={4}>
                 <ProductCard item={menu} />
               </Col>
             ))}

@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import css from './Styles.module.scss';
 import { Container } from 'react-bootstrap';
@@ -5,12 +6,24 @@ import ProductAll from './ProductAll';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function OutlineTypesExample() {
+  const [filter, setFilter] = useState('like_num');
+  console.log(filter);
+  // const filtering = () => {
+  //   filter === 'like_num' ?
+  // }
   return (
     <>
       <div className={css.wrap}>
-        <Button variant="outline-primary">인기</Button>{' '}
-        <Button variant="outline-primary">최신</Button>{' '}
-        <Button variant="outline-primary">팔로잉</Button>{' '}
+        <Button onClick={() => setFilter('like_num')} variant="outline-primary">
+          인기
+        </Button>{' '}
+        <Button
+          onClick={() => setFilter('created_at')}
+          variant="outline-primary"
+        >
+          최신
+        </Button>{' '}
+        {/* <Button variant="outline-primary">팔로잉</Button>{' '} */}
       </div>
 
       <Container>
@@ -27,7 +40,7 @@ function OutlineTypesExample() {
       </Container>
 
       <div>
-        <ProductAll />
+        <ProductAll queryString={filter} />
       </div>
     </>
   );
