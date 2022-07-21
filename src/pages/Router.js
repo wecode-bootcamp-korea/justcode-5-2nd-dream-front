@@ -16,9 +16,9 @@ import DealCheck from './DealCheck/DealCheck';
 import BeforePayment from './BeforePayment/BeforePayment';
 import Payment from './Payment/Payment';
 import OrderSettlement from './OrderSettlement/OrderSettlement';
-import Styles from './Style/Styles';
+import Style from './Style/Styles';
 
-function App() {
+function Router() {
   return (
     <BrowserRouter>
       <Header />
@@ -26,7 +26,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/style" element={<Styles />} />
+        <Route path="/style" element={<Style />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/mypage/wish" element={<WishPage />} />

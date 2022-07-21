@@ -80,7 +80,7 @@ function ProductInfo() {
   const moveToDealCheck = deal => {
     if (address === null) {
       alert('주소를 입력해주세요.');
-      navigate(`/mypage/${userId}`);
+      navigate('/mypage');
       return;
     }
     if (token === null) {

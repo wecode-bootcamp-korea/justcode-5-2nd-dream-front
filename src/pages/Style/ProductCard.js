@@ -14,6 +14,9 @@ const ProductCard = ({ item }) => {
             alt="img"
           />
         </div>
+        <div>
+          <img className={css.spic} src={item?.user_image} alt="img" />
+        </div>
         <div className={css.nam}>{item?.user_name}</div>
         <div className={css.tag}>{item?.content}</div>
         <div className={css.like}>{item?.like_num}</div>
