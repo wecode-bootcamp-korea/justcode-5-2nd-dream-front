@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import css from './ProductModal.module.scss';
 
 const ProductModal = props => {
-  const { open, close, size, setSize, setPrice, sizeList, setIsSoldOut } =
-    props;
+  const { open, close, setSize, setPrice, sizeList, sellId, setSellId } = props;
 
   useEffect(() => {
     open
@@ -14,7 +13,7 @@ const ProductModal = props => {
   const handleSize = e => {
     setSize(e.target.value?.split(',')[0]);
     setPrice(Number(e.target.value?.split(',')[1]));
-    setIsSoldOut(e.target.value?.split(',')[2]);
+    setSellId(Number(e.target.value?.split(',')[2]));
     close();
   };
 
@@ -30,17 +29,20 @@ const ProductModal = props => {
           </header>
           <div className={css.sizes}>
             {sizeList?.map(s => {
-              const isSelected = s.size === size;
+              const idSoldOut = s.status === '판매완료';
+              const isSelected = s['sell.id'] === sellId;
               return (
                 <button
                   className={isSelected ? css.selected : undefined}
                   onClick={handleSize}
-                  value={[s.size, s.price, s.status]}
+                  value={[s.size, s.price, s['sell.id']]}
                   key={s['sell.id']}
                 >
                   {s.size}
                   <br />
                   {s.price}
+                  <br />
+                  {idSoldOut ? '판매완료' : '판매중'}
                 </button>
               );
             })}

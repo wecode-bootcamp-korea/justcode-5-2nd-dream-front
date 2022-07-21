@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import css from './OrderSettlement.module.scss';
 import BASE_URL from '../../config';
 
 function OrderSettlement() {
+  const navigate = useNavigate();
   const location = useLocation();
+  const productId = location.pathname.split('/')[2];
+  const productDetailId = location.state.productDetailId;
   const price = Number(location.state.price)?.toLocaleString();
 
   const [isCheckedExact, setIsCheckedExact] = useState(false);
@@ -41,6 +44,13 @@ function OrderSettlement() {
     dealValid();
   });
 
+  const productPrice = Number(
+    price
+      .split('')
+      .filter(e => e !== ',')
+      .join('')
+  );
+
   const userId = localStorage.getItem('userId');
   const [address, setAddress] = useState(undefined);
   const [phone, setPhone] = useState(undefined);
@@ -55,7 +65,22 @@ function OrderSettlement() {
         setName(data.data[0].name);
         setAddress(data.data[0].address[0].address);
       });
-  }, []);
+  }, [userId]);
+
+  const sellProduct = () => {
+    fetch(`${BASE_URL}/sale`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        price: productPrice,
+        user_id: userId,
+        product_detail_id: productDetailId,
+        product_id: productId,
+      }),
+    })
+      .then(alert('판매 등록이 완료되었습니다.'))
+      .then(navigate(`/products/${productId}`));
+  };
 
   return (
     <div className={css.container}>
@@ -240,7 +265,10 @@ function OrderSettlement() {
           <h1>정산금액</h1>
           <div className={css.price}>{price}원</div>
         </div>
-        <button className={valid ? css.deal : `${css.deal} ${css.disabled}`}>
+        <button
+          className={valid ? css.deal : `${css.deal} ${css.disabled}`}
+          onClick={sellProduct}
+        >
           바로 판매하기
         </button>
       </div>

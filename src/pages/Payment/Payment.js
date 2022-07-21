@@ -7,6 +7,7 @@ function Payment() {
   const navigate = useNavigate();
   const location = useLocation();
   const { size, price, sellId } = location.state;
+
   const userId = localStorage.getItem('userId');
   const productId = location.pathname?.split('/')[2];
 
@@ -64,7 +65,7 @@ function Payment() {
         setName(data.data[0].name);
         setAddress(data.data[0].address[0].address);
       });
-  }, []);
+  }, [userId]);
 
   return (
     <div className={css.container}>
