@@ -16,7 +16,7 @@ import DealCheck from './DealCheck/DealCheck';
 import BeforePayment from './BeforePayment/BeforePayment';
 import Payment from './Payment/Payment';
 import OrderSettlement from './OrderSettlement/OrderSettlement';
-import Styles from './Style/ProductAll';
+import Style from './Style/Styles';
 
 function Router() {
   return (
@@ -26,7 +26,7 @@ function Router() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/style" element={<Styles />} />
+        <Route path="/style" element={<Style />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/mypage/wish" element={<WishPage />} />
@@ -47,4 +47,4 @@ function Router() {
   );
 }
 
-export default Router;
+export default App;

@@ -5,6 +5,7 @@ import Slide from './Slide';
 import ProductAll from './ProductAll';
 import queryString from 'query-string';
 import { useLocation, useNavigate } from 'react-router-dom';
+import css from './Home.module.scss';
 
 function Home() {
   const navigate = useNavigate();
@@ -36,7 +37,10 @@ function Home() {
     <div>
       <Banner />
       <Post />
-      <ProductAll />
+      <div className={css.productall}>
+        <ProductAll />
+      </div>
+
       <Slide />
     </div>
   );
