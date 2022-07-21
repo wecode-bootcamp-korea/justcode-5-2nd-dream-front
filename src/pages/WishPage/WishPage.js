@@ -1,35 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import css from './WishPage.module.scss';
 import ProfileSNB from '../../components/Profile/ProfileSNB';
 
 function WishPage() {
-  const locaction = useLocation().pathname;
-  const id = locaction.substring(locaction.lastIndexOf('/') + 1);
   const [wishInfo, setwishInfo] = useState([]);
   const [isUpdated, setIsUpdated] = useState(true);
+  const userId = localStorage.getItem('userId');
 
   // ============ 관심상품 조회
   useEffect(() => {
     setIsUpdated(false);
-    fetch(`http://localhost:10010/wish/${id}`, {
+    fetch(`http://localhost:10010/wish/${userId}`, {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
         setwishInfo(data.data);
       });
-  }, [id, isUpdated]);
+  }, [userId, isUpdated]);
+  // console.log(wishInfo[0].product_id);
 
   // ============ 관심상품 삭제
-  const deleteWish = (productId, productDetailId) => {
+  const deleteWish = productId => {
     fetch(`http://localhost:10010/wish`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         user_id: localStorage.getItem('userId'),
         product_id: productId,
-        product_detail_id: productDetailId,
       }),
     })
       .then(alert('삭제가 완료되었습니다.'))
@@ -58,24 +57,19 @@ function WishPage() {
                     </div>
                   </div>
                   <div className={css.wish_buy}>
-                    <button className={css.wish_btn}>
-                      <div className={css.text}>
-                        <div className={css.buy_text}>구매</div>
-                        <div className={css.buy_price}>
-                          <div>{wishInfo.price} 원</div>
-                          <div className={css.immediately}>즉시 구매가</div>
+                    <Link to={`/products/${wishInfo.product_id}`}>
+                      <button className={css.wish_btn}>
+                        <div className={css.text}>
+                          <div className={css.buy_text}>구매</div>
+                          <div className={css.buy_price}>
+                            <div>{wishInfo.price} 원</div>
+                            <div className={css.immediately}>즉시 구매가</div>
+                          </div>
                         </div>
-                      </div>
-                    </button>
+                      </button>
+                    </Link>
                     <div>
-                      <span
-                        onClick={() =>
-                          deleteWish(
-                            wishInfo.product_id,
-                            wishInfo.product_detail_id
-                          )
-                        }
-                      >
+                      <span onClick={() => deleteWish(wishInfo.product_id)}>
                         삭제
                       </span>
                     </div>
