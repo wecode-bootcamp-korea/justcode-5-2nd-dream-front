@@ -16,7 +16,11 @@ import DealCheck from './DealCheck/DealCheck';
 import BeforePayment from './BeforePayment/BeforePayment';
 import Payment from './Payment/Payment';
 import OrderSettlement from './OrderSettlement/OrderSettlement';
+<<<<<<< HEAD
+import Stal from '../pages/stal/Button';
+=======
 import Styles from './Style/ProductAll';
+>>>>>>> develop
 
 function App() {
   return (
@@ -26,12 +30,21 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+<<<<<<< HEAD
+        <Route path="/stal" element={<Stal />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/mypage/:id" element={<MyPage />} />
+        <Route path="/mypage/wish/:id" element={<WishPage />} />
+        <Route path="/mypage/buying/:id" element={<BuyingPage />} />
+        <Route path="/mypage/selling/:id" element={<SellingPage />} />
+=======
         <Route path="/style" element={<Styles />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/mypage/wish" element={<WishPage />} />
         <Route path="/mypage/buying" element={<BuyingPage />} />
         <Route path="/mypage/selling" element={<SellingPage />} />
+>>>>>>> develop
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/buy/select/:id" element={<BuySellPage />} />
         <Route path="/sell/select/:id" element={<BuySellPage />} />
@@ -46,5 +59,3 @@ function App() {
     </BrowserRouter>
   );
 }
-
-export default App;
