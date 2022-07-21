@@ -65,7 +65,7 @@ function Payment() {
         setName(data.data[0].name);
         setAddress(data.data[0].address[0].address);
       });
-  }, []);
+  }, [userId]);
 
   return (
     <div className={css.container}>
