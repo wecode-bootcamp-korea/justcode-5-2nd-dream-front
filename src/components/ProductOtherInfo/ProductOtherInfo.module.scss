@@ -17,14 +17,41 @@
     margin: 20px 0 0 0;
   }
   .check {
+    cursor: pointer;
     color: #222222;
     display: flex;
+    justify-content: space-between;
     height: 60px;
     align-items: center;
     border-bottom: 1px solid #ebebeb;
+    span {
+      font-size: 40px;
+      margin-right: 10px;
+    }
+  }
+  .ship_desc,
+  .inspection_info,
+  .cancel_info {
+    display: none;
+    font-size: 13px;
+    color: #222222cc;
+    padding: 10px 0;
+    margin: 10px 0;
+    &_text {
+      padding: 10px 0;
+      p {
+        margin: 10px 0;
+      }
+    }
+  }
+  .block {
+    display: block;
   }
   .last {
     margin: 0 0 30px 0;
+  }
+  .last_open {
+    margin: 0;
   }
   .inspection {
     display: flex;
