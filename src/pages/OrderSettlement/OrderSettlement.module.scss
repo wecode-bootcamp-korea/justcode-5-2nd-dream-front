@@ -44,6 +44,7 @@
     .content {
       font-size: 14px;
       line-height: 16px;
+      width: 100%;
       display: flex;
       justify-content: space-between;
       padding: 10px 4px 20px;
@@ -52,7 +53,6 @@
       width: 72px;
       height: 34px;
       cursor: pointer;
-
       border-radius: 10px;
       border: 0;
       background-color: black;
@@ -158,7 +158,7 @@
       button {
         background-color: transparent;
         border: 0;
-        cursor: pointer;
+        cursor: not-allowed;
       }
       .deal_title {
         font-size: 15px;
@@ -173,7 +173,7 @@
       }
     }
     .card {
-      width: 676px;
+      width: 636px;
       height: 62px;
       border: 1px solid;
       margin-top: 20px;
@@ -192,10 +192,11 @@
   .checks {
     width: 700px;
     margin: 0 auto;
+    position: relative;
     padding: 0 30px 30px;
     background-color: white;
     .check {
-      width: 680px;
+      width: 100%;
       height: 100px;
       display: flex;
       justify-content: space-between;

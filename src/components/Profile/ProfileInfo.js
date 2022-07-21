@@ -4,29 +4,30 @@ import { useNavigate } from 'react-router-dom';
 // import SizeModal from '../../components/SizeModal/SizeModal';
 
 function ProfileInfo(props) {
-  const { profileInfo, id, setProfileInfo, isUpdated, setIsUpdated } = props;
+  const { profileInfo, setProfileInfo, isUpdated, setIsUpdated } = props;
   const navigate = useNavigate();
   const gotomain = () => {
     navigate('/');
   };
+  const userId = localStorage.getItem('userId');
   //============ 프로필 조회
   useEffect(() => {
     setIsUpdated(false);
-    fetch(`http://localhost:10010/mypage/${id}`, {
+    fetch(`http://localhost:10010/mypage/${userId}`, {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
         setProfileInfo(data.data[0]);
       });
-  }, [id, setProfileInfo, isUpdated]);
+  }, [userId, setProfileInfo, isUpdated, setIsUpdated]);
 
   //============ 프로필 주소 등록
   const writeAddressBtn = () => {
     if (profileInfo.name === null || profileInfo.phone === null) {
       alert('이름과 전화번호를 모두 입력해주세요.');
     } else {
-      fetch(`http://localhost:10010/address/${id}`, {
+      fetch(`http://localhost:10010/address/${userId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -38,7 +39,7 @@ function ProfileInfo(props) {
 
   //============ 회원탈퇴
   const deleteUser = () => {
-    fetch(`http://localhost:10010/users/${id}`, {
+    fetch(`http://localhost:10010/users/${userId}`, {
       method: 'DELETE',
     })
       .then(alert('삭제가 완료되었습니다.'))
@@ -49,8 +50,8 @@ function ProfileInfo(props) {
   };
 
   //============ 프로필 주소 삭제
-  const deleteAddress = id => {
-    fetch(`http://localhost:10010/address/${id}`, {
+  const deleteAddress = userId => {
+    fetch(`http://localhost:10010/address/${userId}`, {
       method: 'DELETE',
     })
       .then(alert('삭제가 완료되었습니다.'))
@@ -62,8 +63,8 @@ function ProfileInfo(props) {
   const handleTextarea = e => {
     setText(e.target.value);
   };
-  const editAddressBtn = id => {
-    fetch(`http://localhost:10010/address/${id}`, {
+  const editAddressBtn = userId => {
+    fetch(`http://localhost:10010/address/${userId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -90,7 +91,7 @@ function ProfileInfo(props) {
     setTextName(e.target.value);
   };
   const editNameBtn = () => {
-    fetch(`http://localhost:10010/mypage/${id}`, {
+    fetch(`http://localhost:10010/mypage/${userId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -117,7 +118,7 @@ function ProfileInfo(props) {
     setTextPhone(e.target.value);
   };
   const editPhoneBtn = () => {
-    fetch(`http://localhost:10010/phone/${id}`, {
+    fetch(`http://localhost:10010/phone/${userId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -152,8 +153,8 @@ function ProfileInfo(props) {
 
   const [addressOpened, setAddressOpened] = useState(false);
 
-  function openAddress() {
-    setAddressOpened(true);
+  function openAddress(userId) {
+    setAddressOpened(userId);
   }
 
   function closeAddress() {
@@ -187,9 +188,9 @@ function ProfileInfo(props) {
         </div>
         <div className={css.user_profile}>
           <div className={css.profile_img}>
-            <img src={profileInfo.image} alt="사용자이미지" />
+            <img src={profileInfo?.image} alt="사용자이미지" />
           </div>
-          <h3>{profileInfo.name}</h3>
+          <h3>{profileInfo?.name}</h3>
         </div>
         <div className={css.profile_info}>
           <div className={css.profile_group}>
@@ -197,13 +198,13 @@ function ProfileInfo(props) {
             <div className={css.email_box}>
               <div className={css.email_info}>
                 <h5>이메일 주소</h5>
-                <p>{profileInfo.email}</p>
+                <p>{profileInfo?.email}</p>
               </div>
             </div>
             <div className={css.email_box}>
               <div className={css.email_info}>
                 <h5>비밀번호</h5>
-                <p>{profileInfo.password}</p>
+                <p>●●●●●●●●●●</p>
               </div>
               <button
                 onClick={() =>
@@ -223,7 +224,7 @@ function ProfileInfo(props) {
               <div className={css.email_box}>
                 <div className={css.email_info}>
                   <h5>이름</h5>
-                  <p>{profileInfo.name} </p>
+                  <p>{profileInfo?.name} </p>
                 </div>
                 <button onClick={openName}>변경</button>
               </div>
@@ -248,7 +249,7 @@ function ProfileInfo(props) {
               <div className={css.email_box}>
                 <div className={css.email_info}>
                   <h5>휴대폰 번호</h5>
-                  <p>{profileInfo.phone} </p>
+                  <p>{profileInfo?.phone} </p>
                 </div>
                 <button onClick={openPhone}>변경</button>
               </div>
@@ -306,30 +307,31 @@ function ProfileInfo(props) {
             {profileInfo &&
               profileInfo.address?.map(data => {
                 if (data.address !== null) {
+                  const isOpenAddressInput = addressOpened === data.userId;
                   return (
-                    <div className={css.add_lists} key={data.id}>
+                    <div className={css.add_lists} key={data.userId}>
                       <div>
-                        <p>{profileInfo.name}</p>
-                        <p>{profileInfo.phone}</p>
+                        <p>{profileInfo?.name}</p>
+                        <p>{profileInfo?.phone}</p>
                         {data.address && <p>{data.address}</p>}
-                        {addressOpened && (
+                        {isOpenAddressInput && (
                           <div className={css.hidden_address}>
                             <input
                               placeholder="변경할 주소를 입력해주세요."
                               value={text}
                               onChange={handleTextarea}
                             />
-                            <button onClick={() => editAddressBtn(data.id)}>
+                            <button onClick={() => editAddressBtn(data.userId)}>
                               변경
                             </button>
                           </div>
                         )}
                       </div>
                       <div>
-                        <button onClick={() => openAddress(data.id)}>
+                        <button onClick={() => openAddress(data.userId)}>
                           수정
                         </button>
-                        <button onClick={() => deleteAddress(data.id)}>
+                        <button onClick={() => deleteAddress(data.userId)}>
                           삭제
                         </button>
                       </div>

@@ -15,9 +15,11 @@
         img {
           width: 70px;
           height: 70px;
+          border-radius: 100%;
+          object-fit: cover;
         }
         p {
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 600;
           text-align: center;
         }
