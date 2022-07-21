@@ -21,12 +21,11 @@ const ProductAll = () => {
   }, []);
   return (
     <div>
-      <div className={css.jd}>Just Dropped</div>
       <div className={css.wrap}>
         <Container>
           <Row>
             {productList.map(menu => (
-              <Col lg={3}>
+              <Col lg={5}>
                 <ProductCard item={menu} />
               </Col>
             ))}

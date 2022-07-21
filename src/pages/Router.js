@@ -16,12 +16,12 @@ import DealCheck from './DealCheck/DealCheck';
 import BeforePayment from './BeforePayment/BeforePayment';
 import Payment from './Payment/Payment';
 import OrderSettlement from './OrderSettlement/OrderSettlement';
-import Styles from './Style/ProductAll';
+import Styles from './Style/Styles';
 
 function App() {
   return (
     <BrowserRouter>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -42,7 +42,7 @@ function App() {
         <Route path="/payment/:id" element={<Payment />} />
         <Route path="/settlement/:id" element={<OrderSettlement />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </BrowserRouter>
   );
 }
