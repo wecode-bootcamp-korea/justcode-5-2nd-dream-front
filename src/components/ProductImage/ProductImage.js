@@ -14,7 +14,7 @@ function ProductImage() {
       .then(data => {
         setImage(data[0].images[0].product_images);
       });
-  }, []);
+  }, [id]);
 
   return (
     <div className={css.container}>

@@ -5,12 +5,18 @@ import ProductStyle from '../../components/ProductStyle/ProductStyle';
 import OtherProduct from '../../components/OtherProduct/OtherProduct';
 import css from './ProductDetail.module.scss';
 import BASE_URL from '../../config';
+import { useLocation } from 'react-router-dom';
 
 function ProductDetail() {
+  const location = useLocation();
+  const id = location.pathname.split('/')[2];
+
   const [styleList, setStyleList] = useState(undefined);
+  const [otherList, setOtherList] = useState(undefined);
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [location.pathname]);
 
   useEffect(() => {
     fetch(`${BASE_URL}/style`, {
@@ -21,6 +27,19 @@ function ProductDetail() {
         setStyleList(data.data.slice(0, 4));
       });
   }, []);
+
+  useEffect(() => {
+    fetch(`${BASE_URL}/main`, {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        const filteredList = data.data[0]
+          .filter(d => d.product_id !== Number(id))
+          ?.slice(0, 6);
+        setOtherList(filteredList);
+      });
+  }, [id]);
 
   return (
     <div className={css.container}>
@@ -34,14 +53,11 @@ function ProductDetail() {
           <ProductStyle key={style.style_id} style={style} />
         ))}
       </div>
-      <h2>Aurolee의 다른 상품</h2>
+      <h2>다른 상품</h2>
       <div className={css.other_container}>
-        <OtherProduct />
-        <OtherProduct />
-        <OtherProduct />
-        <OtherProduct />
-        <OtherProduct />
-        <OtherProduct />
+        {otherList?.map(other => (
+          <OtherProduct key={other.product_id} other={other} />
+        ))}
       </div>
     </div>
   );
