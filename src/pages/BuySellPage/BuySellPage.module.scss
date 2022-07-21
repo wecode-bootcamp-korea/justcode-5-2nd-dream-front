@@ -37,6 +37,7 @@
     position: relative;
     left: 10px;
     height: 430px;
+    overflow: auto;
     button {
       width: 217px;
       height: 52px;
@@ -83,6 +84,9 @@
     }
     .green {
       background-color: #41b979;
+    }
+    .keep {
+      cursor: not-allowed;
     }
   }
 }

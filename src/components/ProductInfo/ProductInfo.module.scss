@@ -113,6 +113,10 @@
       border-radius: 12px;
       min-width: 388px;
       margin: 0 0 0 4px;
+      .bookmark {
+        position: relative;
+        right: 10px;
+      }
     }
   }
   h3 {
