@@ -1,6 +1,7 @@
 .top {
   display: flex;
   justify-content: end;
+  flex-direction: row-reverse; 
   font-size: 20px;
   height: 40px;
   width: 100%;
