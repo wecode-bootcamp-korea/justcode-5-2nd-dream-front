@@ -18,7 +18,7 @@ import Payment from './Payment/Payment';
 import OrderSettlement from './OrderSettlement/OrderSettlement';
 import Styles from './Style/ProductAll';
 
-function App() {
+function Router() {
   return (
     <BrowserRouter>
       <Header />
@@ -47,4 +47,4 @@ function App() {
   );
 }
 
-export default App;
+export default Router;
