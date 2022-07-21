@@ -5,16 +5,22 @@ function ProductOtherInfo() {
   const [isCheckedShip, setIsCheckedShip] = useState(false);
   const handleShip = () => {
     setIsCheckedShip(!isCheckedShip);
+    setIsCheckedIns(false);
+    setIsCheckedCancel(false);
   };
 
   const [isCheckedIns, setIsCheckedIns] = useState(false);
   const handleIns = () => {
     setIsCheckedIns(!isCheckedIns);
+    setIsCheckedShip(false);
+    setIsCheckedCancel(false);
   };
 
   const [isCheckedCancel, setIsCheckedCancel] = useState(false);
   const handleCancel = () => {
     setIsCheckedCancel(!isCheckedCancel);
+    setIsCheckedShip(false);
+    setIsCheckedIns(false);
   };
 
   return (
