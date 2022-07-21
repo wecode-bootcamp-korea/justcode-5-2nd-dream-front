@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import css from './WishPage.module.scss';
 import ProfileSNB from '../../components/Profile/ProfileSNB';
 
@@ -18,6 +19,7 @@ function WishPage() {
         setwishInfo(data.data);
       });
   }, [userId, isUpdated]);
+  // console.log(wishInfo[0].product_id);
 
   // ============ 관심상품 삭제
   const deleteWish = productId => {
@@ -55,15 +57,17 @@ function WishPage() {
                     </div>
                   </div>
                   <div className={css.wish_buy}>
-                    <button className={css.wish_btn}>
-                      <div className={css.text}>
-                        <div className={css.buy_text}>구매</div>
-                        <div className={css.buy_price}>
-                          <div>{wishInfo.price} 원</div>
-                          <div className={css.immediately}>즉시 구매가</div>
+                    <Link to={`/products/${wishInfo.product_id}`}>
+                      <button className={css.wish_btn}>
+                        <div className={css.text}>
+                          <div className={css.buy_text}>구매</div>
+                          <div className={css.buy_price}>
+                            <div>{wishInfo.price} 원</div>
+                            <div className={css.immediately}>즉시 구매가</div>
+                          </div>
                         </div>
-                      </div>
-                    </button>
+                      </button>
+                    </Link>
                     <div>
                       <span onClick={() => deleteWish(wishInfo.product_id)}>
                         삭제

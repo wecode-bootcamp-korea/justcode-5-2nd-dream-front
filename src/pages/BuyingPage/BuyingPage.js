@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import css from './BuyingPage.module.scss';
 import ProfileSNB from '../../components/Profile/ProfileSNB';
 
@@ -45,15 +45,17 @@ function BuyingPage() {
                     </div>
                   </div>
                   <div className={css.wish_buy}>
-                    <button className={css.buy_btn}>
-                      <div className={css.text}>
-                        <div className={css.buy_text}>구매 완료</div>
-                        <div className={css.buy_price}>
-                          <div>{buyInfo.price} 원</div>
-                          <div className={css.immediately}>즉시 구매가</div>
+                    <Link to={`/products/${buyInfo.product_id}`}>
+                      <button className={css.buy_btn}>
+                        <div className={css.text}>
+                          <div className={css.buy_text}>{buyInfo.status}</div>
+                          <div className={css.buy_price}>
+                            <div>{buyInfo.price} 원</div>
+                            <div className={css.immediately}>즉시 구매가</div>
+                          </div>
                         </div>
-                      </div>
-                    </button>
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </li>
