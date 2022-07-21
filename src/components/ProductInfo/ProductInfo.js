@@ -22,7 +22,6 @@ function ProductInfo() {
   const [sellId, setSellId] = useState(false);
   const [isUpdated, setIsUpdated] = useState(false);
   const [isWished, setIsWished] = useState(false);
-  const [wishedProductId, setWishedProductId] = useState(undefined);
 
   useEffect(() => {
     setIsUpdated(false);
@@ -95,10 +94,6 @@ function ProductInfo() {
     fetch(`${BASE_URL}/wish/${userId}`)
       .then(res => res.json())
       .then(data => {
-        const productDetailId = data.data.filter(
-          d => d.product_id === Number(id)
-        )[0]?.product_detail_id;
-        setWishedProductId(productDetailId);
         const wishLength = data.data.filter(
           d => d.product_id === Number(id)
         ).length;
@@ -111,6 +106,9 @@ function ProductInfo() {
   }, [isWished, isUpdated, id, userId]);
 
   const wish = () => {
+    if (!userId) {
+      navigate('/login');
+    }
     if (!isWished) {
       fetch(`${BASE_URL}/wish`, {
         method: 'POST',
@@ -118,19 +116,17 @@ function ProductInfo() {
         body: JSON.stringify({
           user_id: userId,
           product_id: id,
-          product_detail_id: produtDetailId,
         }),
       })
         .then(setIsWished(true))
         .then(setIsUpdated(true));
-    } else if (wishedProductId) {
+    } else {
       fetch(`${BASE_URL}/wish`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           user_id: userId,
           product_id: id,
-          product_detail_id: wishedProductId,
         }),
       })
         .then(setIsWished(false))
