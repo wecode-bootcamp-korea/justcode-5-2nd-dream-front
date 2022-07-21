@@ -1,0 +1,146 @@
+.container {
+  margin: 40px 0 0 40px;
+  max-width: 560px;
+  min-width: 400px;
+  width: 40vw;
+  padding: 0 30px;
+  border-left: 1px solid lightgray;
+  a {
+    color: #222222;
+    font-size: 18px;
+  }
+  .name {
+    color: #222222;
+    font-size: 18px;
+    margin: 10px 0 4px;
+  }
+  .sub_name {
+    color: rgba(34, 34, 34, 0.5);
+    font-size: 14px;
+    margin: 0 0 4px;
+  }
+  .size_container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 50px;
+    border-bottom: 1px solid #ebebeb;
+    .size {
+      font-size: 13px;
+      color: #222222cc;
+    }
+    .all_size {
+      cursor: pointer;
+      font-weight: 600;
+      position: absolute;
+      right: 30px;
+      .circle {
+        padding: 0 0 0 10px;
+      }
+    }
+  }
+  .sell_container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 50px;
+    .recent_sell {
+      font-size: 13px;
+      color: #222222cc;
+    }
+    .price {
+      cursor: pointer;
+      font-weight: 600;
+      position: absolute;
+      right: 30px;
+    }
+  }
+  .buttons {
+    margin: 10px 0;
+    width: 100%;
+    .buy_btn,
+    .sell_btn {
+      cursor: pointer;
+      border: 0;
+      border-radius: 12px;
+      margin: 10px 4px;
+      min-width: 190px;
+      max-width: 272px;
+      width: 19vw;
+      height: 60px;
+      .text {
+        font-size: 15px;
+        font-weight: 600;
+        color: white;
+        display: flex;
+        height: 58px;
+        .buy_text,
+        .sell_text {
+          width: 55px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-right: 1px solid rgba(34, 34, 34, 0.1);
+        }
+        .buy_price,
+        .sell_price {
+          display: flex;
+          width: 100%;
+          flex-direction: column;
+          justify-content: center;
+          text-align: left;
+          padding: 0 10px;
+          .immediately {
+            font-size: 11px;
+            font-weight: 200;
+          }
+        }
+      }
+    }
+    .sell_btn {
+      background-color: #41b979;
+    }
+    .buy_btn {
+      background-color: #ef6253;
+    }
+    .interested {
+      cursor: pointer;
+      width: 38.5vw;
+      max-width: 552px;
+      height: 60px;
+      background-color: transparent;
+      border: 1px solid lightgray;
+      border-radius: 12px;
+      min-width: 388px;
+      margin: 0 0 0 4px;
+      .bookmark {
+        position: relative;
+        right: 10px;
+      }
+    }
+  }
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px 0;
+    border-bottom: 1px solid lightgray;
+  }
+  .info_container {
+    display: flex;
+    padding: 30px 0;
+    border-bottom: 1px solid lightgray;
+    .info_div {
+      width: 25%;
+      border-right: 1px solid lightgray;
+      padding: 10px;
+      .info_title {
+        font-size: 12px;
+        color: #22222280;
+        padding: 4px 0;
+      }
+    }
+    .last {
+      border: 0;
+    }
+  }
+}

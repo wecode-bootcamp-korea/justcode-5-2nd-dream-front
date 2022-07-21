@@ -46,4 +46,40 @@ export default class SimpleSlider extends Component {
       </div>
     );
   }
+
+  render() {
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+    };
+    return (
+      <div>
+        <Slider {...settings}>
+          <div>
+            <img className={css.banner} src={b1} />
+          </div>
+          <div>
+            <img className={css.banner} src={b2} />
+          </div>
+          <div>
+            <img className={css.banner} src={b3} />
+          </div>
+          <div>
+            <img className={css.banner} src={b4} />
+          </div>
+          <div>
+            <img className={css.banner} src={b5} />
+          </div>
+          <div>
+            <img className={css.banner} src={b6} />
+          </div>
+        </Slider>
+      </div>
+    );
+  }
 }

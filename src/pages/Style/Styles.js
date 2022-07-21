@@ -2,6 +2,7 @@ import Button from 'react-bootstrap/Button';
 import css from './Styles.module.scss';
 import { Container } from 'react-bootstrap';
 import ProductAll from './ProductAll';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function OutlineTypesExample() {
   return (
@@ -11,6 +12,7 @@ function OutlineTypesExample() {
         <Button variant="outline-primary">최신</Button>{' '}
         <Button variant="outline-primary">팔로잉</Button>{' '}
       </div>
+
       <Container>
         <div className={css.Container}>
           <div className={css.tag}>
@@ -23,6 +25,7 @@ function OutlineTypesExample() {
           </div>
         </div>
       </Container>
+
       <div>
         <ProductAll />
       </div>

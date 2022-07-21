@@ -11,26 +11,25 @@ import t8 from './images/t8.png';
 import t9 from './images/t9.png';
 import t10 from './images/t10.png';
 
-
 function Post() {
   return (
     <div>
       <div className={css.posi}>
-        <img className={css.banner} src={t1} alt="t1"/>
-        <img className={css.banner} src={t2} alt="t2"/>
-        <img className={css.banner} src={t3} alt="t3"/>
-        <img className={css.banner} src={t4} alt="t4"/>
-        <img className={css.banner} src={t5} alt="t5"/>
+        <img className={css.banner} src={t1} alt="t1" />
+        <img className={css.banner} src={t2} alt="t2" />
+        <img className={css.banner} src={t3} alt="t3" />
+        <img className={css.banner} src={t4} alt="t4" />
+        <img className={css.banner} src={t5} alt="t5" />
       </div>
       <div className={css.posi}>
-        <img className={css.banner} src={t6} alt="t6"/>
-        <img className={css.banner} src={t7} alt="t7"/>
-        <img className={css.banner} src={t8} alt="t8"/>
-        <img className={css.banner} src={t9} alt="t9"/>
-        <img className={css.banner} src={t10} alt="t10"/>
+        <img className={css.banner} src={t6} alt="t6" />
+        <img className={css.banner} src={t7} alt="t7" />
+        <img className={css.banner} src={t8} alt="t8" />
+        <img className={css.banner} src={t9} alt="t9" />
+        <img className={css.banner} src={t10} alt="t10" />
       </div>
     </div>
-  )
+  );
 }
 
 export default Post;

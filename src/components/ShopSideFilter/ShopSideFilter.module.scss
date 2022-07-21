@@ -1,0 +1,104 @@
+.search_filter {
+  width: 210px;
+  margin-right: 10px;
+  padding-right: 10px;
+  .filter_status {
+    .status_box {
+      padding: 23px 0 15px 0;
+      span {
+        font-size: 14px;
+        font-weight: 700;
+      }
+    }
+    .filter_list {
+      // width: 165px;
+      border-bottom: 1px solid #ebebeb;
+      cursor: pointer;
+
+      .filter_title {
+        padding-top: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .main_title {
+          font-size: 13px;
+          font-weight: 600;
+        }
+        .icon_box {
+          color: rgba(34, 34, 34, 0.5);
+          font-size: 20px;
+        }
+      }
+      .all_category {
+        margin: 7px 0;
+        font-size: 15px;
+        color: rgba(34, 34, 34, 0.5);
+        display: flex;
+        flex-direction: column;
+      }
+      .show_category {
+        margin: 7px 0;
+        font-size: 13px;
+        display: flex;
+        flex-direction: column;
+        label {
+          display: flex;
+          align-items: center;
+        }
+        .clothing_sub_box {
+          padding: 3px 0 8px 20px;
+          display: flex;
+          flex-direction: column;
+        }
+        .top_size {
+          padding: 5px;
+          button {
+            width: 80px;
+            margin: 1.5px;
+            // border: rgba(34, 34, 34, 0.5) 1px solid;
+          }
+        }
+        .bottom_size {
+          padding: 5px;
+          button {
+            width: 52px;
+            margin: 1.5px;
+            // border: rgba(34, 34, 34, 0.5) 1px solid;
+          }
+        }
+        .one_size {
+          padding: 5px;
+          button {
+            width: 160px;
+            // border: rgba(34, 34, 34, 0.5) 1px solid;
+          }
+        }
+        .shoes_size {
+          padding: 5px;
+          button {
+            width: 50px;
+            margin: 1.5px;
+            // border: rgba(34, 34, 34, 0.5) 1px solid;
+          }
+        }
+      }
+    }
+  }
+}
+
+.show-menu {
+  width: 376px;
+  height: 500px;
+  position: absolute;
+  left: 0px;
+  transition: 1s;
+}
+
+.hide-menu {
+  width: 376px;
+  height: 500px;
+  position: absolute;
+  left: -376px;
+  transition: 1s;
+}

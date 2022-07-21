@@ -1,0 +1,176 @@
+@mixin size($w: null, $h: null, $m: null, $p: null) {
+  width: $w;
+  height: $h;
+  margin: $m;
+  padding: $p;
+}
+@mixin position($position, $t: null, $r: null, $b: null, $l: null) {
+  position: $position;
+  top: $t;
+  right: $r;
+  bottom: $b;
+  left: $l;
+}
+$border: 1px solid #e8e8e8;
+
+.modal {
+  @include position(fixed, 0, 0, 0, 0);
+
+  justify-content: center;
+  display: none;
+  z-index: 99;
+  background-color: rgba(34, 34, 34, 0.5);
+  section {
+    height: 430px;
+    background-color: white;
+    border-radius: 12px;
+  }
+  header {
+    width: 450px;
+    margin: 30px 0;
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+    background-color: white;
+  }
+  .sizes {
+    width: 400px;
+    margin: 0 auto 10px;
+    position: relative;
+    left: 10px;
+    height: 280px;
+    overflow: scroll;
+    overflow-x: hidden;
+    button {
+      width: 117px;
+      height: 52px;
+      margin: 5px;
+      border: 1px solid #d3d3d3;
+      background-color: transparent;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+    .selected {
+      border: 1px solid black;
+    }
+  }
+  .confirm {
+    cursor: pointer;
+    width: 120px;
+    height: 42px;
+    background-color: black;
+    border: 0;
+    color: white;
+    border-radius: 12px;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+.openModal {
+  display: flex;
+  align-items: center;
+  animation: modal-bg-show 0.3s;
+}
+@keyframes modal-show {
+  from {
+    opacity: 0;
+    margin-top: -50px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+@keyframes modal-bg-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .modal {
+    header {
+      width: 100vw;
+    }
+    .sizes {
+      width: 90vw;
+      justify-content: center;
+      position: relative;
+      height: auto;
+      overflow: auto;
+    }
+    section {
+      height: auto;
+      padding: 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 705px) {
+  .modal {
+    .sizes {
+      width: 93vw;
+    }
+  }
+}
+
+@media screen and (max-width: 682px) {
+  .modal {
+    .sizes {
+      width: 650px;
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .modal {
+    .sizes {
+      width: 83vw;
+    }
+  }
+}
+
+@media screen and (max-width: 610px) {
+  .modal {
+    .sizes {
+      width: 70vw;
+    }
+  }
+}
+@media screen and (max-width: 544px) {
+  .modal {
+    .sizes {
+      width: 74vw;
+    }
+  }
+}
+
+@media screen and (max-width: 514px) {
+  .modal {
+    .sizes {
+      width: 80vw;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .modal {
+    .sizes {
+      width: 80vw;
+    }
+  }
+}
+
+@media screen and (max-width: 476px) {
+  .modal {
+    .sizes {
+      width: 85vw;
+      position: relative;
+      bottom: 10px;
+    }
+  }
+}

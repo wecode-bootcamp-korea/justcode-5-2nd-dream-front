@@ -1,0 +1,92 @@
+.container {
+  background-color: rgb(250, 250, 250);
+  padding: 30px 0 150px;
+  .content {
+    width: 700px;
+    height: 649px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0 4px 10px 0 rgb(0 0 0 / 10%);
+    &_top {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid lightgray;
+    }
+    .image {
+      img {
+        width: 80px;
+        height: 80px;
+        border-radius: 12px;
+      }
+    }
+    .text {
+      margin: 15px;
+      line-height: 22px;
+      .kr_name {
+        font-size: 13px;
+        color: lightgray;
+      }
+    }
+  }
+  .sizes {
+    width: 700px;
+    border-bottom: 1px solid lightgray;
+    margin: 0 auto 20px;
+    padding: 20px 0;
+    position: relative;
+    left: 10px;
+    height: 430px;
+    overflow: auto;
+    button {
+      width: 217px;
+      height: 52px;
+      margin: 5px;
+      border: 1px solid #d3d3d3;
+      background-color: transparent;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+    .selected {
+      border: 1px solid black;
+    }
+  }
+  .price_btn {
+    position: relative;
+    cursor: pointer;
+    color: white;
+    left: 20px;
+    border: 0;
+    border-radius: 12px;
+    display: flex;
+    background-color: #333333;
+    justify-content: center;
+    align-items: center;
+    width: 651px;
+    height: 58px;
+  }
+  .buttons {
+    display: flex;
+    .btn {
+      margin: 0 10px;
+      position: relative;
+      cursor: pointer;
+      color: white;
+      left: 20px;
+      border: 0;
+      border-radius: 12px;
+      display: flex;
+      background-color: #333333;
+      justify-content: center;
+      align-items: center;
+      width: 320px;
+      height: 58px;
+    }
+    .green {
+      background-color: #41b979;
+    }
+    .keep {
+      cursor: not-allowed;
+    }
+  }
+}

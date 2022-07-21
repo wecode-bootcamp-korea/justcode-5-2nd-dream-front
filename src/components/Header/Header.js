@@ -1,7 +1,7 @@
 import React from 'react';
 import css from './Header.module.scss';
 import { FiSearch } from 'react-icons/fi';
-import styles from '../../pages/Style/Styles';
+import style from '../../pages/Style/ProductAll';
 import login from '../../pages/Login/Login';
 import { Link } from 'react-router-dom';
 import shop from '../../pages/Shop/Shop';
@@ -24,7 +24,7 @@ function Header() {
         <div className={css.kream_log}>DREAM</div>
         <div className={css.right}>
           <div className={css.style}>
-            <Link to="/styles">STYLE</Link>
+            <Link to="/style">STYLE</Link>
           </div>
           <div className={css.shop}>
             <Link to="/shop">SHOP</Link>
