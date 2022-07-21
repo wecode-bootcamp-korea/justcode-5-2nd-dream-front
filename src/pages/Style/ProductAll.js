@@ -21,7 +21,6 @@ const ProductAll = () => {
   }, []);
   return (
     <div>
-      <div className={css.jd}>Just Dropped</div>
       <div className={css.wrap}>
         <Container>
           <Row>
