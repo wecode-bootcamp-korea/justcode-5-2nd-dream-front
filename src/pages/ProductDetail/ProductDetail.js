@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ProductImage from '../../components/ProductImage/ProductImage';
 import ProductInfo from '../../components/ProductInfo/ProductInfo';
 import ProductStyle from '../../components/ProductStyle/ProductStyle';
@@ -6,6 +6,10 @@ import OtherProduct from '../../components/OtherProduct/OtherProduct';
 import css from './ProductDetail.module.scss';
 
 function ProductDetail() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className={css.container}>
       <div className={css.info_container}>
