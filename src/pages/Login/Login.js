@@ -142,8 +142,12 @@ function Login() {
       </form>
       <div className={css.links}>
         <Link to="/signup">이메일 가입</Link>
-        <Link to>이메일 찾기</Link>
-        <Link to>비밀번호 찾기</Link>
+        <Link to className={css.disabled}>
+          이메일 찾기
+        </Link>
+        <Link to className={css.disabled}>
+          비밀번호 찾기
+        </Link>
       </div>
       <a className={css.kakao_btn} href="http://localhost:10010/kakao">
         <img src={kakao_login} alt="kakao_btn" />
