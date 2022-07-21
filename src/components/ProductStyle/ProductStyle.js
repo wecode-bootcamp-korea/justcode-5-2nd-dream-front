@@ -2,32 +2,38 @@ import React from 'react';
 import css from './ProductStyle.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSmile, faComment } from '@fortawesome/free-regular-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
-function ProductStyle() {
+function ProductStyle(props) {
+  const navigate = useNavigate();
+  const { style } = props;
+  const { content } = style;
+  const commentNum = style.comment_num;
+  const likeNum = style.like_num;
+  const userImage = style.user_image;
+  const userName = style.user_name;
+  const styleImage = style.image_list[0].image_url;
+
   return (
-    <div className={css.container}>
-      <img
-        className={css.style_img}
-        src="https://img.freepik.com/free-psd/black-t-shirt-mockup_125540-430.jpg?t=st=1657692010~exp=1657692610~hmac=d78542f2763d0764641356256be067c08d73c6f0aa84913fdcee87dbfd3ce08a&w=2000"
-        alt="style"
-      />
+    <div className={css.container} onClick={() => navigate('/styles')}>
+      <img className={css.style_img} src={styleImage} alt="style" />
       <div className={css.user}>
         <img
           className={css.user_img}
-          src="https://img.freepik.com/free-psd/black-t-shirt-mockup_125540-430.jpg?t=st=1657692010~exp=1657692610~hmac=d78542f2763d0764641356256be067c08d73c6f0aa84913fdcee87dbfd3ce08a&w=2000"
+          src={userImage ? userImage : styleImage}
           alt="style"
         />
-        <div className={css.user_name}>test</div>
+        <div className={css.user_name}>{userName ? userName : 'Dream'}</div>
       </div>
-      <p className={css.content}>test</p>
+      <p className={css.content}>{content}</p>
       <div className={css.cnt}>
         <div className={css.like}>
           <FontAwesomeIcon icon={faSmile} />
-          <div>66</div>
+          <div>{likeNum}</div>
         </div>
         <div className={css.comment}>
           <FontAwesomeIcon icon={faComment} />
-          <div>66</div>
+          <div>{commentNum}</div>
         </div>
       </div>
     </div>
