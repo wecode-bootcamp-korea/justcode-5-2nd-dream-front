@@ -21,7 +21,7 @@ import Styles from './Style/ProductAll';
 function App() {
   return (
     <BrowserRouter>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -42,7 +42,7 @@ function App() {
         <Route path="/payment/:id" element={<Payment />} />
         <Route path="/settlement/:id" element={<OrderSettlement />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </BrowserRouter>
   );
 }

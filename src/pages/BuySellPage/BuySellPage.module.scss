@@ -30,7 +30,7 @@
     }
   }
   .sizes {
-    width: 700px;
+    width: 620px;
     border-bottom: 1px solid lightgray;
     margin: 0 auto 20px;
     padding: 20px 0;
@@ -39,8 +39,8 @@
     height: 430px;
     overflow: auto;
     button {
-      width: 217px;
-      height: 52px;
+      width: 187px;
+      height: 62px;
       margin: 5px;
       border: 1px solid #d3d3d3;
       background-color: transparent;
@@ -55,31 +55,29 @@
     position: relative;
     cursor: pointer;
     color: white;
-    left: 20px;
     border: 0;
     border-radius: 12px;
     display: flex;
     background-color: #333333;
     justify-content: center;
     align-items: center;
-    width: 651px;
+    width: 641px;
     height: 58px;
   }
   .buttons {
     display: flex;
     .btn {
-      margin: 0 10px;
+      margin: 0 auto;
       position: relative;
       cursor: pointer;
       color: white;
-      left: 20px;
       border: 0;
       border-radius: 12px;
       display: flex;
       background-color: #333333;
       justify-content: center;
       align-items: center;
-      width: 320px;
+      width: 280px;
       height: 58px;
     }
     .green {
