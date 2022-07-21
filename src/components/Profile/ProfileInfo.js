@@ -50,8 +50,9 @@ function ProfileInfo(props) {
   };
 
   //============ 프로필 주소 삭제
-  const deleteAddress = userId => {
-    fetch(`http://localhost:10010/address/${userId}`, {
+  const deleteAddress = id => {
+    console.log(id);
+    fetch(`http://localhost:10010/address/${id}`, {
       method: 'DELETE',
     })
       .then(alert('삭제가 완료되었습니다.'))
@@ -63,8 +64,8 @@ function ProfileInfo(props) {
   const handleTextarea = e => {
     setText(e.target.value);
   };
-  const editAddressBtn = userId => {
-    fetch(`http://localhost:10010/address/${userId}`, {
+  const editAddressBtn = id => {
+    fetch(`http://localhost:10010/address/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -321,7 +322,7 @@ function ProfileInfo(props) {
                               value={text}
                               onChange={handleTextarea}
                             />
-                            <button onClick={() => editAddressBtn(data.userId)}>
+                            <button onClick={() => editAddressBtn(data.id)}>
                               변경
                             </button>
                           </div>
@@ -331,7 +332,7 @@ function ProfileInfo(props) {
                         <button onClick={() => openAddress(data.userId)}>
                           수정
                         </button>
-                        <button onClick={() => deleteAddress(data.userId)}>
+                        <button onClick={() => deleteAddress(data.id)}>
                           삭제
                         </button>
                       </div>
