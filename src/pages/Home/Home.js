@@ -53,20 +53,16 @@ function Home() {
       <Banner />
       <Post />
       <div className={css.container}>
-        <h1>Just Dropped</h1>
-        <h2>발매상품</h2>
         <div className={css.productall}>
           <ProductAll data={justDropList} />
         </div>
       </div>
       <div className={css.container}>
-        <h1>Most Popular</h1>
-        <h2>인기상품</h2>
         <div className={css.productall}>
           <ProductAll data={popularList} />
         </div>
       </div>
-      <Slide />
+      <Slide data={styles} />
     </div>
   );
 }

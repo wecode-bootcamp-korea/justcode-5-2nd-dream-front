@@ -1,5 +1,11 @@
+.productCard {
+  width: 300px;
+  margin-bottom: 50px;
+  margin-right: 20px;
+}
 .swap {
-  // margin-top: 200px;
+  display: flex;
+  flex-direction: column;
 }
 
 .gap {
@@ -22,10 +28,8 @@ pic {
 }
 
 .spic {
-  width: 35px;
+  width: 300px;
   border-radius: 50px;
-  margin-top: 500px;
-  margin-left: -250px;
 }
 
 .nam {
@@ -57,7 +61,9 @@ pic {
 }
 
 .propic {
-  width: 60px;
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
 }
 
 .prname {
@@ -68,6 +74,8 @@ pic {
 
 .pri {
   font-size: 17px;
-  margin-top: 180px;
-  margin-left: 70px;
+}
+
+.product_container {
+  display: flex;
 }

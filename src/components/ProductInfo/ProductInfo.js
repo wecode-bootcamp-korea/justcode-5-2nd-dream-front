@@ -21,7 +21,7 @@ function ProductInfo() {
   const [produtDetailId, setProductDetailId] = useState(undefined);
   const [sellId, setSellId] = useState(false);
   const [isUpdated, setIsUpdated] = useState(false);
-  const [isWished, setIsWished] = useState(false);
+  const [isWished, setIsWished] = useState(undefined);
 
   useEffect(() => {
     setIsUpdated(false);
@@ -58,12 +58,12 @@ function ProductInfo() {
     fetch(`${BASE_URL}/information/${id}`)
       .then(res => res.json())
       .then(data => {
-        const sizeList = data.data[0].size_list;
+        const sizeList = data?.data[0]?.size_list;
         setSizeList(sizeList);
-        setSize(sizeList[0].size);
-        setPrice(sizeList[0].price);
-        setProductDetailId(sizeList[0].product_detail_id);
-        setSellId(sizeList[0]['sell.id']);
+        setSize(sizeList && sizeList[0].size);
+        setPrice(sizeList && sizeList[0].price);
+        setProductDetailId(sizeList && sizeList[0].product_detail_id);
+        setSellId(sizeList && sizeList[0]['sell.id']);
       });
   }, [id]);
 
@@ -78,12 +78,13 @@ function ProductInfo() {
   };
 
   const moveToDealCheck = deal => {
-    if (address === null) {
+    if (sizeList === undefined) {
+      alert('현재 거래가 불가능한 상품입니다.');
+    } else if (address === null) {
       alert('주소를 입력해주세요.');
       navigate('/mypage');
       return;
-    }
-    if (token === null) {
+    } else if (token === null) {
       navigate('/login');
     } else {
       navigate(`/${deal}/select/${id}`, { state: sizeList, produtDetailId });
@@ -166,7 +167,9 @@ function ProductInfo() {
           <div className={css.text}>
             <div className={css.buy_text}>구매</div>
             <div className={css.buy_price}>
-              <div>{price?.toLocaleString()}원</div>
+              <div>
+                {sizeList ? `${price?.toLocaleString()}원` : '구매 불가'}
+              </div>
               <div className={css.immediately}>즉시 구매가</div>
             </div>
           </div>
@@ -178,17 +181,21 @@ function ProductInfo() {
           <div className={css.text}>
             <div className={css.sell_text}>판매</div>
             <div className={css.sell_price}>
-              <div>{price?.toLocaleString()}원</div>
+              <div>
+                {sizeList ? `${price?.toLocaleString()}원` : '판매 불가'}
+              </div>
               <div className={css.immediately}>즉시 판매가</div>
             </div>
           </div>
         </button>
         <button className={css.interested} onClick={wish}>
-          <FontAwesomeIcon
-            icon={faBookmark}
-            className={css.bookmark}
-            color={isWished ? 'black' : 'lightgray'}
-          />
+          {isWished !== undefined && (
+            <FontAwesomeIcon
+              icon={faBookmark}
+              className={css.bookmark}
+              color={isWished ? 'black' : 'lightgray'}
+            />
+          )}
           관심상품 {wishNum === null ? 0 : wishNum}
         </button>
       </div>
