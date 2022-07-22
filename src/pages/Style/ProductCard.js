@@ -18,11 +18,7 @@ const ProductCard = ({ item }) => {
             alt="img"
           />
         </div>
-        <img className={css.pic} src={item?.image_url} alt="img" />
         <div>
-          <img className={css.spic} src={item?.image_url} alt="img" />
-          <img className={css.spic} src={item?.im} alt="img" />
-
           {item.user_image ? (
             <img className={css.spic} src={item?.user_image} alt="img" />
           ) : null}
