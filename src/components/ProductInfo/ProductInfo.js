@@ -108,7 +108,7 @@ function ProductInfo(props) {
         }
       });
   }, [isWished, isUpdated, id, userId]);
-  console.log(!userId);
+
   const wish = () => {
     if (!userId) {
       navigate('/login');
