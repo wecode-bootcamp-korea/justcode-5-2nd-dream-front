@@ -13,11 +13,9 @@ function BeforePayment() {
   const [bidPrice, setBidPrice] = useState(0);
 
   const moveToLastStep = () => {
-    if (bidPrice < price && isBid) {
+    if (bidPrice < Number(price) && isBid) {
       setIsBid(false);
-      return;
-    }
-    if (isBuyPage) {
+    } else if (isBuyPage) {
       navigate(`/payment/${id}`, {
         state: { price, size, sellId },
       });
