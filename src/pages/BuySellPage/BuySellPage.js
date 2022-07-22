@@ -10,7 +10,7 @@ function BuySellPage() {
   const img = productInfo.images[0].product_images;
   const modelNum = productInfo.model_number;
   const { name, comment } = productInfo;
-
+  const userId = localStorage.getItem('userId');
   const id = location.pathname.split('/')[3];
 
   const navigate = useNavigate();
@@ -55,30 +55,59 @@ function BuySellPage() {
           </div>
         </div>
         <div className={css.sizes}>
-          {sizeList?.map(s => {
-            const isSelected = s['sell.id'] === sellId;
-            const isSoldOut = s.status === '판매완료';
-            return (
-              <button
-                className={isSelected ? css.selected : undefined}
-                onClick={handleSize}
-                value={[
-                  s.size,
-                  s.price,
-                  s['sell.id'],
-                  s.product_detail_id,
-                  isSoldOut,
-                ]}
-                key={s['sell.id']}
-              >
-                {s.size}
-                <br />
-                {s.price}
-                <br />
-                {isBuyPage ? (isSoldOut ? '판매완료' : '판매중') : null}
-              </button>
-            );
-          })}
+          {isBuyPage
+            ? sizeList
+                ?.filter(s => s['sell.user_id'] !== Number(userId))
+                .map(s => {
+                  const isSelected = s['sell.id'] === sellId;
+                  const isSoldOut = s.status === '판매완료';
+                  return (
+                    <button
+                      className={isSelected ? css.selected : undefined}
+                      onClick={handleSize}
+                      value={[
+                        s.size,
+                        s.price,
+                        s['sell.id'],
+                        s.product_detail_id,
+                        isSoldOut,
+                        s['sell.user_id'],
+                      ]}
+                      key={s['sell.id']}
+                    >
+                      {s.size}
+                      <br />
+                      {s.price}
+                      <br />
+                      {isBuyPage ? (isSoldOut ? '판매완료' : '판매중') : null}
+                    </button>
+                  );
+                })
+            : sizeList.map(s => {
+                const isSelected = s['sell.id'] === sellId;
+                const isSoldOut = s.status === '판매완료';
+                return (
+                  <button
+                    className={isSelected ? css.selected : undefined}
+                    onClick={handleSize}
+                    value={[
+                      s.size,
+                      s.price,
+                      s['sell.id'],
+                      s.product_detail_id,
+                      isSoldOut,
+                      s['sell.user_id'],
+                    ]}
+                    key={s['sell.id']}
+                  >
+                    {s.size}
+                    <br />
+                    {s.price}
+                    <br />
+                    {isBuyPage ? (isSoldOut ? '판매완료' : '판매중') : null}
+                  </button>
+                );
+              })}
         </div>
         {isBuyPage && isSoldOut === 'false' && (
           <button className={css.price_btn} onClick={moveToDealCheck}>

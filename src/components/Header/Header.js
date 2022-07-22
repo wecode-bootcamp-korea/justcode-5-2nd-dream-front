@@ -8,7 +8,6 @@ import shop from '../../pages/Shop/Shop';
 import mypage from '../../pages/MyPage/MyPage';
 
 function Header(props) {
-  // const [isLogin, setIsLogin] = useState(false);
   const { isLogin, setIsLogin } = props;
   const handleLogoutToken = () => {
     localStorage.removeItem('token');
@@ -24,11 +23,9 @@ function Header(props) {
     if (localStorage.getItem('token')) {
       setIsLogin(true);
     } else {
-      console.log(isLogin);
       setIsLogin(false);
     }
   }, [isLogin]);
-  console.log('local', localStorage.getItem('token'));
 
   return (
     <>
