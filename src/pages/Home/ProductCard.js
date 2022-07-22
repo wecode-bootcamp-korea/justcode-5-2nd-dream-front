@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ProductCard = ({ item }) => {
   return (
-    <div>
+    <div className={css.container}>
       <img className={css.pic} src={item?.image_url} alt="img" />
       <div className={css.nam}>{item?.product_name}</div>
       <div className={css.com}>{item?.brand}</div>

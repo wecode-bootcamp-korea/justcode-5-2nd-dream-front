@@ -27,7 +27,7 @@ function OutlineTypesExample() {
       </div>
 
       <Container>
-        <div className={css.Container}>
+        {/* <div className={css.Container}>
           <div className={css.tag}>
             <Button>#줌인챌린지</Button>
             <Button>#스트릿룩</Button> <Button>#프스캇</Button>
@@ -36,7 +36,7 @@ function OutlineTypesExample() {
             <Button>#베이퍼와플</Button>
             <Button>#오늘은뭐입지</Button>
           </div>
-        </div>
+        </div> */}
       </Container>
 
       <div>
