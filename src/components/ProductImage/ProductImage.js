@@ -59,6 +59,9 @@ const StyledSlider = styled(Slider)`
     position: relative;
     left: 100px;
   }
+  .slick-slide div {
+    outline: none;
+  }
   .slick-dots {
     position: relative;
     margin: 0 auto;
