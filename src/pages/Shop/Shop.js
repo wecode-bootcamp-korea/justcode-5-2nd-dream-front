@@ -8,20 +8,18 @@ import ShopSearchContent from '../../components/ShopSearchContent/ShopSearchCont
 function Shop() {
   const [searchInfo, setSearchInfo] = useState([]);
   const [isUpdated, setIsUpdated] = useState(true);
-  // /search?sort=created_at
-  // const keyword = query.get('created_at');
+  const [keyword, setKeyword] = useState('sell_num');
 
   useEffect(() => {
     setIsUpdated(false);
-    fetch(`http://localhost:10010/search`, {
+    fetch(`http://localhost:10010/search?sort=${keyword}`, {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
         setSearchInfo(data);
-        // console.log(data);
       });
-  }, [searchInfo, isUpdated]);
+  }, [isUpdated, keyword]);
 
   return (
     <div className={css.container}>
@@ -29,7 +27,7 @@ function Shop() {
       <ShopTopBanner searchInfo={searchInfo} />
       <div className={css.content}>
         <ShopSideFilter />
-        <ShopSearchContent searchInfo={searchInfo} />
+        <ShopSearchContent searchInfo={searchInfo} setKeyword={setKeyword} />
       </div>
     </div>
   );

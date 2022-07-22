@@ -1,9 +1,10 @@
 .container {
   padding: 40px 70px 160px;
-  max-width: 1200px;
+  max-width: 1300px;
   display: flex;
   .content_box {
     width: 80vw;
+    margin-left: 50px;
     .content_title_border {
       padding: 5px 0 16px;
       border-bottom: 3px solid #222;
@@ -53,12 +54,12 @@
           }
           .buy_btn {
             background-color: #ef6253;
-            cursor: pointer;
+            cursor: default;
             border: 0;
             border-radius: 12px;
             margin: 10px 4px;
             min-width: 190px;
-            width: 15vw;
+            width: 13vw;
             height: 60px;
             .text {
               font-size: 15px;
@@ -67,14 +68,14 @@
               display: flex;
               height: 58px;
               .buy_text {
-                width: 55px;
+                width: 80px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 border-right: 0.1px solid gray;
                 letter-spacing: 2px;
-                padding-left: 10px;
-                padding-right: 10px;
+                padding-left: 5px;
+                padding-right: 5px;
               }
               .buy_price {
                 display: flex;

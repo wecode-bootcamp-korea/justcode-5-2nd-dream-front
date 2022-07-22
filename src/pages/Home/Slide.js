@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import ProductCard from './ProductCard';
 import ProductAll from './ProductAll';
@@ -17,6 +17,8 @@ import s10 from './images/s10.png';
 
 export default class SwipeToSlide extends Component {
   render() {
+    const styles = this.props.data;
+    // console.log(this.props);
     const settings = {
       className: 'center',
       infinite: true,
@@ -35,36 +37,23 @@ export default class SwipeToSlide extends Component {
           <div class={css.container}>
             <span className={css.font}>Style Picks!</span>
             <Slider {...settings}>
-              <div class={css.gap}>
-                <img class={css.baner} src={s1} alt="s1" />
-              </div>
-              <div class={css.gap}>
-                <img class={css.baner} src={s2} alt="s2" />
-              </div>
-              <div class={css.gap}>
-                <img class={css.baner} src={s3} alt="s3" />
-              </div>
-              <div class={css.gap}>
-                <img class={css.baner} src={s4} alt="s4" />
-              </div>
-              <div class={css.gap}>
-                <img class={css.baner} src={s5} alt="s5" />
-              </div>
-              <div class={css.gap}>
-                <img class={css.baner} src={s6} alt="s6" />
-              </div>
-              <div class={css.gap}>
-                <img class={css.baner} src={s7} alt="s7" />
-              </div>
-              <div class={css.gap}>
-                <img class={css.baner} src={s8} alt="s8" />
-              </div>
-              <div class={css.gap}>
-                <img class={css.baner} src={s9} alt="s9" />
-              </div>
-              <div class={css.gap}>
-                <img class={css.baner} src={s10} alt="s10" />
-              </div>
+              {styles.map(style => {
+                style.nickname = `@${style.user_email.split('@')[0]}`;
+                return (
+                  <div class={css.gap}>
+                    <div className={css.baner}>
+                      <img className={css.baner_image} src={style.image_url} />
+                      {style.user_image ? (
+                        <img
+                          className={css.user_image}
+                          src={style.user_image}
+                        />
+                      ) : null}
+                      <span className={css.nickname}>{style.nickname}</span>
+                    </div>
+                  </div>
+                );
+              })}
             </Slider>
           </div>
         </Container>
