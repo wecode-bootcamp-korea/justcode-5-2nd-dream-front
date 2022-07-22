@@ -41,8 +41,6 @@ function ProductDetail() {
       });
   }, [id]);
 
-  console.log(styleList);
-
   return (
     <div className={css.container}>
       <div className={css.info_container}>
