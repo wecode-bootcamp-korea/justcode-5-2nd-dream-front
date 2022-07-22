@@ -2,10 +2,6 @@ import React from 'react';
 import css from './ProductCard.module.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 const ProductCard = ({ item }) => {
-  // console.log('item: ', item.image_list[1]);
-
-  // const image_url = item.image_list[0].image_url.replace('&quot;', '');
-  // console.log('item: ', image_url);
   console.log(item);
 
   return (

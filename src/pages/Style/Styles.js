@@ -14,15 +14,20 @@ function OutlineTypesExample() {
   return (
     <>
       <div className={css.wrap}>
-        <Button onClick={() => setFilter('like_num')} variant="outline-primary">
-          인기
-        </Button>{' '}
+        <Button
+          onClick={() => setFilter('like_num')}
+          variant="outline-dark"
+          size="sm"
+        >
+          <span className={css.btn_text}>인기</span>
+        </Button>
         <Button
           onClick={() => setFilter('created_at')}
-          variant="outline-primary"
+          variant="outline-dark"
+          size="sm"
         >
-          최신
-        </Button>{' '}
+          <span className={css.btn_text}>최신</span>
+        </Button>
         {/* <Button variant="outline-primary">팔로잉</Button>{' '} */}
       </div>
 
