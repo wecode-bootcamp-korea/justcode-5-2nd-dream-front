@@ -1,14 +1,19 @@
 .wrap {
   display: flex;
   justify-content: center;
-  margin-bottom: 150px;
+  margin-bottom: 50px;
 
   Button {
-    color: blue;
-    font-size: 40px;
+    color: black;
     margin-top: 30px;
-    margin-left: 40px;
+    margin-right: 40px;
     border: none;
+    padding: 8px 14px;
+    border-radius: 19px;
+  }
+  .btn_text {
+    font-size: 18px;
+    font-weight: 700;
   }
 }
 .tag {
