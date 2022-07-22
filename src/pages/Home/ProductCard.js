@@ -11,7 +11,9 @@ const ProductCard = ({ item }) => {
       className={css.container}
       onClick={() => navigate(`/products/${item.product_id}`)}
     >
-      <img className={css.pic} src={item?.image_url} alt="img" />
+      <div className={css.pic_cont}>
+        <img className={css.pic} src={item?.image_url} alt="img" />
+      </div>
       <div className={css.nam}>{item?.product_name}</div>
       <div className={css.com}>{item?.brand}</div>
       <div className={css.pri}>{item?.price} 원</div>

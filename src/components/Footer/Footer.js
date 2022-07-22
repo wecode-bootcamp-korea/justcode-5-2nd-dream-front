@@ -45,28 +45,33 @@ function Footer() {
       </div>
       <div className={css.bottom_line}></div>
       <div className={css.introduce}>
-        회사소개
-        <div className={css.recu}>인재채용</div>
-        <div className={css.susset}>제휴제안</div>
-        <div className={css.use_law}>이용약관</div>
-        <div className={css.priver}>
-          <span className={css.font_use}>개인정보처리방침</span>
-          <span className={css.insta}>
-            <FaInstagram size="30" />
-          </span>
-          <span className={css.face}>
-            <FaFacebook size="30" />
-          </span>
-          <img className={css.ch_banner} alt="ch_banner" size="10" src={ch} />
+        <div className={css.intro_top}>
+          <div>
+            <p>회사소개</p>
+            <p>인재채용</p>
+            <p>이용약관</p>
+            <p>개인정보처리방침</p>
+          </div>
+          <div className={css.social}>
+            <span className={css.insta}>
+              <FaInstagram size="30" />
+            </span>
+            <span className={css.face}>
+              <FaFacebook size="30" />
+            </span>
+            <img className={css.ch_banner} alt="ch_banner" size="10" src={ch} />
+          </div>
         </div>
-        <div className={css.word}>
-          드림 주식회사. 대표 고길동 사업자등록번호: 123-56-78910
-          <span className={css.word_line}> 사업자정보확인 </span>
-          통신판매업: 제 2022-경기안양C-0193호
-        </div>
-        <div className={css.word1}>
-          사업장소재지: 경기도 안양시 평촌동 내곡로 117, 8층 개인정보관리책임자:
-          아이유 호스팅 서비스: 네이버 클라우드(주)
+        <div>
+          <p className={css.word}>
+            드림 주식회사. 대표 고길동 사업자등록번호: 123-56-78910
+            <span className={css.word_line}> 사업자정보확인 </span>
+            통신판매업: 제 2022-경기안양C-0193호
+          </p>
+          <p className={css.word1}>
+            사업장소재지: 경기도 안양시 평촌동 내곡로 117, 8층
+            개인정보관리책임자: 아이유 호스팅 서비스: 네이버 클라우드(주)
+          </p>
         </div>
         <div className={css.kcp}>
           <img className={css.kcp_banner} alt="kcp_banner" src={kcp} />

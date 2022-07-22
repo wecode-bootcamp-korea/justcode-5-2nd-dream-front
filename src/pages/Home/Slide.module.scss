@@ -4,27 +4,36 @@
   margin-top: 150px;
   margin-bottom: 50px;
 }
+
 .font {
   font-size: 30px;
   font-weight: bold;
 }
+
 .gap {
   margin-top: 15px;
+
   .baner {
     position: relative;
     width: 200px;
+    padding-bottom: 125%;
+
     .baner_image {
+      position: absolute;
       width: 100%;
-      height: auto;
-      max-width: 260px;
-      max-height: 260px;
+      height: 100%;
       border-radius: 7px;
     }
+
     .user_image {
       position: absolute;
       top: 10px;
       left: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
     }
+
     .nickname {
       position: absolute;
       bottom: 10px;

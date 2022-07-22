@@ -1,9 +1,19 @@
 .container {
   margin-bottom: 50px;
 }
-.pic {
+
+.pic_cont {
+  position: relative;
   width: 100%;
-  border-radius: 7px;
+  padding-bottom: 140%;
+
+  .pic {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;
+  }
+
 }
 
 .nam {

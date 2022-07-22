@@ -3,6 +3,7 @@
   margin-bottom: 50px;
   margin-right: 20px;
 }
+
 .swap {
   display: flex;
   flex-direction: column;
@@ -12,7 +13,7 @@
   padding-left: 10px;
 }
 
-pic {
+.pic {
   position: relative;
 }
 
@@ -25,6 +26,10 @@ pic {
   height: auto;
   max-width: 230px;
   max-height: 230px;
+}
+
+.propic_cont {
+  position: absolute;
 }
 
 .spic {
@@ -49,11 +54,13 @@ pic {
   margin-top: 20px;
   margin-left: 0px;
 }
+
 .like {
   font-size: 15px;
   margin-top: 10px;
   margin-left: 0px;
 }
+
 .reply {
   font-size: 15px;
   margin-top: -15px;
