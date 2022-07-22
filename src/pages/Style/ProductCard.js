@@ -2,7 +2,6 @@ import React from 'react';
 import css from './ProductCard.module.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 const ProductCard = ({ item }) => {
-
   // console.log('item: ', item.image_list[1]);
 
   // const image_url = item.image_list[0].image_url.replace('&quot;', '');
@@ -21,14 +20,12 @@ const ProductCard = ({ item }) => {
         </div>
         <img className={css.pic} src={item?.image_url} alt="img" />
         <div>
-
           <img className={css.spic} src={item?.image_url} alt="img" />
           <img className={css.spic} src={item?.im} alt="img" />
 
           {item.user_image ? (
             <img className={css.spic} src={item?.user_image} alt="img" />
           ) : null}
-
         </div>
         <div className={css.nam}>{item?.user_name}</div>
         <div className={css.tag}>{item?.content}</div>
