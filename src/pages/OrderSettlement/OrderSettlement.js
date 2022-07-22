@@ -8,7 +8,13 @@ function OrderSettlement() {
   const location = useLocation();
   const productId = location.pathname.split('/')[2];
   const productDetailId = location.state.productDetailId;
+  const size = location.state.size;
   const price = Number(location.state.price)?.toLocaleString();
+  const productInfo = location.state.productInfo;
+  const { comment } = productInfo;
+  const productName = productInfo.name;
+  const modelNum = productInfo.model_number;
+  const img = productInfo.images[0].product_images;
 
   const [isCheckedExact, setIsCheckedExact] = useState(false);
   const exactCheckBtn = () => {
@@ -87,16 +93,13 @@ function OrderSettlement() {
       <div className={css.content}>
         <div className={css.content_top}>
           <div className={css.image}>
-            <img
-              src="https://img.freepik.com/free-psd/black-t-shirt-mockup_125540-430.jpg?t=st=1657692010~exp=1657692610~hmac=d78542f2763d0764641356256be067c08d73c6f0aa84913fdcee87dbfd3ce08a&w=2000"
-              alt="product_img"
-            />
+            <img src={img} alt="product_img" />
           </div>
           <div className={css.text}>
-            <div>B6047317</div>
-            <div>Aurolee Small Logo T-Shirt Black</div>
-            <div className={css.kr_name}>오로리 스몰 로고 티셔츠 블랙</div>
-            <div className={css.size}>M</div>
+            <div>{modelNum}</div>
+            <div>{productName}</div>
+            <div className={css.kr_name}>{comment}</div>
+            <div className={css.size}>{size}</div>
           </div>
         </div>
       </div>

@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
 import shop from '../../pages/Shop/Shop';
 import mypage from '../../pages/MyPage/MyPage';
 
-function Header() {
-  const [isLogin, setIsLogin] = useState(false);
-
+function Header(props) {
+  // const [isLogin, setIsLogin] = useState(false);
+  const { isLogin, setIsLogin } = props;
   const handleLogoutToken = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('email');
@@ -48,7 +48,9 @@ function Header() {
         <div className={css.customer_center}>고객센터</div>
       </div>
       <div className={css.second_border}>
-        <div className={css.kream_log}>DREAM</div>
+        <div className={css.kream_log}>
+          <Link to="/">DREAM</Link>
+        </div>
         <div className={css.right}>
           <div className={css.style}>
             <Link to="/style">STYLE</Link>

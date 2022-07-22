@@ -8,7 +8,8 @@ import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import ProductModal from '../ProductModal/ProductModal';
 import BASE_URL from '../../config';
 
-function ProductInfo() {
+function ProductInfo(props) {
+  const { isLogin } = props;
   const id = useLocation().pathname.split('/')[2];
   const token = localStorage.getItem('token');
 
@@ -32,7 +33,7 @@ function ProductInfo() {
       .then(data => {
         setProductInfo(data[0]);
       });
-  }, [isUpdated, id]);
+  }, [isUpdated, id, isLogin]);
 
   const latestPrice = Number(productInfo?.latest_price)?.toLocaleString();
   const wishNum = productInfo?.wish_num;
@@ -87,7 +88,9 @@ function ProductInfo() {
     } else if (token === null) {
       navigate('/login');
     } else {
-      navigate(`/${deal}/select/${id}`, { state: sizeList, produtDetailId });
+      navigate(`/${deal}/select/${id}`, {
+        state: { sizeList, produtDetailId, productInfo },
+      });
     }
   };
 
@@ -105,12 +108,11 @@ function ProductInfo() {
         }
       });
   }, [isWished, isUpdated, id, userId]);
-
+  console.log(!userId);
   const wish = () => {
     if (!userId) {
       navigate('/login');
-    }
-    if (!isWished) {
+    } else if (!isWished) {
       fetch(`${BASE_URL}/wish`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

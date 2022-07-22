@@ -34,10 +34,14 @@ function ProductImage() {
   return (
     <Container>
       <StyledSlider {...settings}>
-        {image?.map(img => {
+        {image?.map((img, idx) => {
           return (
             <CardBox>
-              <CardImg alt="test" src={img.product_images} />
+              <CardImg
+                alt="test"
+                src={img.product_images}
+                key={`${img + idx}`}
+              />
             </CardBox>
           );
         })}

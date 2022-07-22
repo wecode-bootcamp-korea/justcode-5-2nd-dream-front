@@ -6,8 +6,11 @@ import BASE_URL from '../../config';
 function Payment() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { size, price, sellId } = location.state;
-
+  const { size, price, sellId, productInfo } = location.state;
+  const { comment } = productInfo;
+  const productName = productInfo.name;
+  const modelNum = productInfo.model_number;
+  const img = productInfo.images[0].product_images;
   const userId = localStorage.getItem('userId');
   const productId = location.pathname?.split('/')[2];
 
@@ -72,15 +75,12 @@ function Payment() {
       <div className={css.content}>
         <div className={css.content_top}>
           <div className={css.image}>
-            <img
-              src="https://img.freepik.com/free-psd/black-t-shirt-mockup_125540-430.jpg?t=st=1657692010~exp=1657692610~hmac=d78542f2763d0764641356256be067c08d73c6f0aa84913fdcee87dbfd3ce08a&w=2000"
-              alt="product_img"
-            />
+            <img src={img} alt="product_img" />
           </div>
           <div className={css.text}>
-            <div>B6047317</div>
-            <div>Aurolee Small Logo T-Shirt Black</div>
-            <div className={css.kr_name}>오로리 스몰 로고 티셔츠 블랙</div>
+            <div>{modelNum}</div>
+            <div>{productName}</div>
+            <div className={css.kr_name}>{comment}</div>
             <div className={css.size}>{size}</div>
           </div>
         </div>

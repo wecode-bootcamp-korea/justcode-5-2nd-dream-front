@@ -5,19 +5,21 @@ import css from './DealCheck.module.scss';
 function DealCheck() {
   const location = useLocation();
   const isBuyPage = location.pathname.includes('buy');
-  const { size, price, sellId, productDetailId } = location.state;
-
+  const { size, price, sellId, productDetailId, productInfo } = location.state;
+  const { name, comment } = productInfo;
+  const modelNum = productInfo.model_number;
+  const img = productInfo.images[0].product_images;
   const id = location.pathname.split('/')[3];
 
   const navigate = useNavigate();
   const moveToDeal = () => {
     if (isBuyPage) {
       navigate(`/buy/${id}`, {
-        state: { size, price, sellId, productDetailId },
+        state: { size, price, sellId, productDetailId, productInfo },
       });
     } else {
       navigate(`/sell/${id}`, {
-        state: { size, price, sellId, productDetailId },
+        state: { size, price, sellId, productDetailId, productInfo },
       });
     }
   };
@@ -80,15 +82,12 @@ function DealCheck() {
 
         <div className={css.content_top}>
           <div className={css.image}>
-            <img
-              src="https://img.freepik.com/free-psd/black-t-shirt-mockup_125540-430.jpg?t=st=1657692010~exp=1657692610~hmac=d78542f2763d0764641356256be067c08d73c6f0aa84913fdcee87dbfd3ce08a&w=2000"
-              alt="product_img"
-            />
+            <img src={img} alt="product_img" />
           </div>
           <div className={css.text}>
-            <div>B6047317</div>
-            <div>Aurolee Small Logo T-Shirt Black</div>
-            <div className={css.kr_name}>오로리 스몰 로고 티셔츠 블랙</div>
+            <div>{modelNum}</div>
+            <div>{name}</div>
+            <div className={css.kr_name}>{comment}</div>
             <div className={css.size}>{size}</div>
           </div>
         </div>
