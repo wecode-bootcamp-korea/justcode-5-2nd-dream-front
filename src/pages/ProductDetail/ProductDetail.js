@@ -19,7 +19,7 @@ function ProductDetail() {
   }, [location.pathname]);
 
   useEffect(() => {
-    fetch(`${BASE_URL}/style`, {
+    fetch(`${BASE_URL}/style?sort=like_num`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -40,6 +40,8 @@ function ProductDetail() {
         setOtherList(filteredList);
       });
   }, [id]);
+
+  console.log(styleList);
 
   return (
     <div className={css.container}>
