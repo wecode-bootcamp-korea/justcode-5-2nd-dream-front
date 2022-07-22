@@ -38,7 +38,7 @@ export default class SwipeToSlide extends Component {
             <span className={css.font}>Style Picks!</span>
             <Slider {...settings}>
               {styles.map(style => {
-                style.nickname = `@${style.user_email.split('@')[0]}`;
+                style.nickname = `@${style?.user_email?.split('@')[0]}`;
                 return (
                   <div class={css.gap}>
                     <div className={css.baner}>
