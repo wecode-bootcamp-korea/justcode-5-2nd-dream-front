@@ -5,7 +5,11 @@ import css from './BuySellPage.module.scss';
 function BuySellPage() {
   const location = useLocation();
   const isBuyPage = location.pathname.includes('buy');
-  const sizeList = location.state;
+  const sizeList = location.state.sizeList;
+  const productInfo = location.state.productInfo;
+  const img = productInfo.images[0].product_images;
+  const modelNum = productInfo.model_number;
+  const { name, comment } = productInfo;
 
   const id = location.pathname.split('/')[3];
 
@@ -28,11 +32,11 @@ function BuySellPage() {
   const moveToDealCheck = () => {
     if (isBuyPage) {
       navigate(`/buy/check/${id}`, {
-        state: { size, price, sellId, productDetailId },
+        state: { size, price, sellId, productDetailId, productInfo },
       });
     } else {
       navigate(`/sell/check/${id}`, {
-        state: { size, price, sellId, productDetailId },
+        state: { size, price, sellId, productDetailId, productInfo },
       });
     }
   };
@@ -42,15 +46,12 @@ function BuySellPage() {
       <div className={css.content}>
         <div className={css.content_top}>
           <div className={css.image}>
-            <img
-              src="https://img.freepik.com/free-psd/black-t-shirt-mockup_125540-430.jpg?t=st=1657692010~exp=1657692610~hmac=d78542f2763d0764641356256be067c08d73c6f0aa84913fdcee87dbfd3ce08a&w=2000"
-              alt="product_img"
-            />
+            <img src={img} alt="product_img" />
           </div>
           <div className={css.text}>
-            <div>B6047317</div>
-            <div>Aurolee Small Logo T-Shirt Black</div>
-            <div className={css.kr_name}>오로리 스몰 로고 티셔츠 블랙</div>
+            <div>{modelNum}</div>
+            <div>{name}</div>
+            <div className={css.kr_name}>{comment}</div>
           </div>
         </div>
         <div className={css.sizes}>
