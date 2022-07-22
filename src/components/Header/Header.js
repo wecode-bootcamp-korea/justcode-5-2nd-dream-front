@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
 import shop from '../../pages/Shop/Shop';
 import mypage from '../../pages/MyPage/MyPage';
 
-function Header() {
-  const [isLogin, setIsLogin] = useState(false);
-
+function Header(props) {
+  // const [isLogin, setIsLogin] = useState(false);
+  const { isLogin, setIsLogin } = props;
   const handleLogoutToken = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('email');

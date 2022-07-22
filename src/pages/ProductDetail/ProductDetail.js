@@ -7,9 +7,10 @@ import css from './ProductDetail.module.scss';
 import BASE_URL from '../../config';
 import { useLocation } from 'react-router-dom';
 
-function ProductDetail() {
+function ProductDetail(props) {
   const location = useLocation();
   const id = location.pathname.split('/')[2];
+  const { isLogin } = props;
 
   const [styleList, setStyleList] = useState(undefined);
   const [otherList, setOtherList] = useState(undefined);
@@ -45,7 +46,7 @@ function ProductDetail() {
     <div className={css.container}>
       <div className={css.info_container}>
         <ProductImage />
-        <ProductInfo />
+        <ProductInfo isLogin={isLogin} />
       </div>
       <h2>스타일</h2>
       <div className={css.style_container}>

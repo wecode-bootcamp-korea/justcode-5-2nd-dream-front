@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home/Home';
 import Login from './Login/Login';
@@ -19,9 +19,10 @@ import OrderSettlement from './OrderSettlement/OrderSettlement';
 import Style from './Style/Styles';
 
 function Router() {
+  const [isLogin, setIsLogin] = useState(undefined);
   return (
     <BrowserRouter>
-      <Header />
+      <Header isLogin={isLogin} setIsLogin={setIsLogin} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -32,7 +33,10 @@ function Router() {
         <Route path="/mypage/wish" element={<WishPage />} />
         <Route path="/mypage/buying" element={<BuyingPage />} />
         <Route path="/mypage/selling" element={<SellingPage />} />
-        <Route path="/products/:id" element={<ProductDetail />} />
+        <Route
+          path="/products/:id"
+          element={<ProductDetail isLogin={isLogin} setIsLogin={setIsLogin} />}
+        />
         <Route path="/buy/select/:id" element={<BuySellPage />} />
         <Route path="/sell/select/:id" element={<BuySellPage />} />
         <Route path="/buy/check/:id" element={<DealCheck />} />
