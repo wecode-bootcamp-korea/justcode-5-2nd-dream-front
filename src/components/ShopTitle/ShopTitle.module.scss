@@ -1,19 +1,25 @@
 .title_container {
+  max-width: 1440px;
   padding: 8px 40px 0;
+  margin: 0 auto;
+
   .title_box {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0 10% 24px;
+
     h1 {
       font-size: 28px;
       font-weight: 600;
     }
   }
+
   .quick_filter {
     padding-bottom: 16px;
     display: flex;
     justify-content: flex-start;
+
     .filter_icon {
       margin-right: 8px;
       padding: 10px;
@@ -30,6 +36,7 @@
         height: 20px;
       }
     }
+
     span {
       margin-left: 8px;
       padding: 10px 12px;

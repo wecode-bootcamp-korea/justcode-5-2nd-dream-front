@@ -14,10 +14,6 @@
   width: 50%;
 }
 
-use_info {
-  position: relative;
-}
-
 .use_info {
   position: absolute;
   margin-top: 160px;
@@ -25,13 +21,9 @@ use_info {
   width: 300px;
 
   .font_use {
-    font-size: 20px;
+    font-size: 1rem;
     font-weight: bold;
   }
-}
-
-cumsu {
-  position: relative;
 }
 
 .cumsu {
@@ -206,11 +198,12 @@ introduce {
 }
 
 .introduce {
-  position: absolute;
-  margin-left: 50px;
+  position: relative;
   margin-top: 40px;
-  font-size: 20px;
-  width: 1500px;
+  padding: 0 30px;
+  font-size: 1rem;
+  max-width: 1440px;
+  width: 100%;
 }
 
 recu {
@@ -219,7 +212,7 @@ recu {
 
 .recu {
   position: absolute;
-  font-size: 20px;
+  font-size: 1rem;
   margin-top: -20px;
   margin-left: 100px;
 }
@@ -230,7 +223,7 @@ susset {
 
 .susset {
   position: absolute;
-  font-size: 20px;
+  font-size: 1rem;
   margin-top: -20px;
   margin-left: 200px;
 }
@@ -241,7 +234,7 @@ use_law {
 
 .use_law {
   position: absolute;
-  font-size: 20px;
+  font-size: 1rem;
   margin-top: -20px;
   margin-left: 290px;
 }
@@ -252,11 +245,11 @@ priver {
 
 .priver {
   position: absolute;
-  margin-top: -20px;
+  font-size: 1rem;
   margin-left: 390px;
 
   .fontUse {
-    font-size: 20px;
+    font-size: 1rem;
     font-weight: bold;
   }
 }
@@ -282,43 +275,43 @@ word1 {
   color: #909090;
 }
 
-insta,
-face {
-  position: relative;
-}
+// insta,
+// face {
+//   position: relative;
+// }
 
-.insta {
-  position: absolute;
-}
+// .insta {
+//   position: absolute;
+// }
 
-.face {
-  position: absolute;
-}
+// .face {
+//   position: absolute;
+// }
 
-ch_banner,
-face,
-insta {
-  position: relative;
-}
+// ch_banner,
+// face,
+// insta {
+//   position: relative;
+// }
 
-.ch_banner {
-  position: absolute;
-  width: 50px;
-  margin-left: 750px;
-  margin-top: -10px;
-}
+// .ch_banner {
+//   position: absolute;
+//   width: 50px;
+//   margin-left: 750px;
+//   margin-top: -10px;
+// }
 
-.face {
-  position: absolute;
-  width: 90px;
-  margin-left: 700px;
-}
+// .face {
+//   position: absolute;
+//   width: 90px;
+//   margin-left: 700px;
+// }
 
-.insta {
-  position: absolute;
-  width: 50px;
-  margin-left: 650px;
-}
+// .insta {
+//   position: absolute;
+//   width: 50px;
+//   margin-left: 650px;
+// }
 
 kcp_banner,
 word2,
@@ -355,4 +348,21 @@ kream {
   margin-top: 200px;
   font-size: 13px;
   color: #909090;
+}
+
+.intro_top {
+  display: flex;
+  justify-content: space-between;
+
+  & div:first-child {
+    display: flex;
+  }
+
+  & div:last-child {
+    display: flex;
+
+    .ch_banner {
+      width: 30px;
+    }
+  }
 }
