@@ -47,9 +47,10 @@ function BeforePayment() {
   };
 
   const [isValid, setIsValid] = useState(false);
-
+  const isThousandUnits =
+    String(bidPrice)?.slice(bidPrice?.length - 3, bidPrice?.length) === '000';
   const valid = () => {
-    if (isBid && bidPrice >= 30000) {
+    if (isBid && bidPrice >= 30000 && isThousandUnits) {
       setIsValid(true);
     } else if (!isBid && price !== undefined) {
       setIsValid(true);

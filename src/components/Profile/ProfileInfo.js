@@ -308,7 +308,7 @@ function ProfileInfo(props) {
             {profileInfo &&
               profileInfo.address?.map(data => {
                 if (data.address !== null) {
-                  const isOpenAddressInput = addressOpened === data.userId;
+                  const isOpenAddressInput = addressOpened === data.id;
                   return (
                     <div className={css.add_lists} key={data.userId}>
                       <div>
@@ -329,7 +329,7 @@ function ProfileInfo(props) {
                         )}
                       </div>
                       <div>
-                        <button onClick={() => openAddress(data.userId)}>
+                        <button onClick={() => openAddress(data.id)}>
                           수정
                         </button>
                         <button onClick={() => deleteAddress(data.id)}>
