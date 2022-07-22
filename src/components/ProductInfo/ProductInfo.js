@@ -50,7 +50,7 @@ function ProductInfo() {
     })
       .then(res => res.json())
       .then(data => {
-        setAddress(data.data[0].address[0].address);
+        setAddress(data?.data[0]?.address[0]?.address);
       });
   }, [userId]);
 
