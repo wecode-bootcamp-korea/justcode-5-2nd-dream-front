@@ -10,7 +10,7 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    padding: 4px 20px;
+    padding: 4px 0 4px 15px;
     &_img {
       width: 28px;
       height: 28px;
@@ -28,17 +28,21 @@
     word-break: break-all;
     font-size: 14px;
     color: #222222;
-    padding: 4px 20px;
+    padding: 4px 20px 0 15px;
   }
   .cnt {
     cursor: pointer;
     display: flex;
+    position: relative;
+    right: 4px;
     .like,
     .comment {
       display: flex;
-      padding: 10px 20px;
+      margin: 8px 0 0 20px;
       div {
-        margin: 2px 4px;
+        position: relative;
+        bottom: 1px;
+        margin: 0 4px;
         color: gray;
       }
     }
