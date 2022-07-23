@@ -25,7 +25,7 @@ function Router() {
       <Header isLogin={isLogin} setIsLogin={setIsLogin} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/style" element={<Style />} />
         <Route path="/shop" element={<Shop />} />

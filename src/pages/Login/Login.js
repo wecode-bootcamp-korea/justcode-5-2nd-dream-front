@@ -4,7 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import kakao_login from './images/kakao_login.png';
 import BASE_URL from '../../config';
 
-function Login() {
+function Login(props) {
+  const { setIsLogin } = props;
   const navigate = useNavigate();
   const isLoggedIn = localStorage.getItem('token') !== null;
 
@@ -24,6 +25,7 @@ function Login() {
           localStorage.setItem('token', res.token);
           localStorage.setItem('email', email);
           localStorage.setItem('userId', res.id);
+          setIsLogin(true);
           alert('로그인이 완료되었습니다.');
           navigate('/');
         } else {
