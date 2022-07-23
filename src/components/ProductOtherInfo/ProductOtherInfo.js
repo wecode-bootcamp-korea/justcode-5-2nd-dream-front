@@ -33,7 +33,9 @@ function ProductOtherInfo() {
       <h3 className={css.before_buy}>구매 전 꼭 확인해주세요!</h3>
       <div className={css.check} onClick={handleShip}>
         <div>배송 기간 안내</div>
-        <span>{isCheckedShip ? '-' : '+'}</span>
+        <span className={isCheckedShip ? css.minus : undefined}>
+          {isCheckedShip ? '-' : '+'}
+        </span>
       </div>
       <div
         className={`${css.ship_desc} ${isCheckedShip ? css.block : undefined}`}
@@ -77,7 +79,9 @@ function ProductOtherInfo() {
       </div>
       <div className={css.check} onClick={handleIns}>
         <div>검수 안내</div>
-        <span>{isCheckedIns ? '-' : '+'}</span>
+        <span className={isCheckedIns ? css.minus : undefined}>
+          {isCheckedIns ? '-' : '+'}
+        </span>
       </div>
       <div
         className={`${css.inspection_info} ${
@@ -116,7 +120,9 @@ function ProductOtherInfo() {
         className={`${css.check} ${isCheckedCancel ? css.last_open : css.last}`}
       >
         <div>구매 환불/취소/교환 안내</div>
-        <span>{isCheckedCancel ? '-' : '+'}</span>
+        <span className={isCheckedCancel ? css.minus : undefined}>
+          {isCheckedCancel ? '-' : '+'}
+        </span>
       </div>
       <div
         className={`${css.cancel_info} ${
