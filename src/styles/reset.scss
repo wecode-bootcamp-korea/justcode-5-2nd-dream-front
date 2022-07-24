@@ -89,7 +89,6 @@ video {
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 400;
   vertical-align: baseline;
-  color: #101010;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -123,7 +122,6 @@ q {
 }
 
 blockquote {
-
   &:before,
   &:after {
     content: '';
@@ -132,7 +130,6 @@ blockquote {
 }
 
 q {
-
   &:before,
   &:after {
     content: '';

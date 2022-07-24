@@ -57,17 +57,18 @@
   }
   .buttons {
     margin: 10px 0;
-    width: 100%;
+    width: 34.5vw;
+    min-width: 360px;
     .buy_btn,
     .sell_btn {
       cursor: pointer;
       border: 0;
       border-radius: 12px;
       margin: 10px 4px;
-      min-width: 150px;
-      max-width: 272px;
-      width: 13vw;
+      max-width: 230px;
+      width: 47.5%;
       height: 60px;
+      line-height: 16px;
       .text {
         font-size: 15px;
         font-weight: 600;
@@ -99,19 +100,20 @@
     }
     .sell_btn {
       background-color: #41b979;
+      margin: 0 0 0 10px;
     }
     .buy_btn {
       background-color: #ef6253;
     }
     .interested {
       cursor: pointer;
-      width: 26.5vw;
-      max-width: 552px;
+      width: 34vw;
+      max-width: 474px;
       height: 60px;
       background-color: transparent;
       border: 1px solid lightgray;
       border-radius: 12px;
-      min-width: 308px;
+      min-width: 320px;
       margin: 0 0 0 4px;
       .bookmark {
         position: relative;
