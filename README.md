@@ -19,7 +19,7 @@
 - 프론트엔드 : HTML, JAVASCRIPT, REACT, SASS, CSS, STYLED-COMPONENTS
 - 백엔드 : Node.js, Express.js, bcrypt, jsonwebtoken
 - 공통 : RESTful API, MVC Pattern, Github, Slack, Notion
-- 
+
 ### 협업 도구
 - Github, Slack, Notion
 
