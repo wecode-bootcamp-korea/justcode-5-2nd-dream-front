@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# 프로젝트 소개
+![](https://velog.velcdn.com/images/jeongssi94/post/f2b53983-3eb0-4e25-800f-2c29368706b0/image.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 프로젝트명 'Dream'
+- 한정판을 거래하는 [Kream](https://kream.co.kr/)  클론하는 프로젝트
+- 입찰기능을 제외한 클론 사이트
+- 개발 기간: 2022-07-11 ~ 2022-07-29
+- 개발 인원: 6명
+프론트 : 손소희,정진우,유관희
+백앤드 : 최수진,김예찬,최정훈
 
-## Available Scripts
+### GitHub 주소
+- [Dream Frontend Github](https://github.com/wecode-bootcamp-korea/justcode-5-2nd-dream-front)
+- [Dream Backend Github](https://github.com/wecode-bootcamp-korea/justcode-5-2nd-dream-back)
 
-In the project directory, you can run:
 
-### `npm start`
+## 적용 기술
+- DB : mySQL, Prisma, DB-diagram
+- 프론트엔드 : HTML, JAVASCRIPT, REACT, SASS, CSS, STYLED-COMPONENTS
+- 백엔드 : Node.js, Express.js, bcrypt, jsonwebtoken
+- 공통 : RESTful API, MVC Pattern, Github, Slack, Notion
+- 
+### 협업 도구
+- Github, Slack, Notion
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## DB Modeling
+![](https://velog.velcdn.com/images/jeongssi94/post/49cca761-78e9-4331-96bc-8f130f913e3a/image.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### 멤버별 기능 분담
+손소희
+- 마이페이지
+- SHOP 페이지
 
-### `npm test`
+정진우
+- 로그인/회원가입  
+- 제품상세페이지   
+- 구매/판매 페이지
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+유관희
+- 메인페이지
+- Header/Footer 구현
+- STYLE 
 
-### `npm run build`
+최수진
+- 회원가입,로그인 API/소셜 로그인(카카오)
+- SHOP 페이지 API
+- 제품 상세 페이지 API
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+김예찬
+- 메인 페이지 API
+- STYLE 페이지 API
+- 관심상품 API
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+최정훈
+- 마이페이지 API
+- 구매/판매 페이지 API
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Reference
+이 프로젝트는 크림 사이트를 참조하여 학습목적으로 만들었습니다.
+실무수준의 프로젝트이지만 학습용으로 만들었기 때문에 이 코드를 활용하여 이득을 취하거나 무단 배포할 경우 법적으로 문제될 수 있습니다.
+이 프로젝트에서 사용하고 있는 사진 대부분은 위코드에서 구매한 것이므로 해당 프로젝트 외부인이 사용할 수 없습니다.
