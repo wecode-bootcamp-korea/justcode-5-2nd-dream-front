@@ -5,9 +5,9 @@
 - 한정판을 거래하는 [Kream](https://kream.co.kr/)  클론하는 프로젝트
 - 입찰기능을 제외한 클론 사이트
 - 개발 기간: 2022-07-11 ~ 2022-07-29
-- 개발 인원: 6명
-프론트 : 손소희,정진우,유관희
-백앤드 : 최수진,김예찬,최정훈
+- 개발 인원: 6명<br>
+FE : 손소희,정진우,유관희<br>
+BE : 최수진,김예찬,최정훈
 
 ### GitHub 주소
 - [Dream Frontend Github](https://github.com/wecode-bootcamp-korea/justcode-5-2nd-dream-front)
@@ -16,7 +16,7 @@
 
 ## 적용 기술
 - DB : mySQL, Prisma, DB-diagram
-- 프론트엔드 : HTML, JAVASCRIPT, REACT, SASS, CSS, STYLED-COMPONENTS
+- 프론트엔드 : HTML, JAVASCRIPT, REACT, SCSS, STYLED-COMPONENTS
 - 백엔드 : Node.js, Express.js, bcrypt, jsonwebtoken
 - 공통 : RESTful API, MVC Pattern, Github, Slack, Notion
 - 
@@ -28,21 +28,21 @@
 
 #### 멤버별 기능 분담
 손소희
-- 마이페이지
+- 마이 페이지
 - SHOP 페이지
 
 정진우
-- 로그인/회원가입  
-- 제품상세페이지   
-- 구매/판매 페이지
+- 로그인 / 회원가입  
+- 제품 상 세페이지   
+- 구매 / 판매 페이지
 
 유관희
-- 메인페이지
-- Header/Footer 구현
+- 메인 페이지
+- Header / Footer 구현
 - STYLE 
 
 최수진
-- 회원가입,로그인 API/소셜 로그인(카카오)
+- 회원가입, 로그인 API / 소셜 로그인(카카오)
 - SHOP 페이지 API
 - 제품 상세 페이지 API
 
@@ -52,8 +52,8 @@
 - 관심상품 API
 
 최정훈
-- 마이페이지 API
-- 구매/판매 페이지 API
+- 마이 페이지 API
+- 구매 / 판매 페이지 API
 
 ## Reference
 이 프로젝트는 크림 사이트를 참조하여 학습목적으로 만들었습니다.
