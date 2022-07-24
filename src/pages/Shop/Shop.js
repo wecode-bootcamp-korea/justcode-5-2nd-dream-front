@@ -4,6 +4,7 @@ import ShopTitle from '../../components/ShopTitle/ShopTitle';
 import ShopTopBanner from '../../components/ShopTopBanner/ShopTopBanner';
 import ShopSideFilter from '../../components/ShopSideFilter/ShopSideFilter';
 import ShopSearchContent from '../../components/ShopSearchContent/ShopSearchContent';
+import BASE_URL from '../../config';
 
 function Shop() {
   const [searchInfo, setSearchInfo] = useState([]);
@@ -12,7 +13,7 @@ function Shop() {
 
   useEffect(() => {
     setIsUpdated(false);
-    fetch(`http://localhost:10010/search?sort=${keyword}`, {
+    fetch(`${BASE_URL}/search?sort=${keyword}`, {
       method: 'GET',
     })
       .then(res => res.json())
