@@ -16,13 +16,22 @@
     }
     ul {
       cursor: pointer;
-      a {
+      .btn_link {
         text-decoration: none;
         li {
           margin-top: 12px;
           line-height: 18px;
           font-size: 15px;
           color: rgba(34, 34, 34, 0.5);
+        }
+      }
+      .btn_link:hover {
+        text-decoration: none;
+        li {
+          margin-top: 12px;
+          line-height: 18px;
+          font-size: 15px;
+          color: black;
         }
       }
     }

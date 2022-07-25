@@ -9,13 +9,13 @@ function ProfileSNB() {
       <div className={css.snb_list}>
         <h3>쇼핑 정보</h3>
         <ul>
-          <Link to="/mypage/buying">
+          <Link className={css.btn_link} to="/mypage/buying">
             <li>구매 내역</li>
           </Link>
-          <Link to="/mypage/selling">
+          <Link className={css.btn_link} to="/mypage/selling">
             <li>판매 내역</li>
           </Link>
-          <Link to="/mypage/wish">
+          <Link className={css.btn_link} to="/mypage/wish">
             <li>관심 내역</li>
           </Link>
         </ul>
@@ -23,7 +23,7 @@ function ProfileSNB() {
       <div className={css.snb_list}>
         <h3>내 정보</h3>
         <ul>
-          <Link to="/mypage">
+          <Link className={css.btn_link} to="/mypage">
             <li>프로필 정보</li>
           </Link>
         </ul>
