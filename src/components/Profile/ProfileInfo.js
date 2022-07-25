@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import css from './ProfileInfo.module.scss';
 import { useNavigate } from 'react-router-dom';
+import BASE_URL from '../../config';
 // import SizeModal from '../../components/SizeModal/SizeModal';
 
 function ProfileInfo(props) {
@@ -13,7 +14,7 @@ function ProfileInfo(props) {
   //============ 프로필 조회
   useEffect(() => {
     setIsUpdated(false);
-    fetch(`http://localhost:10010/mypage/${userId}`, {
+    fetch(`${BASE_URL}/mypage/${userId}`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -27,7 +28,7 @@ function ProfileInfo(props) {
     if (profileInfo.name === null || profileInfo.phone === null) {
       alert('이름과 전화번호를 모두 입력해주세요.');
     } else {
-      fetch(`http://localhost:10010/address/${userId}`, {
+      fetch(`${BASE_URL}/address/${userId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -39,7 +40,7 @@ function ProfileInfo(props) {
 
   //============ 회원탈퇴
   const deleteUser = () => {
-    fetch(`http://localhost:10010/users/${userId}`, {
+    fetch(`${BASE_URL}/users/${userId}`, {
       method: 'DELETE',
     })
       .then(alert('삭제가 완료되었습니다.'))
@@ -52,7 +53,7 @@ function ProfileInfo(props) {
   //============ 프로필 주소 삭제
   const deleteAddress = id => {
     console.log(id);
-    fetch(`http://localhost:10010/address/${id}`, {
+    fetch(`${BASE_URL}/address/${id}`, {
       method: 'DELETE',
     })
       .then(alert('삭제가 완료되었습니다.'))
@@ -65,7 +66,7 @@ function ProfileInfo(props) {
     setText(e.target.value);
   };
   const editAddressBtn = id => {
-    fetch(`http://localhost:10010/address/${id}`, {
+    fetch(`${BASE_URL}/address/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -92,7 +93,7 @@ function ProfileInfo(props) {
     setTextName(e.target.value);
   };
   const editNameBtn = () => {
-    fetch(`http://localhost:10010/mypage/${userId}`, {
+    fetch(`${BASE_URL}/mypage/${userId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -119,7 +120,7 @@ function ProfileInfo(props) {
     setTextPhone(e.target.value);
   };
   const editPhoneBtn = () => {
-    fetch(`http://localhost:10010/phone/${userId}`, {
+    fetch(`${BASE_URL}/phone/${userId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

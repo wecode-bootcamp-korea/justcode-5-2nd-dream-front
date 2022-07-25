@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import css from './WishPage.module.scss';
 import ProfileSNB from '../../components/Profile/ProfileSNB';
+import BASE_URL from '../../config';
 
 function WishPage() {
   const [wishInfo, setwishInfo] = useState([]);
@@ -11,7 +12,7 @@ function WishPage() {
   // ============ 관심상품 조회
   useEffect(() => {
     setIsUpdated(false);
-    fetch(`http://localhost:10010/wish/${userId}`, {
+    fetch(`${BASE_URL}/wish/${userId}`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -23,7 +24,7 @@ function WishPage() {
 
   // ============ 관심상품 삭제
   const deleteWish = productId => {
-    fetch(`http://localhost:10010/wish`, {
+    fetch(`${BASE_URL}/wish`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
