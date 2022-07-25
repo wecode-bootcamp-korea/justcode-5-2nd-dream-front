@@ -46,14 +46,21 @@ function BeforePayment() {
       setBidPrice(e.target.value);
     }
   };
-
-  const [isValid, setIsValid] = useState(false);
+  const [isBidValid, setIsBidValid] = useState(false);
   const isThousandUnits =
     String(bidPrice)?.slice(bidPrice?.length - 3, bidPrice?.length) === '000';
+  const bidValid = () => {
+    if (bidPrice >= 30000 && isThousandUnits) {
+      setIsBidValid(true);
+    } else {
+      setIsBidValid(false);
+    }
+  };
+
+  const [isValid, setIsValid] = useState(false);
+
   const valid = () => {
-    if (isBid && bidPrice >= 30000 && isThousandUnits) {
-      setIsValid(true);
-    } else if (!isBid && price !== undefined) {
+    if (isBidValid && price !== undefined) {
       setIsValid(true);
     } else {
       setIsValid(false);
@@ -61,6 +68,7 @@ function BeforePayment() {
   };
 
   useEffect(() => {
+    bidValid();
     valid();
   });
 
@@ -112,14 +120,14 @@ function BeforePayment() {
         )}
         <div
           className={
-            !isValid && price !== 0
+            isBid && !isBidValid && bidPrice !== 0 && bidPrice !== ''
               ? `${css.price_now} ${css.price_red}`
               : css.price_now
           }
         >
           <div
             className={
-              !isValid && price !== 0
+              isBid && !isBidValid && bidPrice !== 0 && bidPrice !== ''
                 ? `${css.price_now_title} ${css.red}`
                 : css.price_now_title
             }
@@ -127,7 +135,9 @@ function BeforePayment() {
             {isBid ? '판매 희망가' : isBuyPage ? '즉시 구매가' : '즉시 판매가'}
           </div>
           <div className={css.price_now_price}>
-            {!isValid && price !== 0 && <p>3만원 부터 천원단위로 입력하세요</p>}
+            {isBid && !isBidValid && bidPrice !== 0 && bidPrice !== '' && (
+              <p>3만원 부터 천원단위로 입력하세요</p>
+            )}
             {isBid ? (
               <input
                 placeholder="희망가 입력"
