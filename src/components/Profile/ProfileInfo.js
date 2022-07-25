@@ -190,7 +190,14 @@ function ProfileInfo(props) {
         </div>
         <div className={css.user_profile}>
           <div className={css.profile_img}>
-            <img src={profileInfo?.image} alt="사용자이미지" />
+            {profileInfo.image === null ? (
+              <img
+                src="https://kream.co.kr/_nuxt/img/blank_profile.4347742.png"
+                alt="사용자이미지"
+              />
+            ) : (
+              <img src={profileInfo?.image} alt="사용자이미지" />
+            )}
           </div>
           <h3>{profileInfo?.name}</h3>
         </div>
