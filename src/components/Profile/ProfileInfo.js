@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import css from './ProfileInfo.module.scss';
 import { useNavigate } from 'react-router-dom';
 import BASE_URL from '../../config';
-// import SizeModal from '../../components/SizeModal/SizeModal';
 
 function ProfileInfo(props) {
   const { profileInfo, setProfileInfo, isUpdated, setIsUpdated } = props;
