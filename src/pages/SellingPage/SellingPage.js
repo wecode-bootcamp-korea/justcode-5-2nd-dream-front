@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import css from './SellingPage.module.scss';
 import ProfileSNB from '../../components/Profile/ProfileSNB';
+import BASE_URL from '../../config';
 
 function SellingPage() {
   const [sellInfo, setSellInfo] = useState([]);
@@ -11,7 +12,7 @@ function SellingPage() {
   // ============ 판매상품 조회
   useEffect(() => {
     setIsUpdated(false);
-    fetch(`http://localhost:10010/salehistory/${userId}`, {
+    fetch(`${BASE_URL}/salehistory/${userId}`, {
       method: 'GET',
     })
       .then(res => res.json())

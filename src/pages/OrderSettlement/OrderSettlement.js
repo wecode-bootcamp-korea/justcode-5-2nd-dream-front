@@ -37,7 +37,6 @@ function OrderSettlement() {
   };
 
   const [valid, setValid] = useState(false);
-
   const dealValid = () => {
     if (isCheckedExact && isCheckedError && isCheckedRe && isCheckedAll) {
       setValid(true);
@@ -61,6 +60,7 @@ function OrderSettlement() {
   const [address, setAddress] = useState(undefined);
   const [phone, setPhone] = useState(undefined);
   const [name, setName] = useState(undefined);
+
   useEffect(() => {
     fetch(`${BASE_URL}/mypage/${userId}`, {
       method: 'GET',

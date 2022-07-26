@@ -38,9 +38,9 @@ function ProductImage() {
           return (
             <CardBox>
               <CardImg
-                alt="test"
+                alt="productImg"
                 src={img.product_images}
-                key={`${img + idx}`}
+                key={img.product_images + idx}
               />
             </CardBox>
           );

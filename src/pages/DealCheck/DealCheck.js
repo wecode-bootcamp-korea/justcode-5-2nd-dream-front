@@ -25,33 +25,31 @@ function DealCheck() {
   };
 
   const [isCheckedProduct, setIsCheckedProduct] = useState(false);
-  const [isCheckedNew, setIsCheckedNew] = useState(false);
-  const [isCheckedError, setIsCheckedError] = useState(false);
-  const [isCheckedInspection, setIsCheckedInspection] = useState(false);
-  const [isCheckedAll, setIsCheckedAll] = useState(false);
-
-  const [allChecked, setAllChecked] = useState(false);
-
   const productCheckBtn = () => {
     setIsCheckedProduct(!isCheckedProduct);
   };
 
+  const [isCheckedNew, setIsCheckedNew] = useState(false);
   const newCheckBtn = () => {
     setIsCheckedNew(!isCheckedNew);
   };
 
+  const [isCheckedError, setIsCheckedError] = useState(false);
   const errCheckBtn = () => {
     setIsCheckedError(!isCheckedError);
   };
 
+  const [isCheckedInspection, setIsCheckedInspection] = useState(false);
   const inspectionCheckBtn = () => {
     setIsCheckedInspection(!isCheckedInspection);
   };
 
+  const [isCheckedAll, setIsCheckedAll] = useState(false);
   const allCheckBtn = () => {
     setIsCheckedAll(!isCheckedAll);
   };
 
+  const [allChecked, setAllChecked] = useState(false);
   const checkValidaion = () => {
     if (
       isCheckedProduct &&
