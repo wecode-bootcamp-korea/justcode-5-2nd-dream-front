@@ -13,12 +13,6 @@ function ProductDetail(props) {
   const { isLogin } = props;
 
   const [styleList, setStyleList] = useState(undefined);
-  const [otherList, setOtherList] = useState(undefined);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
-
   useEffect(() => {
     fetch(`${BASE_URL}/style?sort=like_num`, {
       method: 'GET',
@@ -29,6 +23,7 @@ function ProductDetail(props) {
       });
   }, []);
 
+  const [otherList, setOtherList] = useState(undefined);
   useEffect(() => {
     fetch(`${BASE_URL}/main`, {
       method: 'GET',
@@ -41,6 +36,10 @@ function ProductDetail(props) {
         setOtherList(filteredList);
       });
   }, [id]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <div className={css.container}>

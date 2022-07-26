@@ -51,7 +51,8 @@ function ProductInfo(props) {
     })
       .then(res => res.json())
       .then(data => {
-        setAddress(data?.data[0]?.address[0]?.address);
+        const address = data?.data[0]?.address[0]?.address;
+        setAddress(address);
       });
   }, [userId]);
 
@@ -61,14 +62,12 @@ function ProductInfo(props) {
       .then(data => {
         const sizeList = data?.data[0]?.size_list;
         setSizeList(sizeList);
-        setSize(sizeList && sizeList[0].size);
-        setPrice(sizeList && sizeList[0].price);
-        setProductDetailId(sizeList && sizeList[0].product_detail_id);
-        setSellId(sizeList && sizeList[0]['sell.id']);
+        setSize(sizeList[0].size);
+        setPrice(sizeList[0].price);
+        setProductDetailId(sizeList[0].product_detail_id);
+        setSellId(sizeList[0]['sell.id']);
       });
   }, [id]);
-
-  const navigate = useNavigate();
 
   const [modalOpen, setModalOpen] = useState(false);
   const openModal = () => {
@@ -78,6 +77,7 @@ function ProductInfo(props) {
     setModalOpen(false);
   };
 
+  const navigate = useNavigate();
   const moveToDealCheck = deal => {
     if (sizeList === undefined) {
       alert('현재 거래가 불가능한 상품입니다.');
@@ -109,29 +109,26 @@ function ProductInfo(props) {
       });
   }, [isWished, isUpdated, id, userId]);
 
+  const toggleWish = method => {
+    return {
+      method,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        user_id: userId,
+        product_id: id,
+      }),
+    };
+  };
+
   const wish = () => {
     if (!userId) {
       navigate('/login');
     } else if (!isWished) {
-      fetch(`${BASE_URL}/wish`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          user_id: userId,
-          product_id: id,
-        }),
-      })
+      fetch(`${BASE_URL}/wish`, toggleWish('POST'))
         .then(setIsWished(true))
         .then(setIsUpdated(true));
     } else {
-      fetch(`${BASE_URL}/wish`, {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          user_id: userId,
-          product_id: id,
-        }),
-      })
+      fetch(`${BASE_URL}/wish`, toggleWish('DELETE'))
         .then(setIsWished(false))
         .then(setIsUpdated(true));
     }

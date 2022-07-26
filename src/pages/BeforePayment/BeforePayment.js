@@ -12,9 +12,7 @@ function BeforePayment() {
 
   const navigate = useNavigate();
   const id = location.pathname.split('/')[2];
-
   const [bidPrice, setBidPrice] = useState(0);
-
   const moveToLastStep = () => {
     if (bidPrice < Number(price) && isBid) {
       setIsBid(false);
@@ -34,7 +32,6 @@ function BeforePayment() {
   };
 
   const [isBid, setIsBid] = useState(false);
-
   const bidBtn = check => {
     setIsBid(check);
   };
@@ -46,6 +43,7 @@ function BeforePayment() {
       setBidPrice(e.target.value);
     }
   };
+
   const [isBidValid, setIsBidValid] = useState(false);
   const isThousandUnits =
     String(bidPrice)?.slice(bidPrice?.length - 3, bidPrice?.length) === '000';
@@ -58,7 +56,6 @@ function BeforePayment() {
   };
 
   const [isValid, setIsValid] = useState(false);
-
   const valid = () => {
     if (isBidValid && price !== undefined) {
       setIsValid(true);

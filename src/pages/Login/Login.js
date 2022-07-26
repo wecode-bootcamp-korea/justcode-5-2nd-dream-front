@@ -35,19 +35,20 @@ function Login(props) {
   };
 
   const [email, setEmail] = useState('');
-  const [isValidEmail, setIsValidEmail] = useState(false);
-  const [password, setPassword] = useState('');
-  const [isValidPw, setIsValidPw] = useState(false);
-
   const handleEmailInput = e => {
     setEmail(e.target.value);
   };
+
+  const [password, setPassword] = useState('');
   const handlePwInput = e => {
     setPassword(e.target.value);
   };
+
   const regEmail = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
   const regPw =
     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%#?&])[A-Za-z\d@$!%*#?&]{8,16}$/;
+
+  const [isValidEmail, setIsValidEmail] = useState(false);
   const emailValidation = () => {
     if (email.length === 0) setIsValidEmail(true);
     else if (regEmail.test(email) && !/[0-9]/g.test(email.split('.')[1])) {
@@ -56,6 +57,8 @@ function Login(props) {
       setIsValidEmail(false);
     }
   };
+
+  const [isValidPw, setIsValidPw] = useState(false);
   const pwValidation = () => {
     if (password.length === 0) setIsValidPw(true);
     else {
@@ -151,7 +154,7 @@ function Login(props) {
           비밀번호 찾기
         </Link>
       </div>
-      <a className={css.kakao_btn} href="http://localhost:10010/kakao">
+      <a className={css.kakao_btn} href={`${BASE_URL}/kakao`}>
         <img src={kakao_login} alt="kakao_btn" />
       </a>
     </div>

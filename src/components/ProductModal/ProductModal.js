@@ -11,9 +11,10 @@ const ProductModal = props => {
   }, [open]);
 
   const handleSize = e => {
-    setSize(e.target.value?.split(',')[0]);
-    setPrice(Number(e.target.value?.split(',')[1]));
-    setSellId(Number(e.target.value?.split(',')[2]));
+    const valueArr = e.target.value?.split(',');
+    setSize(valueArr[0]);
+    setPrice(Number(valueArr[1]));
+    setSellId(Number(valueArr[2]));
     close();
   };
 

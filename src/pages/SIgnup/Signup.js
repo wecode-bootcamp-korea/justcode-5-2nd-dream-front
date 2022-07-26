@@ -7,23 +7,21 @@ import { useNavigate } from 'react-router-dom';
 import BASE_URL from '../../config';
 
 function Signup() {
-  const navigate = useNavigate();
-
-  const [size, setSize] = useState(undefined);
-
   const [email, setEmail] = useState('');
-  const [isValidEmail, setIsValidEmail] = useState(false);
-  const [password, setPassword] = useState('');
-  const [isValidPw, setIsValidPw] = useState(false);
   const handleEmailInput = e => {
     setEmail(e.target.value);
   };
+
+  const [password, setPassword] = useState('');
   const handlePwInput = e => {
     setPassword(e.target.value);
   };
+
   const regEmail = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
   const regPw =
     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%#?&])[A-Za-z\d@$!%*#?&]{8,16}$/;
+
+  const [isValidEmail, setIsValidEmail] = useState(false);
   const emailValidation = () => {
     if (email.length === 0) setIsValidEmail(true);
     else if (regEmail.test(email) && !/[0-9]/g.test(email.split('.')[1])) {
@@ -33,6 +31,7 @@ function Signup() {
     }
   };
 
+  const [isValidPw, setIsValidPw] = useState(false);
   const pwValidation = () => {
     if (password.length === 0) setIsValidPw(true);
     else {
@@ -51,13 +50,9 @@ function Signup() {
     setIsOptionalOpen(!isOptionalOpen);
   };
 
-  const [isEssentialCheck, setIsEssentialCheck] = useState(false);
-  const [isOptionalCheck, setIsOptionalCheck] = useState(false);
-  const [isTermsCheck, setIsTermsCheck] = useState(false);
-  const [isInfoCheck, setIsInfoCheck] = useState(false);
-  const [isAppCheck, setIsAppCheck] = useState(false);
-  const [isSmsCheck, setIsSmsCheck] = useState(false);
   const [isEmailCheck, setIsEmailCheck] = useState(false);
+
+  const [isEssentialCheck, setIsEssentialCheck] = useState(false);
   const essentialCheckBtn = e => {
     setIsEssentialCheck(!isEssentialCheck);
     if (!isEssentialCheck) {
@@ -68,6 +63,8 @@ function Signup() {
       setIsInfoCheck(false);
     }
   };
+
+  const [isOptionalCheck, setIsOptionalCheck] = useState(false);
   const optionalCheckBtn = () => {
     setIsOptionalCheck(!isOptionalCheck);
     if (!isOptionalCheck) {
@@ -80,6 +77,10 @@ function Signup() {
       setIsEmailCheck(false);
     }
   };
+
+  const [isTermsCheck, setIsTermsCheck] = useState(false);
+  const [isInfoCheck, setIsInfoCheck] = useState(false);
+
   const termsCheckBtn = () => {
     setIsTermsCheck(!isTermsCheck);
     if (isTermsCheck) {
@@ -89,6 +90,7 @@ function Signup() {
       setIsEssentialCheck(true);
     }
   };
+
   const infoCheckBtn = () => {
     setIsInfoCheck(!isInfoCheck);
     if (isInfoCheck) {
@@ -98,6 +100,8 @@ function Signup() {
       setIsEssentialCheck(true);
     }
   };
+
+  const [isAppCheck, setIsAppCheck] = useState(false);
   const appCheckBtn = () => {
     setIsAppCheck(!isAppCheck);
     if (isAppCheck) {
@@ -107,6 +111,8 @@ function Signup() {
       setIsOptionalCheck(true);
     }
   };
+
+  const [isSmsCheck, setIsSmsCheck] = useState(false);
   const smsCheckBtn = () => {
     setIsSmsCheck(!isSmsCheck);
     if (isSmsCheck) {
@@ -116,6 +122,7 @@ function Signup() {
       setIsOptionalCheck(true);
     }
   };
+
   const emailCheckBtn = () => {
     setIsEmailCheck(!isEmailCheck);
     if (isEmailCheck) {
@@ -140,6 +147,8 @@ function Signup() {
       setSignupValid(false);
     }
   };
+
+  const navigate = useNavigate();
   const signup = e => {
     e.preventDefault();
     fetch(`${BASE_URL}/join`, {
@@ -174,6 +183,8 @@ function Signup() {
     pwValidation();
     signupValidaion();
   });
+
+  const [size, setSize] = useState(undefined);
 
   return (
     <div className={css.container}>
