@@ -53,7 +53,6 @@ function ProfileInfo(props) {
 
   //============ 프로필 주소 삭제
   const deleteAddress = id => {
-    console.log(id);
     fetch(`${BASE_URL}/address/${id}`, {
       method: 'DELETE',
     })

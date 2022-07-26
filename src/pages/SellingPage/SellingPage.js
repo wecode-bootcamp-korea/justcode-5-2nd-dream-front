@@ -35,7 +35,7 @@ function SellingPage() {
               <li key={sellInfo.id}>
                 <div className={css.wish_product_box}>
                   <div className={css.wish_product}>
-                    <img src={sellInfo.url} alt="사용자이미지" />
+                    <img src={sellInfo.url} alt="판매 상품 이미지" />
                     <div className={css.product_detail}>
                       <p className={css.brand}>{sellInfo.name}</p>
                       <p className={css.product_name}>
