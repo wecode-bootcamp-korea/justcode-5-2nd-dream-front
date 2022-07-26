@@ -1,7 +1,12 @@
+@mixin size($w: null, $h: null, $m: null, $p: null) {
+  width: $w;
+  height: $h;
+  margin: $m;
+  padding: $p;
+}
+
 .container {
-  width: 400px;
-  margin: 0 auto;
-  padding: 60px 0 160px;
+  @include size(400px, $m: 0 auto, $p: 60px 0 160px);
   .logo {
     padding: 0 0 50px;
     font-size: 30px;
@@ -19,7 +24,6 @@
     display: flex;
     flex-direction: column;
     position: relative;
-
     .label {
       color: #222222;
       font-size: 13px;
@@ -27,14 +31,13 @@
       font-weight: bold;
     }
     .input {
+      @include size($m: 0 0 20px 0, $p: 10px 0);
       font-family: -apple-system, BlinkMacSystemFont, Roboto,
         AppleSDGothicNeo-Regular, NanumBarunGothic, NanumGothic, 나눔고딕,
         Segoe UI, Helveica, Arial, Malgun Gothic, Dotum, sans-serif;
       outline: 0;
       border: 0;
       border-bottom: 1px solid lightgray;
-      padding: 10px 0;
-      margin: 0 0 20px 0;
       &:focus {
         border-bottom: 2px solid black;
       }
@@ -72,10 +75,9 @@
     display: flex;
     justify-content: space-evenly;
     a {
+      @include size($m: 30px 0, $p: 0 20px);
       text-decoration: none;
       color: #222222;
-      padding: 0 20px;
-      margin: 30px 0;
       font-size: 13px;
       &:nth-child(2) {
         border-left: 1px solid gray;
@@ -87,19 +89,15 @@
     }
   }
   .kakao_btn {
-    width: 100%;
+    @include size(100%, 59.4px, 0, 0);
     border-radius: 12px;
     background-color: transparent;
     border: 0;
-    height: 59.4px;
     cursor: pointer;
-    padding: 0;
-    margin: 0;
     img {
+      @include size(100%, $m: 0);
       position: relative;
       bottom: 2px;
-      width: 100%;
-      margin: 0;
     }
   }
 }
