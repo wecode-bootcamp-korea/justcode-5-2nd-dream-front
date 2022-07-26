@@ -36,7 +36,7 @@ function BuyingPage() {
               <li key={buyInfo.id}>
                 <div className={css.wish_product_box}>
                   <div className={css.wish_product}>
-                    <img src={buyInfo.url} alt="사용자이미지" />
+                    <img src={buyInfo.url} alt="구매 상품 이미지" />
                     <div className={css.product_detail}>
                       <p className={css.brand}>{buyInfo.name}</p>
                       <p className={css.product_name}>

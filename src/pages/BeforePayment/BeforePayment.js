@@ -57,7 +57,9 @@ function BeforePayment() {
 
   const [isValid, setIsValid] = useState(false);
   const valid = () => {
-    if (isBidValid && price !== undefined) {
+    if (isBid && isBidValid && bidPrice !== 0) {
+      setIsValid(true);
+    } else if (!isBid && price !== undefined) {
       setIsValid(true);
     } else {
       setIsValid(false);
