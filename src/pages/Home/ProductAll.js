@@ -4,20 +4,20 @@ import ProductCard from './ProductCard';
 import css from './ProductAll.module.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const ProductAll = ({ data }) => {
+const ProductAll = ({ data, title }) => {
   return (
     <div>
       <div className={css.wrap}>
         <Container>
-          {data[0]?.sell_num ? (
+          {title === 'Most Popular' ? (
             <div className={css.title_box}>
-              <h1 className={css.eng_title}>Most Popular</h1>
-              <h2 className={css.kor_title}>인기상품</h2>
+              <h1 className={css.eng_title}>{title}</h1>
+              <h2 className={css.kor_title}>인기 상품</h2>
             </div>
           ) : (
             <div className={css.title_box}>
-              <h1 className={css.eng_title}>Just Dropped</h1>
-              <h2 className={css.kor_title}>발매상품</h2>
+              <h1 className={css.eng_title}>{title}</h1>
+              <h2 className={css.kor_title}>발매 상품</h2>
             </div>
           )}
           <Row>
