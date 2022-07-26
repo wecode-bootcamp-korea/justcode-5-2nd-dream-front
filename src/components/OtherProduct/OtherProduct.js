@@ -8,8 +8,8 @@ function OtherProduct(props) {
   const image = other.image_url;
   const name = other.product_name;
   const id = other.product_id;
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const goToProductDetail = () => {
     navigate(`/products/${id}`);
   };

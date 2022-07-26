@@ -4,16 +4,13 @@ import css from './BuySellPage.module.scss';
 
 function BuySellPage() {
   const location = useLocation();
+  const id = location.pathname.split('/')[3];
   const isBuyPage = location.pathname.includes('buy');
-  const sizeList = location.state.sizeList;
-  const productInfo = location.state.productInfo;
+  const { sizeList, productInfo } = location.state;
+  const { name, comment } = productInfo;
   const img = productInfo.images[0].product_images;
   const modelNum = productInfo.model_number;
-  const { name, comment } = productInfo;
   const userId = localStorage.getItem('userId');
-  const id = location.pathname.split('/')[3];
-
-  const navigate = useNavigate();
 
   const [size, setSize] = useState(undefined);
   const [price, setPrice] = useState(undefined);
@@ -22,13 +19,15 @@ function BuySellPage() {
   const [isSoldOut, setIsSoldOut] = useState(false);
 
   const handleSize = e => {
-    setSize(e.target.value.split(',')[0]);
-    setPrice(e.target.value.split(',')[1]);
-    setSellId(Number(e.target.value.split(',')[2]));
-    setProductDetailId(e.target.value.split(',')[3]);
-    setIsSoldOut(e.target.value.split(',')[4]);
+    const valueArr = e.target.value.split(',');
+    setSize(valueArr[0]);
+    setPrice(valueArr[1]);
+    setSellId(Number(valueArr[2]));
+    setProductDetailId(valueArr[3]);
+    setIsSoldOut(valueArr[4]);
   };
 
+  const navigate = useNavigate();
   const moveToDealCheck = () => {
     if (isBuyPage) {
       navigate(`/buy/check/${id}`, {

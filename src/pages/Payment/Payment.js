@@ -30,7 +30,6 @@ function Payment() {
   };
 
   const [valid, setValid] = useState(false);
-
   const dealValid = () => {
     if (isCheckedCancel && isCheckedDeal && isCheckedAll) {
       setValid(true);
@@ -58,6 +57,7 @@ function Payment() {
   const [address, setAddress] = useState(undefined);
   const [phone, setPhone] = useState(undefined);
   const [name, setName] = useState(undefined);
+
   useEffect(() => {
     fetch(`${BASE_URL}/mypage/${userId}`, {
       method: 'GET',
