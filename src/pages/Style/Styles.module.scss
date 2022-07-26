@@ -4,16 +4,19 @@
   margin-bottom: 50px;
 
   Button {
-    color: black;
     margin-top: 30px;
     margin-right: 40px;
     border: none;
     padding: 8px 14px;
     border-radius: 19px;
   }
+  .btn_text:hover {
+    color: white;
+  }
   .btn_text {
     font-size: 18px;
     font-weight: 700;
+    color: black;
   }
 }
 .tag {

@@ -39,6 +39,11 @@ a {
     display: flex;
     align-items: center;
     padding: 0 20px;
+    a {
+      line-height: 30px;
+      font-weight: 800;
+      font-style: italic;
+    }
   }
 
   .right {

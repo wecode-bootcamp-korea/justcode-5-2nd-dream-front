@@ -54,12 +54,12 @@ function Home() {
       <Post />
       <div className={css.container}>
         <div className={css.productall}>
-          <ProductAll data={justDropList} />
+          <ProductAll data={justDropList} title="Just Dropped" />
         </div>
       </div>
       <div className={css.container}>
         <div className={css.productall}>
-          <ProductAll data={popularList} />
+          <ProductAll data={popularList} title="Most Popular" />
         </div>
       </div>
       <Slide data={styles} />
