@@ -34,20 +34,17 @@
     background-color: white;
     .confirm {
       @include size(120px, 42px);
+      @include position(absolute, $t: -15px, $r: 0);
       cursor: pointer;
-      position: absolute;
-      right: 0;
       background-color: transparent;
       color: black;
-      top: -15px;
       font-size: 20px;
       border: 0;
     }
   }
   .sizes {
     @include size(400px, 280px, 0 auto 10px);
-    position: relative;
-    left: 10px;
+    @include position(relative, $l: 10px);
     button {
       @include size(117px, 60px, 5px);
       border: 1px solid #d3d3d3;
