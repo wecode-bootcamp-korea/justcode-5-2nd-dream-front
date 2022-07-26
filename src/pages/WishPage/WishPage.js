@@ -20,7 +20,6 @@ function WishPage() {
         setwishInfo(data.data);
       });
   }, [userId, isUpdated]);
-  // console.log(wishInfo[0].product_id);
 
   // ============ 관심상품 삭제
   const deleteWish = productId => {
@@ -50,7 +49,7 @@ function WishPage() {
               <li key={wishInfo.id}>
                 <div className={css.wish_product_box}>
                   <div className={css.wish_product}>
-                    <img src={wishInfo.product_image} alt="사용자이미지" />
+                    <img src={wishInfo.product_image} alt="상품이미지" />
                     <div className={css.product_detail}>
                       <p className={css.brand}>{wishInfo.brand}</p>
                       <p className={css.product_name}>{wishInfo.name}</p>

@@ -4,6 +4,7 @@
   margin: $m;
   padding: $p;
 }
+
 @mixin position($position, $t: null, $r: null, $b: null, $l: null) {
   position: $position;
   top: $t;
@@ -11,7 +12,6 @@
   bottom: $b;
   left: $l;
 }
-$border: 1px solid #e8e8e8;
 
 .modal {
   @include position(fixed, 0, 0, 0, 0);
@@ -26,14 +26,14 @@ $border: 1px solid #e8e8e8;
     border-radius: 12px;
   }
   header {
+    @include size(450px, $m: 30px 0);
     position: relative;
-    width: 450px;
-    margin: 30px 0;
     font-weight: 700;
     font-size: 18px;
     text-align: center;
     background-color: white;
     .confirm {
+      @include size(120px, 42px);
       cursor: pointer;
       position: absolute;
       right: 0;
@@ -42,20 +42,14 @@ $border: 1px solid #e8e8e8;
       top: -15px;
       font-size: 20px;
       border: 0;
-      width: 120px;
-      height: 42px;
     }
   }
   .sizes {
-    width: 400px;
-    margin: 0 auto 10px;
+    @include size(400px, 280px, 0 auto 10px);
     position: relative;
     left: 10px;
-    height: 280px;
     button {
-      width: 117px;
-      height: 60px;
-      margin: 5px;
+      @include size(117px, 60px, 5px);
       border: 1px solid #d3d3d3;
       background-color: transparent;
       cursor: pointer;
@@ -97,15 +91,13 @@ $border: 1px solid #e8e8e8;
       width: 100vw;
     }
     .sizes {
-      width: 90vw;
+      @include size(90vw, auto);
       justify-content: center;
       position: relative;
-      height: auto;
       overflow: auto;
     }
     section {
-      height: auto;
-      padding: 30px;
+      @include size($h: auto, $p: 30px);
     }
   }
 }
