@@ -7,6 +7,8 @@ import { faCircleDown } from '@fortawesome/free-regular-svg-icons';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import ProductModal from '../ProductModal/ProductModal';
 import BASE_URL from '../../config';
+import useToast from '../../hooks/useToast';
+import Toast from '../../components/Toast/Toast';
 
 function ProductInfo(props) {
   const { isLogin } = props;
@@ -80,11 +82,12 @@ function ProductInfo(props) {
   const navigate = useNavigate();
   const moveToDealCheck = deal => {
     if (sizeList === undefined) {
-      alert('현재 거래가 불가능한 상품입니다.');
+      setDealState(true);
     } else if (address === null) {
-      alert('주소를 입력해주세요.');
-      navigate('/mypage');
-      return;
+      setAddressState(true);
+      setTimeout(() => {
+        navigate('/mypage');
+      }, 1000);
     } else if (token === null) {
       navigate('/login');
     } else {
@@ -101,10 +104,10 @@ function ProductInfo(props) {
         const wishLength = data.data.filter(
           d => d.product_id === Number(id)
         ).length;
-        if (wishLength !== 0) {
-          setIsWished(true);
-        } else {
+        if (wishLength === 0) {
           setIsWished(false);
+        } else if (wishLength === 1) {
+          setIsWished(true);
         }
       });
   }, [isWished, isUpdated, id, userId]);
@@ -121,21 +124,30 @@ function ProductInfo(props) {
   };
 
   const wish = () => {
+    console.log(isWished);
     if (!userId) {
       navigate('/login');
     } else if (!isWished) {
       fetch(`${BASE_URL}/wish`, toggleWish('POST'))
         .then(setIsWished(true))
         .then(setIsUpdated(true));
-    } else {
+    } else if (isWished) {
       fetch(`${BASE_URL}/wish`, toggleWish('DELETE'))
         .then(setIsWished(false))
         .then(setIsUpdated(true));
     }
   };
 
+  const [dealState, setDealState] = useState(false);
+  useToast(dealState, setDealState);
+
+  const [addressState, setAddressState] = useState(false);
+  useToast(addressState, setAddressState);
+  console.log(wishNum);
   return (
     <div className={css.container}>
+      {dealState && <Toast message="현재 거래가 불가능한 상품입니다." />}
+      {addressState && <Toast message="주소를 입력해주세요." />}
       <ProductModal
         close={closeModal}
         open={modalOpen}
