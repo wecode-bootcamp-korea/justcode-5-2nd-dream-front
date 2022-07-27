@@ -9,15 +9,13 @@ function ProfileInfo(props) {
   const gotomain = () => {
     navigate('/');
   };
-  const gotoLogin = () => {
-    navigate('/login');
-  };
   const userId = localStorage.getItem('userId');
+
   //============ 프로필 조회
   useEffect(() => {
     setIsUpdated(false);
     if (userId === null) {
-      gotoLogin();
+      navigate('/login');
     } else {
       fetch(`${BASE_URL}/mypage/${userId}`, {
         method: 'GET',
@@ -27,7 +25,7 @@ function ProfileInfo(props) {
           setProfileInfo(data.data[0]);
         });
     }
-  }, [userId, setProfileInfo, isUpdated, setIsUpdated]);
+  }, [userId, setProfileInfo, isUpdated, setIsUpdated, navigate]);
 
   //============ 프로필 주소 등록
   const writeAddressBtn = () => {

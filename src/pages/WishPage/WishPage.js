@@ -7,10 +7,10 @@ import BASE_URL from '../../config';
 function WishPage() {
   const [wishInfo, setwishInfo] = useState([]);
   const [isUpdated, setIsUpdated] = useState(true);
-  const userId = localStorage.getItem('userId');
 
   // ============ 관심상품 조회
   useEffect(() => {
+    const userId = localStorage.getItem('userId');
     setIsUpdated(false);
     fetch(`${BASE_URL}/wish/${userId}`, {
       method: 'GET',
@@ -19,7 +19,7 @@ function WishPage() {
       .then(data => {
         setwishInfo(data.data);
       });
-  }, [userId, isUpdated]);
+  }, [isUpdated]);
 
   // ============ 관심상품 삭제
   const deleteWish = productId => {
