@@ -7,10 +7,10 @@ import BASE_URL from '../../config';
 function SellingPage() {
   const [sellInfo, setSellInfo] = useState([]);
   const [isUpdated, setIsUpdated] = useState(true);
-  const userId = localStorage.getItem('userId');
 
   // ============ 판매상품 조회
   useEffect(() => {
+    const userId = localStorage.getItem('userId');
     setIsUpdated(false);
     fetch(`${BASE_URL}/salehistory/${userId}`, {
       method: 'GET',
@@ -19,7 +19,7 @@ function SellingPage() {
       .then(data => {
         setSellInfo(data.data);
       });
-  }, [isUpdated, userId]);
+  }, [isUpdated]);
 
   return (
     <div className={css.container}>
