@@ -43,7 +43,7 @@ function Header(props) {
           <Link to="/mypage">마이페이지</Link>
         </div>
         <div className={css.interest}>
-          <Link to="/wishpage">관심상품 </Link>
+          <Link to="/mypage/wish">관심상품 </Link>
         </div>
         <div className={css.customer_center}>고객센터</div>
       </div>
