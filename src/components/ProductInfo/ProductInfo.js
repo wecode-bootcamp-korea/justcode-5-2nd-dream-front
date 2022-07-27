@@ -7,6 +7,8 @@ import { faCircleDown } from '@fortawesome/free-regular-svg-icons';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import ProductModal from '../ProductModal/ProductModal';
 import BASE_URL from '../../config';
+import useToast from '../../hooks/useToast';
+import Toast from '../../components/Toast/Toast';
 
 function ProductInfo(props) {
   const { isLogin } = props;
@@ -80,11 +82,12 @@ function ProductInfo(props) {
   const navigate = useNavigate();
   const moveToDealCheck = deal => {
     if (sizeList === undefined) {
-      alert('현재 거래가 불가능한 상품입니다.');
+      setDealState(true);
     } else if (address === null) {
-      alert('주소를 입력해주세요.');
-      navigate('/mypage');
-      return;
+      setAddressState(true);
+      setTimeout(() => {
+        navigate('/mypage');
+      }, 1000);
     } else if (token === null) {
       navigate('/login');
     } else {
@@ -134,8 +137,16 @@ function ProductInfo(props) {
     }
   };
 
+  const [dealState, setDealState] = useState(false);
+  useToast(dealState, setDealState);
+
+  const [addressState, setAddressState] = useState(false);
+  useToast(addressState, setAddressState);
+
   return (
     <div className={css.container}>
+      {dealState && <Toast message="현재 거래가 불가능한 상품입니다." />}
+      {addressState && <Toast message="주소를 입력해주세요." />}
       <ProductModal
         close={closeModal}
         open={modalOpen}

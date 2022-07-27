@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import css from './Login.module.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import kakao_login from './images/kakao_login.png';
 import BASE_URL from '../../config';
+import useToast from '../../hooks/useToast';
+import Toast from '../../components/Toast/Toast';
 
 function Login(props) {
   const { setIsLogin } = props;
@@ -26,10 +28,9 @@ function Login(props) {
           localStorage.setItem('email', email);
           localStorage.setItem('userId', res.id);
           setIsLogin(true);
-          alert('로그인이 완료되었습니다.');
-          navigate('/');
+          setLoginState(true);
         } else {
-          alert('잘못된 이메일이거나 비밀번호입니다.');
+          setInvalidState(true);
         }
       });
   };
@@ -86,12 +87,25 @@ function Login(props) {
     loginValidaion();
   });
 
+  const isLoginPage = useLocation().pathname.includes('login');
   useEffect(() => {
-    if (isLoggedIn) navigate('/');
-  }, [isLoggedIn, navigate]);
+    if (isLoginPage && isLoggedIn) {
+      setTimeout(() => {
+        navigate('/');
+      }, 1000);
+    } else if (isLoggedIn) navigate('/');
+  }, [isLoginPage, isLoggedIn, navigate]);
+
+  const [invalidState, setInvalidState] = useState(false);
+  useToast(invalidState, setInvalidState);
+
+  const [loginState, setLoginState] = useState(false);
+  useToast(loginState, setLoginState);
 
   return (
     <div className={css.container}>
+      {loginState && <Toast message="로그인이 완료되었습니다." />}
+      {invalidState && <Toast message="잘못된 이메일이거나 비밀번호입니다." />}
       <h1 className={css.logo}>
         DREAM
         <div className={css.logo_desc}>DRESS RULE EVERYTHING AROUND ME</div>

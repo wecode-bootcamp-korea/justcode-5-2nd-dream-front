@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import css from './OrderSettlement.module.scss';
 import BASE_URL from '../../config';
+import useToast from '../../hooks/useToast';
+import Toast from '../../components/Toast/Toast';
 
 function OrderSettlement() {
   const navigate = useNavigate();
@@ -84,12 +86,20 @@ function OrderSettlement() {
         product_id: productId,
       }),
     })
-      .then(alert('판매 등록이 완료되었습니다.'))
-      .then(navigate(`/products/${productId}`));
+      .then(setCompleteState(true))
+      .then(
+        setTimeout(() => {
+          navigate(`/products/${productId}`);
+        }, 1000)
+      );
   };
+
+  const [completeState, setCompleteState] = useState(false);
+  useToast(completeState, setCompleteState);
 
   return (
     <div className={css.container}>
+      {completeState && <Toast message="판매 등록이 완료되었습니다." />}
       <div className={css.content}>
         <div className={css.content_top}>
           <div className={css.image}>
