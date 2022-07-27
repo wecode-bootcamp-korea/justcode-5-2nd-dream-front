@@ -1,29 +1,27 @@
 .banner_box {
+  .slide {
+    position: relative;
+    button {
+      margin-left: 50px;
+      margin-right: 50px;
+      position: absolute;
+      z-index: 100;
+    }
+  }
   .banner_1 {
+    position: relative;
     background-color: #79abc4;
     height: 100px;
     width: 100%;
   }
-  img {
-    display: block;
-    margin: auto;
-    height: 100px;
-    width: 50%;
-    object-fit: cover;
-  }
   .banner_2 {
+    position: relative;
     background-color: #20390d;
     height: 100px;
     width: 100%;
   }
-  img {
-    display: block;
-    margin: auto;
-    height: 100px;
-    width: 30%;
-    object-fit: cover;
-  }
   .banner_3 {
+    position: relative;
     background-color: #d5d4da;
     height: 100px;
     width: 100%;
