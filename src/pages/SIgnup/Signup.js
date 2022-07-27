@@ -8,14 +8,10 @@ import BASE_URL from '../../config';
 
 function Signup() {
   const [email, setEmail] = useState('');
-  const handleEmailInput = e => {
-    setEmail(e.target.value);
-  };
+  const handleEmailInput = e => setEmail(e.target.value);
 
   const [password, setPassword] = useState('');
-  const handlePwInput = e => {
-    setPassword(e.target.value);
-  };
+  const handlePwInput = e => setPassword(e.target.value);
 
   const regEmail = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
   const regPw =
@@ -26,17 +22,13 @@ function Signup() {
     if (email.length === 0) setIsValidEmail(true);
     else if (regEmail.test(email) && !/[0-9]/g.test(email.split('.')[1])) {
       setIsValidEmail(true);
-    } else {
-      setIsValidEmail(false);
-    }
+    } else setIsValidEmail(false);
   };
 
   const [isValidPw, setIsValidPw] = useState(false);
   const pwValidation = () => {
     if (password.length === 0) setIsValidPw(true);
-    else {
-      setIsValidPw(regPw.test(password));
-    }
+    else setIsValidPw(regPw.test(password));
   };
 
   const [isEssentialOpen, setIsEssentialOpen] = useState(false);
@@ -49,8 +41,6 @@ function Signup() {
     e.preventDefault();
     setIsOptionalOpen(!isOptionalOpen);
   };
-
-  const [isEmailCheck, setIsEmailCheck] = useState(false);
 
   const [isEssentialCheck, setIsEssentialCheck] = useState(false);
   const essentialCheckBtn = e => {
@@ -83,54 +73,38 @@ function Signup() {
 
   const termsCheckBtn = () => {
     setIsTermsCheck(!isTermsCheck);
-    if (isTermsCheck) {
-      setIsEssentialCheck(false);
-    }
-    if (!isTermsCheck && isInfoCheck) {
-      setIsEssentialCheck(true);
-    }
+    if (isTermsCheck) setIsEssentialCheck(false);
+    else if (!isTermsCheck && isInfoCheck) setIsEssentialCheck(true);
   };
 
   const infoCheckBtn = () => {
     setIsInfoCheck(!isInfoCheck);
-    if (isInfoCheck) {
-      setIsEssentialCheck(false);
-    }
-    if (isTermsCheck && !isInfoCheck) {
-      setIsEssentialCheck(true);
-    }
+    if (isInfoCheck) setIsEssentialCheck(false);
+    else if (isTermsCheck && !isInfoCheck) setIsEssentialCheck(true);
   };
 
   const [isAppCheck, setIsAppCheck] = useState(false);
   const appCheckBtn = () => {
     setIsAppCheck(!isAppCheck);
-    if (isAppCheck) {
-      setIsOptionalCheck(false);
-    }
-    if (!isAppCheck && isSmsCheck && isEmailCheck) {
+    if (isAppCheck) setIsOptionalCheck(false);
+    else if (!isAppCheck && isSmsCheck && isEmailCheck)
       setIsOptionalCheck(true);
-    }
   };
 
   const [isSmsCheck, setIsSmsCheck] = useState(false);
   const smsCheckBtn = () => {
     setIsSmsCheck(!isSmsCheck);
-    if (isSmsCheck) {
-      setIsOptionalCheck(false);
-    }
-    if (isAppCheck && !isSmsCheck && isEmailCheck) {
+    if (isSmsCheck) setIsOptionalCheck(false);
+    else if (isAppCheck && !isSmsCheck && isEmailCheck)
       setIsOptionalCheck(true);
-    }
   };
 
+  const [isEmailCheck, setIsEmailCheck] = useState(false);
   const emailCheckBtn = () => {
     setIsEmailCheck(!isEmailCheck);
-    if (isEmailCheck) {
-      setIsOptionalCheck(false);
-    }
-    if (isAppCheck && isSmsCheck && !isEmailCheck) {
+    if (isEmailCheck) setIsOptionalCheck(false);
+    else if (isAppCheck && isSmsCheck && !isEmailCheck)
       setIsOptionalCheck(true);
-    }
   };
 
   const [signupValid, setSignupValid] = useState(false);
@@ -143,9 +117,7 @@ function Signup() {
       password.length !== 0
     ) {
       setSignupValid(true);
-    } else {
-      setSignupValid(false);
-    }
+    } else setSignupValid(false);
   };
 
   const navigate = useNavigate();
@@ -171,12 +143,8 @@ function Signup() {
   };
 
   const [modalOpen, setModalOpen] = useState(false);
-  const openModal = () => {
-    setModalOpen(true);
-  };
-  const closeModal = () => {
-    setModalOpen(false);
-  };
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
 
   useEffect(() => {
     emailValidation();
