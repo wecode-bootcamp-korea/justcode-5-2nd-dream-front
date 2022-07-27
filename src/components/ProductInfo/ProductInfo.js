@@ -35,7 +35,7 @@ function ProductInfo(props) {
       .then(data => {
         setProductInfo(data[0]);
       });
-  }, [isUpdated, id, isLogin]);
+  }, [isUpdated, isWished, id, isLogin]);
 
   const latestPrice = Number(productInfo?.latest_price)?.toLocaleString();
   const wishNum = productInfo?.wish_num;
@@ -56,20 +56,22 @@ function ProductInfo(props) {
         const address = data?.data[0]?.address[0]?.address;
         setAddress(address);
       });
-  }, [userId]);
+  }, []);
 
   useEffect(() => {
     fetch(`${BASE_URL}/information/${id}`)
       .then(res => res.json())
       .then(data => {
         const sizeList = data?.data[0]?.size_list;
-        setSizeList(sizeList);
-        setSize(sizeList[0].size);
-        setPrice(sizeList[0].price);
-        setProductDetailId(sizeList[0].product_detail_id);
-        setSellId(sizeList[0]['sell.id']);
+        if (sizeList) {
+          setSizeList(sizeList);
+          setSize(sizeList[0].size);
+          setPrice(sizeList[0].price);
+          setProductDetailId(sizeList[0].product_detail_id);
+          setSellId(sizeList[0]['sell.id']);
+        }
       });
-  }, [id]);
+  }, []);
 
   const [modalOpen, setModalOpen] = useState(false);
   const openModal = () => {
@@ -101,16 +103,16 @@ function ProductInfo(props) {
     fetch(`${BASE_URL}/wish/${userId}`)
       .then(res => res.json())
       .then(data => {
-        const wishLength = data.data.filter(
+        const wishLength = data.data?.filter(
           d => d.product_id === Number(id)
         ).length;
-        if (wishLength !== 0) {
-          setIsWished(true);
-        } else {
+        if (wishLength === 0) {
           setIsWished(false);
+        } else if (wishLength === 1) {
+          setIsWished(true);
         }
       });
-  }, [isWished, isUpdated, id, userId]);
+  }, [isWished]);
 
   const toggleWish = method => {
     return {
@@ -122,18 +124,19 @@ function ProductInfo(props) {
       }),
     };
   };
-
   const wish = () => {
-    if (!userId) {
-      navigate('/login');
-    } else if (!isWished) {
-      fetch(`${BASE_URL}/wish`, toggleWish('POST'))
-        .then(setIsWished(true))
-        .then(setIsUpdated(true));
-    } else {
-      fetch(`${BASE_URL}/wish`, toggleWish('DELETE'))
-        .then(setIsWished(false))
-        .then(setIsUpdated(true));
+    if (isWished !== undefined) {
+      if (!userId) {
+        navigate('/login');
+      } else if (!isWished) {
+        fetch(`${BASE_URL}/wish`, toggleWish('POST'))
+          .then(setIsWished(true))
+          .then(setIsUpdated(true));
+      } else if (isWished) {
+        fetch(`${BASE_URL}/wish`, toggleWish('DELETE'))
+          .then(setIsWished(false))
+          .then(setIsUpdated(true));
+      }
     }
   };
 
@@ -199,13 +202,11 @@ function ProductInfo(props) {
           </div>
         </button>
         <button className={css.interested} onClick={wish}>
-          {isWished !== undefined && (
-            <FontAwesomeIcon
-              icon={faBookmark}
-              className={css.bookmark}
-              color={isWished ? 'black' : 'lightgray'}
-            />
-          )}
+          <FontAwesomeIcon
+            icon={faBookmark}
+            className={css.bookmark}
+            color={isWished ? 'black' : 'lightgray'}
+          />
           관심상품 {wishNum === null ? 0 : wishNum}
         </button>
       </div>
