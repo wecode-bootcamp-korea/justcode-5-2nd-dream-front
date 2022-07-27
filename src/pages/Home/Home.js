@@ -6,6 +6,7 @@ import ProductAll from './ProductAll';
 import queryString from 'query-string';
 import { useLocation, useNavigate } from 'react-router-dom';
 import css from './Home.module.scss';
+import BASE_URL from '../../config';
 
 function Home() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ function Home() {
   const [styles, setStyles] = useState([]);
 
   const getProducts = async () => {
-    const url = 'http://localhost:10010/main';
+    const url = `${BASE_URL}/main`;
     const response = await fetch(url, { method: 'GET' });
     const json = await response.json();
     console.log('json: ', json);
@@ -25,6 +26,14 @@ function Home() {
     setPopularList(json.data[1]);
     setStyles(json.data[2]);
   };
+
+  // const getWishs = async userId => {
+  //   const url = `${BASE_URL}/main/wish/${userId}`;
+  //   const res = await fetch(url,{method : 'GET'});
+  //   const json = await res.json();
+  //   console.log('wish : ', json)
+
+  // };
   useEffect(() => {
     getProducts();
   }, []);
