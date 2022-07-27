@@ -9,17 +9,24 @@ function ProfileInfo(props) {
   const gotomain = () => {
     navigate('/');
   };
+  const gotoLogin = () => {
+    navigate('/login');
+  };
   const userId = localStorage.getItem('userId');
   //============ 프로필 조회
   useEffect(() => {
     setIsUpdated(false);
-    fetch(`${BASE_URL}/mypage/${userId}`, {
-      method: 'GET',
-    })
-      .then(res => res.json())
-      .then(data => {
-        setProfileInfo(data.data[0]);
-      });
+    if (userId === null) {
+      gotoLogin();
+    } else {
+      fetch(`${BASE_URL}/mypage/${userId}`, {
+        method: 'GET',
+      })
+        .then(res => res.json())
+        .then(data => {
+          setProfileInfo(data.data[0]);
+        });
+    }
   }, [userId, setProfileInfo, isUpdated, setIsUpdated]);
 
   //============ 프로필 주소 등록
