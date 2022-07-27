@@ -23,13 +23,13 @@ export default class ShopBanner extends Component {
               alt="베너1"
             />
           </div>
-          <div div className={css.banner_2}>
+          <div className={css.banner_2}>
             <img
               src="https://i.pinimg.com/564x/d8/bd/45/d8bd454776c2586b91744e0be51007cb.jpg"
               alt="베너2"
             />
           </div>
-          <div div className={css.banner_3}>
+          <div lassName={css.banner_3}>
             <img
               src="https://i.pinimg.com/564x/98/47/e7/9847e72d3159be6851e2d3531e5e7c83.jpg"
               alt="베너3"
