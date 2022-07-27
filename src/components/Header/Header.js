@@ -6,6 +6,7 @@ import login from '../../pages/Login/Login';
 import { Link } from 'react-router-dom';
 import shop from '../../pages/Shop/Shop';
 import mypage from '../../pages/MyPage/MyPage';
+import wishpage from '../../pages/WishPage/WishPage';
 
 function Header(props) {
   const { isLogin, setIsLogin } = props;
@@ -41,7 +42,9 @@ function Header(props) {
         <div className={css.mypage}>
           <Link to="/mypage">마이페이지</Link>
         </div>
-        <div className={css.interest}>관심상품</div>
+        <div className={css.interest}>
+          <Link to="/wishpage">관심상품 </Link>
+        </div>
         <div className={css.customer_center}>고객센터</div>
       </div>
       <div className={css.second_border}>

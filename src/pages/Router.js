@@ -33,6 +33,7 @@ function Router() {
         <Route path="/mypage/wish" element={<WishPage />} />
         <Route path="/mypage/buying" element={<BuyingPage />} />
         <Route path="/mypage/selling" element={<SellingPage />} />
+        <Route path="/wishpage" element={<WishPage />} />
         <Route
           path="/products/:id"
           element={<ProductDetail isLogin={isLogin} setIsLogin={setIsLogin} />}
