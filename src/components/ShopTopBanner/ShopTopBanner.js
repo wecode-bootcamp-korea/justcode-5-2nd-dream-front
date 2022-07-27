@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './ShopTopBanner.module.scss';
+import ShopBanner from './ShopBanner';
 
 function ShopTopBanner() {
   const brand_list = [
@@ -68,12 +69,7 @@ function ShopTopBanner() {
           })}
         </ul>
       </div>
-      <div className={css.banner_box}>
-        <img
-          src="https://kream-phinf.pstatic.net/MjAyMjA0MDVfMjg3/MDAxNjQ5MTQxNDQ2MzE5.KmWw8NmaqtTEZQUwNB-qnk94UoRvQjTBz6HE-wcsUPwg.uKnTAOmBZVasnEheK77-WjBLVGkrxaev02tgaOLhqz0g.JPEG/a_e84bc8e4c55041b29479627fc78a2469.jpg"
-          alt="베너부분"
-        />
-      </div>
+      <ShopBanner />
     </div>
   );
 }
