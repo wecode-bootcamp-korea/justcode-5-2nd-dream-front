@@ -5,6 +5,8 @@ import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import SizeModal from '../../components/SizeModal/SizeModal';
 import { useNavigate } from 'react-router-dom';
 import BASE_URL from '../../config';
+import useToast from '../../hooks/useToast';
+import Toast from '../../components/Toast/Toast';
 
 function Signup() {
   const [email, setEmail] = useState('');
@@ -134,10 +136,12 @@ function Signup() {
       .then(res => res.json())
       .then(res => {
         if (res.message === 'EXISTING_USER') {
-          alert('이미 사용 중인 이메일입니다.');
+          setInvalidState(true);
         } else {
-          alert('회원가입을 축하드립니다.');
-          navigate('/login');
+          setSignupState(true);
+          setTimeout(() => {
+            navigate('/login');
+          }, 1000);
         }
       });
   };
@@ -154,8 +158,16 @@ function Signup() {
 
   const [size, setSize] = useState(undefined);
 
+  const [invalidState, setInvalidState] = useState(false);
+  useToast(invalidState, setInvalidState);
+
+  const [signupState, setSignupState] = useState(false);
+  useToast(signupState, setSignupState);
+
   return (
     <div className={css.container}>
+      {signupState && <Toast message="회원가입을 축하드립니다." />}
+      {invalidState && <Toast message="이미 사용 중인 이메일입니다." />}
       <SizeModal
         close={closeModal}
         open={modalOpen}

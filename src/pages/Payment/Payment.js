@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import css from './Payment.module.scss';
 import BASE_URL from '../../config';
+import useToast from '../../hooks/useToast';
+import Toast from '../../components/Toast/Toast';
 
 function Payment() {
   const navigate = useNavigate();
@@ -50,8 +52,12 @@ function Payment() {
         sell_status_id: 2,
       }),
     })
-      .then(alert('구매가 완료되었습니다.'))
-      .then(navigate(`/products/${productId}`));
+      .then(setCompleteState)
+      .then(
+        setTimeout(() => {
+          navigate(`/products/${productId}`);
+        }, 1000)
+      );
   };
 
   const [address, setAddress] = useState(undefined);
@@ -70,8 +76,12 @@ function Payment() {
       });
   }, [userId]);
 
+  const [completeState, setCompleteState] = useState(false);
+  useToast(completeState, setCompleteState);
+
   return (
     <div className={css.container}>
+      {completeState && <Toast message="구매가 완료되었습니다." />}
       <div className={css.content}>
         <div className={css.content_top}>
           <div className={css.image}>
