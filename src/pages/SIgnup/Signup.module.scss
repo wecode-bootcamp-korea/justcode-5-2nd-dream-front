@@ -6,7 +6,7 @@
 }
 
 .container {
-  @include size(400px, 0 auto, 60px 0 160px);
+  @include size(400px, auto, 0 auto, 60px 0 160px);
   .logo {
     padding: 0 0 50px;
     font-size: 30px;
