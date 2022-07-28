@@ -8,10 +8,9 @@ function BuyingPage() {
   const [buyInfo, setBuyInfo] = useState([]);
   const [isUpdated, setIsUpdated] = useState(true);
 
-  const userId = localStorage.getItem('userId');
-
   // ============ 구매상품 조회
   useEffect(() => {
+    const userId = localStorage.getItem('userId');
     setIsUpdated(false);
     fetch(`${BASE_URL}/purchasehistory/${userId}`, {
       method: 'GET',
@@ -20,7 +19,7 @@ function BuyingPage() {
       .then(data => {
         setBuyInfo(data.data);
       });
-  }, [userId, isUpdated]);
+  }, [isUpdated]);
 
   return (
     <div className={css.container}>

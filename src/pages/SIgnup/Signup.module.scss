@@ -1,7 +1,12 @@
+@mixin size($w: null, $h: null, $m: null, $p: null) {
+  width: $w;
+  height: $h;
+  margin: $m;
+  padding: $p;
+}
+
 .container {
-  width: 400px;
-  margin: 0 auto;
-  padding: 60px 0 160px;
+  @include size(400px, auto, 0 auto, 60px 0 160px);
   .logo {
     padding: 0 0 50px;
     font-size: 30px;
@@ -23,14 +28,13 @@
       color: #f15746;
     }
     .input {
+      @include size($m: 0 0 20px 0, $p: 10px 0);
       font-family: -apple-system, BlinkMacSystemFont, Roboto,
         AppleSDGothicNeo-Regular, NanumBarunGothic, NanumGothic, 나눔고딕,
         Segoe UI, Helveica, Arial, Malgun Gothic, Dotum, sans-serif;
       outline: 0;
       border: 0;
       border-bottom: 1px solid lightgray;
-      padding: 10px 0;
-      margin: 0 0 20px 0;
       &:focus {
         border-bottom: 2px solid black;
       }
@@ -63,16 +67,12 @@
       position: relative;
       left: 30px;
       input[type='checkbox'] {
-        width: 24px;
-        height: 24px;
-        margin-right: 20px;
+        @include size(24px, 24px, 0 20px 0 0);
         border-radius: 2px;
         border: 1px solid rgb(216, 216, 216);
       }
       input[type='checkbox']:checked {
-        width: 24px;
-        height: 24px;
-        margin-right: 20px;
+        @include size(24px, 24px, 0 20px 0 0);
         border-radius: 2px;
       }
       .label {
@@ -92,16 +92,12 @@
       display: flex;
       justify-content: space-between;
       input[type='checkbox'] {
-        width: 24px;
-        height: 24px;
-        margin-right: 20px;
+        @include size(24px, 24px, 0 20px 0 0);
         border-radius: 2px;
         border: 1px solid rgb(216, 216, 216);
       }
       input[type='checkbox']:checked {
-        width: 24px;
-        height: 24px;
-        margin-right: 20px;
+        @include size(24px, 24px, 0 20px 0 0);
         border-radius: 2px;
       }
       .label {
@@ -123,14 +119,12 @@
       }
     }
     .signup_btn {
-      width: 100%;
+      @include size(100%, 52px, 30px 0);
       cursor: pointer;
       border-radius: 12px;
       color: white;
       background-color: black;
       border: 0;
-      margin: 30px 0;
-      height: 52px;
       font-size: 16px;
     }
     .disabled {
