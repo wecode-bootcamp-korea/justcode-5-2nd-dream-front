@@ -35,7 +35,7 @@ function ProductInfo(props) {
       .then(data => {
         setProductInfo(data[0]);
       });
-  }, [isUpdated, id, isWished, isLogin]);
+  }, [isUpdated, isWished, id, isLogin]);
 
   const latestPrice = Number(productInfo?.latest_price)?.toLocaleString();
   const wishNum = productInfo?.wish_num;
