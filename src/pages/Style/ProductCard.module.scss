@@ -1,12 +1,18 @@
 .productCard {
-  width: 300px;
+  //  width: 250px;
+  display: flex;
+  justify-content: center;
+  width: 70%;
+  margin-left: 80px;
   margin-bottom: 50px;
-  margin-right: 20px;
+
+
 }
 
 .swap {
   display: flex;
   flex-direction: column;
+
 }
 
 .gap {
@@ -18,14 +24,13 @@
 }
 
 .pic {
-  // position: absolute;
-  margin-top: 50px;
-  width: 300px;
+
+  margin-top: 30px;
   border-radius: 7px;
-  width: auto;
-  height: auto;
-  max-width: 270px;
-  max-height: 270px;
+  width: 280px;
+  height: 325px;
+
+
 }
 
 .propic_cont {
