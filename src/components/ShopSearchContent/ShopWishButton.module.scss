@@ -1,0 +1,25 @@
+.interest_figure {
+  padding-top: 12px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+
+  .wish_figure {
+    display: flex;
+    align-items: center;
+    vertical-align: top;
+    height: 25px;
+    background-color: white;
+    border-radius: 10px;
+    border: #ebf0f5 solid 1px;
+    svg {
+      margin-left: 5px;
+    }
+    p {
+      margin-left: 10px;
+      margin-right: 5px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+  }
+}
