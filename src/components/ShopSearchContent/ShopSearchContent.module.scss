@@ -85,31 +85,9 @@
           }
 
           .immediate_purchase_price {
+            padding-top: 3px;
             font-size: 12px;
             color: rgba(34, 34, 34, 0.5);
-          }
-        }
-      }
-
-      .interest_figure {
-        padding-top: 12px;
-
-        .wish_figure {
-          display: inline-flex;
-          align-items: center;
-          vertical-align: top;
-          height: 20px;
-          color: black;
-
-          img {
-            width: 15px;
-            height: 18px;
-          }
-
-          p {
-            margin-left: 10px;
-            font-size: 14px;
-            font-weight: 700;
           }
         }
       }

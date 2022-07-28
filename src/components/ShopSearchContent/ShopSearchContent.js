@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import css from './ShopSearchContent.module.scss';
+import ShopWishButton from './ShopWishButton';
 
 function ShopSearchContent(props) {
   const { searchInfo, setKeyword } = props;
@@ -41,15 +42,7 @@ function ShopSearchContent(props) {
                   <p className={css.immediate_purchase_price}>즉시구매가</p>
                 </div>
               </Link>
-              <div className={css.interest_figure}>
-                <span className={css.wish_figure}>
-                  <img
-                    src="https://img.icons8.com/external-bearicons-detailed-outline-bearicons/344/external-Save-social-media-bearicons-detailed-outline-bearicons.png"
-                    alt="관심상품"
-                  />
-                  <p>{searchInfo.wish}</p>
-                </span>
-              </div>
+              <ShopWishButton searchInfo={searchInfo} />
             </li>
           );
         })}

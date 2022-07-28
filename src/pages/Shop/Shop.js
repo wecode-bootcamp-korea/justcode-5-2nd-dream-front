@@ -13,7 +13,7 @@ function Shop() {
 
   useEffect(() => {
     setIsUpdated(false);
-    fetch(`${BASE_URL}/search?sort=${keyword}`, {
+    fetch(`${BASE_URL}/products?sort=${keyword}`, {
       method: 'GET',
     })
       .then(res => res.json())
