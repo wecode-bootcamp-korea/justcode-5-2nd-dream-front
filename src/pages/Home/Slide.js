@@ -8,6 +8,7 @@ import css from './Slide.module.scss';
 export default class SwipeToSlide extends Component {
   render() {
     const styles = this.props.data;
+    const num = this.props.displayNum;
     // console.log(this.props);
     const settings = {
       className: 'center',
@@ -27,7 +28,7 @@ export default class SwipeToSlide extends Component {
           <div class={css.container}>
             <span className={css.font}>Style Picks!</span>
             <Slider {...settings}>
-              {styles.map(style => {
+              {styles.slice(0, num).map(style => {
                 style.nickname = `@${style?.user_email?.split('@')[0]}`;
                 return (
                   <div class={css.gap}>

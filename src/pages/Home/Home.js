@@ -16,10 +16,18 @@ function Home() {
   const [justDropList, setJustDropList] = useState([]);
   const [popularList, setPopularList] = useState([]);
   const [styles, setStyles] = useState([]);
+  const accessToken = localStorage.getItem('token');
+
+  console.log(accessToken, '234');
 
   const getProducts = async () => {
     const url = `${BASE_URL}/main`;
-    const response = await fetch(url, { method: 'GET' });
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        Authorization: accessToken,
+      },
+    });
     const json = await response.json();
     console.log('json: ', json);
     setJustDropList(json.data[0]);
@@ -63,15 +71,15 @@ function Home() {
       <Post />
       <div className={css.container}>
         <div className={css.productall}>
-          <ProductAll data={justDropList} title="Just Dropped" />
+          <ProductAll data={justDropList} title="Just Dropped" displayNum="8" />
         </div>
       </div>
       <div className={css.container}>
         <div className={css.productall}>
-          <ProductAll data={popularList} title="Most Popular" />
+          <ProductAll data={popularList} title="Most Popular" displayNum="8" />
         </div>
       </div>
-      <Slide data={styles} />
+      <Slide data={styles} displayNum="12" />
     </div>
   );
 }
