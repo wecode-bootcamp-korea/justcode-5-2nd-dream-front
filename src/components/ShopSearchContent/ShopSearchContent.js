@@ -42,8 +42,7 @@ function ShopSearchContent(props) {
                   <p className={css.immediate_purchase_price}>즉시구매가</p>
                 </div>
               </Link>
-              {/* API 변경으로 인해 잠시 주석처리함 */}
-              {/* <ShopWishButton searchInfo={searchInfo} /> */}
+              <ShopWishButton searchInfo={searchInfo} />
             </li>
           );
         })}

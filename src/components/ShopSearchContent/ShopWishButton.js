@@ -9,12 +9,11 @@ function ShopWishButton(props) {
 
   const [isUpdated, setIsUpdated] = useState(false);
   const [isWished, setIsWished] = useState(undefined);
-  const accesstoken = localStorage.getItem('token');
 
   useEffect(() => {
-    const userId = localStorage.getItem('userId');
+    const accesstoken = localStorage.getItem('token');
     setIsUpdated(false);
-    fetch(`${BASE_URL}/main/wish/${userId}`, {
+    fetch(`${BASE_URL}/wish`, {
       method: 'GET',
       headers: { Authorization: accesstoken },
     })
