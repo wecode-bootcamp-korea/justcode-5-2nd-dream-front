@@ -3,19 +3,16 @@ import { Container, Row, Col } from 'react-bootstrap';
 import ProductCard from './ProductCard';
 import css from './ProductAll.module.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import BASE_URL from '../../config';
 
 const ProductAll = ({ queryString }) => {
-  console.log(queryString);
   const [productList, setProductList] = useState([]);
   const getProducts = async () => {
-    let url = `http://localhost:10010/style?sort=${queryString}`;
-    console.log('url', url);
+    let url = `${BASE_URL}/style?sort=${queryString}`;
     let response = await fetch(url, { method: 'GET' });
     let data = await response.json();
     data = data.data;
     setProductList(data);
-    console.log('data: ', data);
-    console.log('data: ', data[0].image_list);
   };
   useEffect(() => {
     getProducts();
@@ -23,8 +20,8 @@ const ProductAll = ({ queryString }) => {
   return (
     <div>
       <div className={css.wrap}>
-        <Container>
-          <Row>
+        <Container className={css.gap}>
+          <Row className={css.gap}>
             {productList.map(menu => (
               <Col lg={4}>
                 <ProductCard item={menu} />

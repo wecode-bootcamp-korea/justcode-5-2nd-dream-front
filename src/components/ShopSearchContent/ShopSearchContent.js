@@ -4,7 +4,7 @@ import css from './ShopSearchContent.module.scss';
 import ShopWishButton from './ShopWishButton';
 
 function ShopSearchContent(props) {
-  const { searchInfo, setKeyword } = props;
+  const { searchInfo, setKeyword, setIsUpdated, isUpdated } = props;
 
   const handleSellNum = e => {
     setKeyword(e.target.value);
@@ -42,7 +42,11 @@ function ShopSearchContent(props) {
                   <p className={css.immediate_purchase_price}>즉시구매가</p>
                 </div>
               </Link>
-              <ShopWishButton searchInfo={searchInfo} />
+              <ShopWishButton
+                searchInfo={searchInfo}
+                setIsUpdated={setIsUpdated}
+                isUpdated={isUpdated}
+              />
             </li>
           );
         })}
