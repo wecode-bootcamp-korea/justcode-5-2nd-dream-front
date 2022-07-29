@@ -8,7 +8,6 @@ import BASE_URL from '../../config';
 function ShopWishButton(props) {
   const { searchInfo, setIsUpdated, isUpdated } = props;
 
-  // const [isUpdated, setIsUpdated] = useState(false);
   const [isWished, setIsWished] = useState();
   const userId = localStorage.getItem('userId');
   const accesstoken = localStorage.getItem('token');
