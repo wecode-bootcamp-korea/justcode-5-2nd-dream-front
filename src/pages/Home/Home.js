@@ -18,8 +18,6 @@ function Home() {
   const [styles, setStyles] = useState([]);
   const accessToken = localStorage.getItem('token');
 
-  console.log(accessToken, '234');
-
   const getProducts = async () => {
     const url = `${BASE_URL}/main`;
     const response = await fetch(url, {
@@ -29,19 +27,11 @@ function Home() {
       },
     });
     const json = await response.json();
-    console.log('json: ', json);
     setJustDropList(json.data[0]);
     setPopularList(json.data[1]);
     setStyles(json.data[2]);
   };
 
-  // const getWishs = async userId => {
-  //   const url = `${BASE_URL}/main/wish/${userId}`;
-  //   const res = await fetch(url,{method : 'GET'});
-  //   const json = await res.json();
-  //   console.log('wish : ', json)
-
-  // };
   useEffect(() => {
     getProducts();
   }, []);
