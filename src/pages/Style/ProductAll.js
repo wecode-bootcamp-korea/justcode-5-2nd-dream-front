@@ -20,8 +20,8 @@ const ProductAll = ({ queryString }) => {
   return (
     <div>
       <div className={css.wrap}>
-        <Container>
-          <Row>
+        <Container className={css.gap}>
+          <Row className={css.gap}>
             {productList.map(menu => (
               <Col lg={4}>
                 <ProductCard item={menu} />

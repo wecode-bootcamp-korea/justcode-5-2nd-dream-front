@@ -5,14 +5,13 @@ import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({ item }) => {
   const navigate = useNavigate();
-  console.log(item);
 
   return (
     <div className={css.productCard}>
       <div className={css.swap}>
         <div>
           <img
-            className={css.spic}
+            className={css.pic}
             src={item?.image_list[0]?.image_url}
             alt="img"
           />
@@ -24,8 +23,8 @@ const ProductCard = ({ item }) => {
         </div>
         <div className={css.nam}>{item?.user_name}</div>
         <div className={css.tag}>{item?.content}</div>
-        <div className={css.like}>{item?.like_num}</div>
-        <div className={css.reply}>{item?.comment_num}</div>
+        <div className={css.like}>🙂 {item?.like_num}</div>
+        <div className={css.reply}>💬 {item?.comment_num}</div>
         {item?.product_list?.map(product => (
           <div
             onClick={() => navigate(`/products/${product.product_id}`)}

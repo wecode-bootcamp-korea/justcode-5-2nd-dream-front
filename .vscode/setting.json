@@ -1,4 +1,41 @@
+
+
 {
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "editor.wordWrap": "on",
+  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "workbench.iconTheme": "vscode-icons",
+  "editor.minimap.showSlider": "always",
+  "editor.minimap.maxColumn": 50,
+  "editor.fontFamily": "Meslo LG DZ for Powerline, verdana, Monaco, Menlo, 'Fira Code', 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "workbench.editorAssociations": {
+      "*.txt": "default"
+  },
+  "git.enableSmartCommit": true,
+  "[css]": {
+      "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "workbench.colorTheme": "One Dark Pro Darker",
+  "bracket-pair-colorizer-2.depreciation-notice": false,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "prettier.printWidth": 140,
+  "prettier.singleQuote": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "security.workspace.trust.untrustedFiles": "open",
+  "liveServer.settings.donotVerifyTags": true,
+  "git.confirmSync": false,
+  "editor.fontSize": 13,
+  "terminal.integrated.fontSize": 13,
+  "thunder-client.htmlView": "Preview",
+  "editor.formatOnSave": true,
+  "prettier.tabWidth": 4,
+  "[scss]": {
+      "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "emmet.includeLanguages": {
+      "javascript": "javascriptreact"
+  }
 }
