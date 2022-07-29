@@ -1,7 +1,10 @@
 import React from 'react';
 import css from './ProductCard.module.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom';
+
 const ProductCard = ({ item }) => {
+  const navigate = useNavigate();
   console.log(item);
 
   return (
@@ -24,7 +27,10 @@ const ProductCard = ({ item }) => {
         <div className={css.like}>{item?.like_num}</div>
         <div className={css.reply}>{item?.comment_num}</div>
         {item?.product_list?.map(product => (
-          <div className={css.product_container}>
+          <div
+            onClick={() => navigate(`/products/${product.product_id}`)}
+            className={css.product_container}
+          >
             <img className={css.propic} src={product?.image_url} alt="img" />
             <div>
               <div className={css.prsname}>{product?.product_name}</div>

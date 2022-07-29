@@ -1,3 +1,11 @@
+.productCard {
+  position: relative;
+}
+.bookmark {
+  position: absolute;
+  right: 10px;
+  bottom: 60px;
+}
 .container {
   margin-bottom: 50px;
 }
@@ -13,24 +21,32 @@
     height: 100%;
     border-radius: 7px;
   }
-
 }
 
+.content_header {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  .like {
+    // position: absolute;
+    // right: 10px;
+    // top: 10px;
+    width: 15px;
+    height: 18px;
+  }
+}
 .nam {
   font-size: 20px;
-  text-decoration: underline;
-  margin-left: 30px;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .com {
   font-size: 20px;
-  margin-top: 10px;
-  margin-left: 30px;
 }
 
 .pri {
   font-size: 20px;
   margin-top: 10px;
-  margin-left: 30px;
 }

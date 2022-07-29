@@ -6,6 +6,7 @@ import OtherProduct from '../../components/OtherProduct/OtherProduct';
 import css from './ProductDetail.module.scss';
 import BASE_URL from '../../config';
 import { useLocation } from 'react-router-dom';
+const accessToken = localStorage.getItem('token');
 
 function ProductDetail(props) {
   const location = useLocation();
@@ -27,6 +28,9 @@ function ProductDetail(props) {
   useEffect(() => {
     fetch(`${BASE_URL}/main`, {
       method: 'GET',
+      headers: {
+        Authorization: accessToken,
+      },
     })
       .then(res => res.json())
       .then(data => {

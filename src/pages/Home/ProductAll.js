@@ -4,7 +4,7 @@ import ProductCard from './ProductCard';
 import css from './ProductAll.module.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const ProductAll = ({ data, title }) => {
+const ProductAll = ({ data, title, displayNum }) => {
   return (
     <div>
       <div className={css.wrap}>
@@ -21,11 +21,13 @@ const ProductAll = ({ data, title }) => {
             </div>
           )}
           <Row>
-            {data.map(menu => (
-              <Col lg={3}>
-                <ProductCard item={menu} />
-              </Col>
-            ))}
+            {data.slice(0, displayNum).map(menu => {
+              return (
+                <Col lg={3}>
+                  <ProductCard item={menu} />
+                </Col>
+              );
+            })}
           </Row>
         </Container>
       </div>
