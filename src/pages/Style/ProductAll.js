@@ -10,7 +10,6 @@ const ProductAll = ({ queryString }) => {
   const getProducts = async () => {
     let url = `http://localhost:10010/style?sort=${queryString}`;
     console.log('url', url);
-    // let response = await fetch(url);
     let response = await fetch(url, { method: 'GET' });
     let data = await response.json();
     data = data.data;

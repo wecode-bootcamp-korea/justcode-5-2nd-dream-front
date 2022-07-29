@@ -15,7 +15,7 @@ export default class ShopBanner extends Component {
       autoplaySpeed: 2000,
     };
     return (
-      <div class={css.banner_box}>
+      <div className={css.banner_box}>
         <Slider {...settings} className={css.slide}>
           <div className={css.banner_1}>
             <img

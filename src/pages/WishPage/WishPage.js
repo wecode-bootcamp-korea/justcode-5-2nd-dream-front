@@ -7,27 +7,31 @@ import BASE_URL from '../../config';
 function WishPage() {
   const [wishInfo, setwishInfo] = useState([]);
   const [isUpdated, setIsUpdated] = useState(true);
-  const userId = localStorage.getItem('userId');
 
   // ============ 관심상품 조회
   useEffect(() => {
+    const accesstoken = localStorage.getItem('token');
     setIsUpdated(false);
-    fetch(`${BASE_URL}/wish/${userId}`, {
+    fetch(`${BASE_URL}/wish`, {
       method: 'GET',
+      headers: { Authorization: accesstoken },
     })
       .then(res => res.json())
       .then(data => {
         setwishInfo(data.data);
       });
-  }, [userId, isUpdated]);
+  }, [isUpdated]);
 
   // ============ 관심상품 삭제
+  const accesstoken = localStorage.getItem('token');
   const deleteWish = productId => {
     fetch(`${BASE_URL}/wish`, {
       method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: accesstoken,
+      },
       body: JSON.stringify({
-        user_id: localStorage.getItem('userId'),
         product_id: productId,
       }),
     })
