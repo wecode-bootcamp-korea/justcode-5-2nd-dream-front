@@ -100,7 +100,9 @@ function ProductInfo(props) {
   };
 
   useEffect(() => {
-    fetch(`${BASE_URL}/wish/${userId}`)
+    fetch(`${BASE_URL}/wish`, {
+      headers: { 'Content-Type': 'application/json', Authorization: token },
+    })
       .then(res => res.json())
       .then(data => {
         const wishLength = data.data?.filter(
@@ -117,9 +119,8 @@ function ProductInfo(props) {
   const toggleWish = method => {
     return {
       method,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', Authorization: token },
       body: JSON.stringify({
-        user_id: userId,
         product_id: id,
       }),
     };

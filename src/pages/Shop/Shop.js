@@ -28,7 +28,12 @@ function Shop() {
       <ShopTopBanner searchInfo={searchInfo} />
       <div className={css.content}>
         <ShopSideFilter />
-        <ShopSearchContent searchInfo={searchInfo} setKeyword={setKeyword} />
+        <ShopSearchContent
+          searchInfo={searchInfo}
+          setKeyword={setKeyword}
+          setIsUpdated={setIsUpdated}
+          isUpdated={isUpdated}
+        />
       </div>
     </div>
   );
