@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import ProductCard from './ProductCard';
 import css from './ProductAll.module.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import BASE_URL from '../../config';
+import { BASE_URL } from '../../config';
 
 const ProductAll = ({ queryString }) => {
   const [productList, setProductList] = useState([]);

@@ -4,7 +4,7 @@ import ProductInfo from './ProductInfo/ProductInfo';
 import ProductStyle from './ProductStyle/ProductStyle';
 import OtherProduct from './OtherProduct/OtherProduct';
 import css from './ProductDetail.module.scss';
-import BASE_URL from '../../config';
+import { BASE_URL } from '../../config';
 import { useLocation } from 'react-router-dom';
 const accessToken = localStorage.getItem('token');
 
