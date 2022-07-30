@@ -4,7 +4,7 @@ import ShopTitle from '../../components/ShopTitle/ShopTitle';
 import ShopTopBanner from '../../components/ShopTopBanner/ShopTopBanner';
 import ShopSideFilter from '../../components/ShopSideFilter/ShopSideFilter';
 import ShopSearchContent from '../../components/ShopSearchContent/ShopSearchContent';
-import BASE_URL from '../../config';
+import { BASE_URL } from '../../config';
 
 function Shop() {
   const [searchInfo, setSearchInfo] = useState([]);

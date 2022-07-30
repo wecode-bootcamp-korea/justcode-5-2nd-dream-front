@@ -6,7 +6,7 @@ import ProductAll from './ProductAll';
 import queryString from 'query-string';
 import { useLocation, useNavigate } from 'react-router-dom';
 import css from './Home.module.scss';
-import BASE_URL from '../../config';
+import { BASE_URL } from '../../config';
 
 function Home() {
   const navigate = useNavigate();

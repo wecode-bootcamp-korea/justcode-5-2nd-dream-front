@@ -3,7 +3,7 @@ import css from './ShopWishButton.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
-import BASE_URL from '../../config';
+import { BASE_URL } from '../../config';
 
 function ShopWishButton(props) {
   const { searchInfo, setIsUpdated, isUpdated } = props;

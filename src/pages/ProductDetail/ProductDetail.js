@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import ProductImage from '../../components/ProductImage/ProductImage';
-import ProductInfo from '../../components/ProductInfo/ProductInfo';
-import ProductStyle from '../../components/ProductStyle/ProductStyle';
-import OtherProduct from '../../components/OtherProduct/OtherProduct';
+import ProductImage from './ProductImage/ProductImage';
+import ProductInfo from './ProductInfo/ProductInfo';
+import ProductStyle from './ProductStyle/ProductStyle';
+import OtherProduct from './OtherProduct/OtherProduct';
 import css from './ProductDetail.module.scss';
-import BASE_URL from '../../config';
+import { BASE_URL } from '../../config';
 import { useLocation } from 'react-router-dom';
 const accessToken = localStorage.getItem('token');
 
