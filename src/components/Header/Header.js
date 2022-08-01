@@ -10,7 +10,6 @@ import wishpage from '../../pages/WishPage/WishPage';
 
 function Header(props) {
   const { isLogin, setIsLogin } = props;
-  console.log(isLogin, 123);
   const handleLogoutToken = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('email');
