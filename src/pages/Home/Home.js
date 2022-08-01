@@ -21,14 +21,6 @@ function Home() {
   const exp = localStorage.getItem('exp');
   const now = dayjs();
 
-  const handleLogoutToken = async () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('email');
-    localStorage.removeItem('nickname');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('profileImage');
-  };
-
   const getProducts = async () => {
     try {
       if (exp <= now.format()) {
