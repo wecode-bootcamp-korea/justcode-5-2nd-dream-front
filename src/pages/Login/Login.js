@@ -24,9 +24,12 @@ function Login(props) {
       .then(res => res.json())
       .then(res => {
         if (res.token) {
+          console.log(res);
+          console.log(res.token, 'token');
           localStorage.setItem('token', res.token);
           localStorage.setItem('email', email);
           localStorage.setItem('userId', res.id);
+          localStorage.setItem('exp', res.exp);
           setIsLogin(true);
           setLoginState(true);
         } else {
