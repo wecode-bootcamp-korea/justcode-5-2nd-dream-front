@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import css from './Payment.module.scss';
-import BASE_URL from '../../config';
+import { BASE_URL } from '../../config';
 import useToast from '../../hooks/useToast';
 import Toast from '../../components/Toast/Toast';
 

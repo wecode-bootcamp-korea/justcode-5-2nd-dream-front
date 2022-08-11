@@ -6,9 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleDown } from '@fortawesome/free-regular-svg-icons';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import ProductModal from '../ProductModal/ProductModal';
-import BASE_URL from '../../config';
-import useToast from '../../hooks/useToast';
-import Toast from '../../components/Toast/Toast';
+import { BASE_URL } from '../../../config';
+import useToast from '../../../hooks/useToast';
+import Toast from '../../../components/Toast/Toast';
 
 function ProductInfo(props) {
   const { isLogin } = props;

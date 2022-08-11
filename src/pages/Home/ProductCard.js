@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import css from './ProductCard.module.scss';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import BASE_URL from '../../config';
+import { BASE_URL } from '../../config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 const ProductCard = ({ item }) => {

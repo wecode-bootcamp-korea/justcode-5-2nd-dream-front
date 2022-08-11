@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import SizeModal from '../../components/SizeModal/SizeModal';
 import { useNavigate } from 'react-router-dom';
-import BASE_URL from '../../config';
+import { BASE_URL } from '../../config';
 import useToast from '../../hooks/useToast';
 import Toast from '../../components/Toast/Toast';
 
