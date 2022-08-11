@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import css from './Login.module.scss';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import kakao_login from './images/kakao_login.png';
-import BASE_URL from '../../config';
+import { BASE_URL } from '../../config';
 import useToast from '../../hooks/useToast';
 import Toast from '../../components/Toast/Toast';
 

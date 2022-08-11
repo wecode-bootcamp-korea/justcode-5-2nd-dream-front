@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import css from './BuyingPage.module.scss';
 import ProfileSNB from '../../components/Profile/ProfileSNB';
-import BASE_URL from '../../config';
+import { BASE_URL } from '../../config';
 
 function BuyingPage() {
   const [buyInfo, setBuyInfo] = useState([]);
