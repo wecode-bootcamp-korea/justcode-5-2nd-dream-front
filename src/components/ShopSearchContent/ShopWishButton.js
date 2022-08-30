@@ -15,6 +15,9 @@ function ShopWishButton(props) {
 
   useEffect(() => {
     const accesstoken = localStorage.getItem('token');
+    if (!accesstoken) {
+      return;
+    }
     setIsUpdated(false);
     fetch(`${BASE_URL}/wish`, {
       method: 'GET',

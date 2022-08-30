@@ -12,12 +12,22 @@ const ProductCard = ({ item }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (item.wish_id !== null && accessToken) {
+    if (item.wish_id && accessToken) {
       setIsWished(true);
     } else {
       setIsWished(false);
     }
   }, [item, accessToken]);
+
+  useEffect(() => {
+    // console.log(accessToken, 'access');
+    if (item.wish_id !== null) {
+      setIsWished(true);
+    } else {
+      setIsWished(false);
+    }
+  }, []);
+
   const toggleWish = method => {
     return {
       method,
