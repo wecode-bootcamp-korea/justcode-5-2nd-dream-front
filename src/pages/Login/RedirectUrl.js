@@ -8,14 +8,6 @@ const RedirectURI = props => {
   const userInfo = queryString.parse(useLocation().search);
   const { email, nickname, profileImage, token, userId } = userInfo;
   const isSocialLoggedIn = useLocation().search.includes('token');
-  // let email = new URL(window.location.href).searchParams.get("email");
-  // let nickname = new URL(window.location.href).searchParams.get("nickname");
-
-  // console.log(email);
-  // console.log(nickname);
-
-  // const token = new URL(window.location.href).searchParams.get('token');
-  // console.log(decoded);
 
   useEffect(() => {
     if (isSocialLoggedIn) {

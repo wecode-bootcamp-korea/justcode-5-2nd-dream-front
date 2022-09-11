@@ -20,7 +20,6 @@ const ProductCard = ({ item }) => {
   }, [item, accessToken]);
 
   useEffect(() => {
-    // console.log(accessToken, 'access');
     if (item.wish_id !== null) {
       setIsWished(true);
     } else {
