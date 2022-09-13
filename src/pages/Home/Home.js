@@ -6,14 +6,10 @@ import ProductAll from './ProductAll';
 import queryString from 'query-string';
 import { useLocation, useNavigate } from 'react-router-dom';
 import css from './Home.module.scss';
-import BASE_URL from '../../config';
+import { BASE_URL } from '../../config';
 import dayjs from 'dayjs';
 
 function Home() {
-  const navigate = useNavigate();
-  const userInfo = queryString.parse(useLocation().search);
-  const { email, nickname, profileImage, token, userId } = userInfo;
-  const isSocialLoggedIn = useLocation().search.includes('token');
   const [justDropList, setJustDropList] = useState([]);
   const [popularList, setPopularList] = useState([]);
   const [styles, setStyles] = useState([]);
@@ -46,25 +42,6 @@ function Home() {
   useEffect(() => {
     getProducts();
   }, []);
-
-  useEffect(() => {
-    if (isSocialLoggedIn) {
-      localStorage.setItem('email', email);
-      localStorage.setItem('nickname', nickname);
-      localStorage.setItem('profileImage', profileImage);
-      localStorage.setItem('token', token);
-      localStorage.setItem('userId', userId);
-      navigate('/');
-    }
-  }, [
-    email,
-    nickname,
-    profileImage,
-    token,
-    userId,
-    isSocialLoggedIn,
-    navigate,
-  ]);
 
   return (
     <div>

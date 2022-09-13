@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home/Home';
 import Login from './Login/Login';
+import LoginRedirect from './Login/RedirectUrl';
 import Signup from './SIgnup/Signup';
 import Shop from './Shop/Shop';
 import MyPage from './MyPage/MyPage';
@@ -33,6 +34,7 @@ function Router() {
         <Route path="/mypage/wish" element={<WishPage />} />
         <Route path="/mypage/buying" element={<BuyingPage />} />
         <Route path="/mypage/selling" element={<SellingPage />} />
+        <Route path="/loginRedirect" element={<LoginRedirect />} />
 
         <Route
           path="/products/:id"
